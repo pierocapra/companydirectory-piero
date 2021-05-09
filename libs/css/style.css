@@ -26,17 +26,49 @@ body {
 h1 {
   font-family: var(--font-main);
   font-size: 3rem;
+  font-weight: 400;
+  color: var(--white-color);
+}
+
+h2 {
+  font-family: var(--font-main);
+  font-size: 2rem;
   font-weight: 500;
   color: var(--white-color);
+  margin: 0;
 }
 
-.white-icon {
-  color: var(--white-color);
-  fill: white;
+h3 {
+  font-family: var(--font-main);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: rgb(95, 95, 95);
+  margin: 0;
 }
 
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+  padding: 0 2rem;
+}
+
+li:nth-child(even) {
+  background-color: #ececec;
+}
+input {
+  border-radius: 2rem !important;
+  -webkit-border-radius: 2rem !important;
+  -moz-border-radius: 2rem !important;
+  -ms-border-radius: 2rem !important;
+  -o-border-radius: 2rem !important;
+  background-color: var(--main-graybackground);
+}
 /**/
 
+/* HEADER */
 .header {
   background-image: linear-gradient(
     to right,
@@ -55,4 +87,86 @@ h1 {
 }
 .manage-people-icon {
   height: 5rem;
+}
+/**/
+
+/*MAIN CONTAINER*/
+.main-container {
+  height: calc(100vh - 7rem);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 40%;
+}
+
+/*SECTION DEPARTMENT AND LOCATION*/
+.department-section {
+  position: absolute;
+  background-color: var(--white-color);
+  bottom: 0;
+  left: 0;
+  height: 97%;
+  width: 28%;
+  border-radius: 0 2rem 0 0;
+  -webkit-border-radius: 0 2rem 0 0;
+  -moz-border-radius: 0 2rem 0 0;
+  -ms-border-radius: 0 2rem 0 0;
+  -o-border-radius: 0 2rem 0 0;
+}
+
+.deploc-header {
+  background-color: var(--secondary-color);
+  height: 6rem;
+  width: 100%;
+  display: grid;
+  align-content: center;
+  padding: 0;
+  border-radius: 0 2rem 0 0;
+  -webkit-border-radius: 0 2rem 0 0;
+  -moz-border-radius: 0 2rem 0 0;
+  -ms-border-radius: 0 2rem 0 0;
+  -o-border-radius: 0 2rem 0 0;
+}
+
+.deploc-title {
+  text-align: center;
+}
+
+.deploc-cell {
+  height: 5rem;
+  display: grid;
+  align-content: center;
+}
+
+.ul-deploc {
+  height: 89%;
+  overflow: auto;
+}
+
+/*SECTION LIST NAMES*/
+.secNameList {
+  background-color: var(--white-color);
+}
+
+.uk-margin {
+  margin: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.uk-search,
+.uk-search-default {
+  font-size: 1.4rem;
+  width: 100%;
+  border-radius: 2rem !important;
+  -webkit-border-radius: 2rem !important;
+  -moz-border-radius: 2rem !important;
+  -ms-border-radius: 2rem !important;
+  -o-border-radius: 2rem !important;
+  background-color: #f8f8f8;
+}
+.plus-sign {
+  width: 3rem;
+  display: inline-block;
+  margin-left: 15px;
+  color: aqua;
 }

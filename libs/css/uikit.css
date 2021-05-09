@@ -8,26 +8,26 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  * 3. Style
  */
-html {
-  /* 1 */
+/* html {
+
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 16px;
   font-weight: normal;
   line-height: 1.5;
-  /* 2 */
+  
   -webkit-text-size-adjust: 100%;
-  /* 3 */
+
   background: #fff;
   color: #666;
-}
+} */
 /*
  * Remove the margin in all browsers.
  */
-body {
+/* body {
   margin: 0;
-}
+} */
 /* Links
  ========================================================================== */
 /*
@@ -59,74 +59,74 @@ a:hover,
  * 1. Add the correct text decoration in Edge.
  * 2. The shorthand declaration `underline dotted` is not supported in Safari.
  */
-abbr[title] {
-  /* 1 */
+/* abbr[title] {
+  
   text-decoration: underline dotted;
-  /* 2 */
+
   -webkit-text-decoration-style: dotted;
-}
+} */
 /*
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
-b,
+/* b,
 strong {
   font-weight: bolder;
-}
+} */
 /*
  * 1. Consolas has a better baseline in running text compared to `Courier`
  * 2. Correct the odd `em` font sizing in all browsers.
  * 3. Style
  */
-:not(pre) > code,
+/* :not(pre) > code,
 :not(pre) > kbd,
 :not(pre) > samp {
-  /* 1 */
+  
   font-family: Consolas, monaco, monospace;
-  /* 2 */
+ 
   font-size: 0.875rem;
-  /* 3 */
+ 
   color: #f0506e;
   white-space: nowrap;
   padding: 2px 6px;
   background: #f8f8f8;
-}
+} */
 /*
  * Emphasize
  */
-em {
+/* em {
   color: #f0506e;
-}
+} */
 /*
  * Insert
  */
-ins {
+/* ins {
   background: #ffd;
   color: #666;
   text-decoration: none;
-}
+} */
 /*
  * Mark
  */
-mark {
+/* mark {
   background: #ffd;
   color: #666;
-}
+} */
 /*
  * Quote
  */
-q {
+/* q {
   font-style: italic;
-}
+} */
 /*
  * Add the correct font size in all browsers.
  */
-small {
+/* small {
   font-size: 80%;
-}
+} */
 /*
  * Prevents `sub` and `sup` affecting `line-height` in all browsers.
  */
-sub,
+/* sub,
 sup {
   font-size: 75%;
   line-height: 0;
@@ -138,74 +138,74 @@ sup {
 }
 sub {
   bottom: -0.25em;
-}
+} */
 /* Embedded content
  ========================================================================== */
 /*
  * Remove the gap between embedded content and the bottom of their containers.
  */
-audio,
+/* audio,
 canvas,
 iframe,
 img,
 svg,
 video {
   vertical-align: middle;
-}
+} */
 /*
  * 1. Add responsiveness.
  * 2. Auto-scale the height. Only needed if `height` attribute is present.
  * 3. Corrects responsive `max-width` behavior if padding and border are used.
  * 4. Exclude SVGs for IE11 because they don't preserve their aspect ratio.
  */
-canvas,
+/* canvas,
 img,
 video {
-  /* 1 */
+
   max-width: 100%;
-  /* 2 */
+
   height: auto;
-  /* 3 */
+
   box-sizing: border-box;
-}
+} */
 /* 4 */
-@supports (display: block) {
+/* @supports (display: block) {
   svg {
     max-width: 100%;
     height: auto;
     box-sizing: border-box;
   }
-}
+} */
 /*
  * Hide the overflow in IE.
  */
-svg:not(:root) {
+/* svg:not(:root) {
   overflow: hidden;
-}
+} */
 /*
  * 1. Fix lazy loading images if parent element is set to `display: inline` and has `overflow: hidden`.
  * 2. Hide `alt` text for lazy loading images.
  * Note: Selector for background while loading img[data-src*='.jpg'][src*='data:image'] { background: grey; }
  */
-img:not([src]) {
-  /* 1 */
+/* img:not([src]) {
+ 
   min-width: 1px;
-  /* 2 */
+  
   visibility: hidden;
-}
+} */
 /*
  * Iframe
  * Remove border in all browsers
  */
-iframe {
+/* iframe {
   border: 0;
-}
+} */
 /* Block elements
  ========================================================================== */
 /*
  * Margins
  */
-p,
+/* p,
 ul,
 ol,
 dl,
@@ -214,9 +214,9 @@ address,
 fieldset,
 figure {
   margin: 0 0 20px 0;
-}
+} */
 /* Add margin if adjacent element */
-* + p,
+/* * + p,
 * + ul,
 * + ol,
 * + dl,
@@ -225,7 +225,7 @@ figure {
 * + fieldset,
 * + figure {
   margin-top: 20px;
-}
+} */
 /* Headings
  ========================================================================== */
 /* h1,
@@ -319,27 +319,27 @@ h6,
 } */
 /* Lists
  ========================================================================== */
-ul,
+/* ul,
 ol {
   padding-left: 30px;
-}
+} */
 /*
  * Reset margin for nested lists
  */
-ul > li > ul,
+/* ul > li > ul,
 ul > li > ol,
 ol > li > ol,
 ol > li > ul {
   margin: 0;
-}
+} */
 /* Description lists
  ========================================================================== */
-dt {
+/* dt {
   font-weight: bold;
 }
 dd {
   margin-left: 0;
-}
+} */
 /* Horizontal rules
  ========================================================================== */
 /*
@@ -347,44 +347,44 @@ dd {
  * 2. Add the correct text-align in Edge and IE.
  * 3. Style
  */
-hr,
+/* hr,
 .uk-hr {
-  /* 1 */
+  
   overflow: visible;
-  /* 2 */
+ 
   text-align: inherit;
-  /* 3 */
+ 
   margin: 0 0 20px 0;
   border: 0;
   border-top: 1px solid #e5e5e5;
-}
+} */
 /* Add margin if adjacent element */
-* + hr,
+/* * + hr,
 * + .uk-hr {
   margin-top: 20px;
-}
+} */
 /* Address
  ========================================================================== */
-address {
+/* address {
   font-style: normal;
-}
+} */
 /* Blockquotes
  ========================================================================== */
-blockquote {
+/* blockquote {
   margin: 0 0 20px 0;
   font-size: 1.25rem;
   line-height: 1.5;
   font-style: italic;
   color: #333;
-}
+} */
 /* Add margin if adjacent element */
-* + blockquote {
+/* * + blockquote {
   margin-top: 20px;
-}
+} */
 /*
  * Content
  */
-blockquote p:last-of-type {
+/* blockquote p:last-of-type {
   margin-bottom: 0;
 }
 blockquote footer {
@@ -395,18 +395,18 @@ blockquote footer {
 }
 blockquote footer::before {
   content: "— ";
-}
+} */
 /* Preformatted text
  ========================================================================== */
 /*
  * 1. Contain overflow in all browsers.
  */
-pre {
+/* pre {
   font: 0.875rem / 1.5 Consolas, monaco, monospace;
   color: #666;
   -moz-tab-size: 4;
   tab-size: 4;
-  /* 1 */
+  
   overflow: auto;
   padding: 10px;
   border: 1px solid #e5e5e5;
@@ -415,37 +415,37 @@ pre {
 }
 pre code {
   font-family: Consolas, monaco, monospace;
-}
+} */
 /* Selection pseudo-element
  ========================================================================== */
-::selection {
+/* ::selection {
   background: #39f;
   color: #fff;
   text-shadow: none;
-}
+} */
 /* HTML5 elements
  ========================================================================== */
 /*
  * 1. Add the correct display in Edge, IE 10+, and Firefox.
  * 2. Add the correct display in IE.
  */
-details,
+/* details,
 main {
-  /* 2 */
+ 
   display: block;
-}
+} */
 /*
  * Add the correct display in all browsers.
  */
-summary {
+/* summary {
   display: list-item;
-}
+} */
 /*
  * Add the correct display in IE.
  */
-template {
+/* template {
   display: none;
-}
+} */
 /* Pass media breakpoints to JS
  ========================================================================== */
 /*
