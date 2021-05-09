@@ -29,8 +29,8 @@
       </header>
       <main class="main-container">
         <section class="secLocDep">
-          <div class="department-section">
-            <div class="deploc-header">
+          <div class="off-canv department-section" id="depSection">
+            <div class="deploc-header dep-header">
               <h2 class="deploc-title">DEPARTMENT</h2>
             </div>
             <ul class="ul-deploc">
@@ -101,6 +101,38 @@
               </li>
             </ul>
           </div>
+          <div class="off-canv location-section" id="locSection">
+            <div class="deploc-header loc-header">
+              <h2 class="deploc-title">LOCATION</h2>
+            </div>
+            <ul class="ul-deploc">
+              <li>
+                <div class="deploc-cell">
+                  <h3 class="dep-name">London</h3>
+                </div>
+              </li>
+              <li>
+                <div class="deploc-cell">
+                  <h3 class="dep-name">New York</h3>
+                </div>
+              </li>
+              <li>
+                <div class="deploc-cell">
+                  <h3 class="dep-name">Paris</h3>
+                </div>
+              </li>
+              <li>
+                <div class="deploc-cell">
+                  <h3 class="dep-name">Munich</h3>
+                </div>
+              </li>
+              <li>
+                <div class="deploc-cell">
+                  <h3 class="dep-name">Rome</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
         </section>
         <section class="secNameList">
           <div class="uk-margin">
@@ -123,16 +155,16 @@
               Search for <span>department</span><span>: Engineering</span>
             </span>
           </div>
-          <div class="label label-agenda">
+          <div class="label label-agenda" id="btnAgenda">
             <img
               src="vendors/icons/people-circle-outline.svg"
               alt="People icon"
             />
           </div>
-          <div class="label label-dep">
+          <div class="label label-dep" id="btnDep">
             <img src="vendors/icons/hammer-outline.svg" alt="Hammer icon" />
           </div>
-          <div class="label label-loc">
+          <div class="label label-loc" id="btnLoc">
             <img src="vendors/icons/location-outline.svg" alt="Location icon" />
           </div>
           <div class="names-container">
@@ -213,13 +245,13 @@
             alt="Tower bridge, London"
             class="city-image"
           />
-          <!-- <div class="info-icon-circle"> -->
+
           <img
             src="vendors/icons/build-outline.svg"
             alt="Spanner tool"
             class="info-icon"
           />
-          <!-- </div> -->
+
           <h2 class="info-name">Jonas Schmedtmann</h2>
           <img
             src="vendors/icons/create-outline.svg"

@@ -133,7 +133,7 @@ input {
 }
 
 /*SECTION DEPARTMENT AND LOCATION*/
-.department-section {
+.off-canv {
   position: absolute;
   background-color: var(--white-color);
   bottom: 0;
@@ -141,19 +141,32 @@ input {
   display: grid;
   height: 97%;
   width: 28%;
+  /*INVERTSCROLLBAR*/
+  direction: rtl;
+  /**/
   border-radius: 0 2rem 0 0;
   -webkit-border-radius: 0 2rem 0 0;
   -moz-border-radius: 0 2rem 0 0;
   -ms-border-radius: 0 2rem 0 0;
   -o-border-radius: 0 2rem 0 0;
   box-shadow: 5px -5px 10px rgb(180, 180, 180);
-  /* INVERT SCROLLBAR */
-  direction: rtl;
-  /**/
+  transition: all 0.8s;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  -ms-transition: all 0.8s;
+  -o-transition: all 0.8s;
+}
+
+.location-section {
+  align-content: start;
+  transform: translateX(-110%);
+  -webkit-transform: translateX(-110%);
+  -moz-transform: translateX(-110%);
+  -ms-transform: translateX(-110%);
+  -o-transform: translateX(-110%);
 }
 
 .deploc-header {
-  background-color: var(--secondary-color);
   height: 6rem;
   width: 100%;
   display: grid;
@@ -164,6 +177,13 @@ input {
   -moz-border-radius: 0 2rem 0 0;
   -ms-border-radius: 0 2rem 0 0;
   -o-border-radius: 0 2rem 0 0;
+}
+
+.dep-header {
+  background-color: var(--secondary-color);
+}
+.loc-header {
+  background-color: var(--tertiary-color);
 }
 
 .deploc-title {
@@ -187,6 +207,7 @@ input {
 
 .ul-deploc {
   height: 100%;
+
   overflow: auto;
 }
 
@@ -273,6 +294,11 @@ input {
   -o-border-radius: 2rem 0 0 2rem;
   display: grid;
   align-items: center;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -ms-transition: all 0.1s;
+  -o-transition: all 0.1s;
 }
 
 .label-agenda {
@@ -284,7 +310,7 @@ input {
 .label-dep {
   background-color: var(--secondary-color);
   top: 21.5rem;
-  width: 30px;
+  width: 40px;
 }
 .label-loc {
   background-color: var(--tertiary-color);
@@ -295,14 +321,14 @@ input {
 
 /*SECTION PERSON INFO*/
 .secPersonInfo {
-  height: 75%;
+  max-height: calc(100vh - 7rem);
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  /* grid-template-rows: repeat(4, 1fr); */
   column-gap: 1rem;
   justify-content: center;
   align-items: center;
-  padding: 3rem;
+  padding: 3rem 4rem 8rem 4rem;
 }
 
 .city-image {
