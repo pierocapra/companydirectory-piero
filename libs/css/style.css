@@ -20,7 +20,32 @@ body {
   background-color: var(--main-graybackground);
   height: 100vh;
   width: 100%;
+  /* DESIGN SCROLLBAR */
+  scrollbar-color: #dfdfdf #ffffff;
+  /**/
 }
+
+/* Designing for scroll-bar */
+/* ::-webkit-scrollbar {
+  width: 6px;
+} */
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+  background: gainsboro;
+  border-radius: 5px;
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 5px;
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
 
 /* REUSABLE */
 h1 {
@@ -104,6 +129,7 @@ input {
   background-color: var(--white-color);
   bottom: 0;
   left: 0;
+  display: grid;
   height: 97%;
   width: 28%;
   border-radius: 0 2rem 0 0;
@@ -111,6 +137,9 @@ input {
   -moz-border-radius: 0 2rem 0 0;
   -ms-border-radius: 0 2rem 0 0;
   -o-border-radius: 0 2rem 0 0;
+  /* INVERT SCROLLBAR */
+  direction: rtl;
+  /**/
 }
 
 .deploc-header {
@@ -132,19 +161,25 @@ input {
 }
 
 .deploc-cell {
+  /* INVERT SCROLLBAR */
+  direction: ltr;
+  text-align: left;
+  /**/
   height: 5rem;
   display: grid;
   align-content: center;
 }
 
 .ul-deploc {
-  height: 89%;
+  height: 100%;
   overflow: auto;
 }
 
 /*SECTION LIST NAMES*/
 .secNameList {
   background-color: var(--white-color);
+  height: calc(100vh - 7rem);
+  display: grid;
 }
 
 .uk-margin {
@@ -166,7 +201,43 @@ input {
 }
 .plus-sign {
   width: 3rem;
-  display: inline-block;
   margin-left: 15px;
-  color: aqua;
+}
+
+.selection {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  padding: 2px 10px;
+  font-size: 1.2rem;
+}
+
+.names-container {
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  bottom: 0;
+  /* INVERT SCROLLBAR */
+  direction: rtl;
+  /**/
+}
+
+.name-cell {
+  height: 4rem;
+  display: grid;
+  align-content: center;
+  /* INVERT SCROLLBAR */
+  direction: ltr;
+  text-align: left;
+  /**/
+}
+
+.letter {
+  background-color: rgb(190, 190, 190);
+  padding: 5px;
+  color: var(--white-color);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* INVERT SCROLLBAR */
+  direction: ltr;
+  text-align: left;
+  /**/
 }
