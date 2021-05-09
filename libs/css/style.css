@@ -177,6 +177,7 @@ input {
 
 /*SECTION LIST NAMES*/
 .secNameList {
+  position: relative;
   background-color: var(--white-color);
   height: calc(100vh - 7rem);
   display: grid;
@@ -240,4 +241,36 @@ input {
   direction: ltr;
   text-align: left;
   /**/
+}
+
+.label {
+  position: absolute;
+  right: 0;
+  height: 40px;
+  padding: 8px;
+  border-radius: 2rem 0 0 2rem;
+  z-index: 9999;
+  -webkit-border-radius: 2rem 0 0 2rem;
+  -moz-border-radius: 2rem 0 0 2rem;
+  -ms-border-radius: 2rem 0 0 2rem;
+  -o-border-radius: 2rem 0 0 2rem;
+  display: grid;
+  align-items: center;
+}
+
+.label-agenda {
+  background-color: var(--primary-color);
+  top: 15rem;
+  width: 40px;
+}
+
+.label-dep {
+  background-color: var(--secondary-color);
+  top: 21.5rem;
+  width: 30px;
+}
+.label-loc {
+  background-color: var(--tertiary-color);
+  top: 28rem;
+  width: 30px;
 }
