@@ -286,14 +286,14 @@ input {
   right: 0;
   height: 40px;
   padding: 8px;
+  z-index: 100;
+  display: grid;
+  align-items: center;
   border-radius: 2rem 0 0 2rem;
-  z-index: 9999;
   -webkit-border-radius: 2rem 0 0 2rem;
   -moz-border-radius: 2rem 0 0 2rem;
   -ms-border-radius: 2rem 0 0 2rem;
   -o-border-radius: 2rem 0 0 2rem;
-  display: grid;
-  align-items: center;
   transition: all 0.1s;
   -webkit-transition: all 0.1s;
   -moz-transition: all 0.1s;

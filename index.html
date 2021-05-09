@@ -148,6 +148,8 @@
               src="vendors/icons/add-outline.svg"
               alt="Plus sign"
               class="plus-sign"
+              uk-toggle="target: #my-id"
+              type="button"
             />
           </div>
           <div class="selection-par">
@@ -275,6 +277,19 @@
           </div>
         </section>
       </main>
+      <div id="my-id" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+          <header class="header">
+            <h1 class="header-title">Add New Employee</h1>
+            <img
+              src="vendors/icons/people-outline.svg"
+              alt="Manage People Icon"
+              class="white-icon manage-people-icon"
+            />
+          </header>
+          <button class="uk-modal-close" type="button">Insert</button>
+        </div>
+      </div>
     </div>
     <!-- SCRIPTS -->
     <script src="libs/js/jquery-2.2.3.min.js"></script>
