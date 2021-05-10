@@ -201,6 +201,10 @@ input {
   align-content: center;
 }
 
+.deploc-cell:hover {
+  cursor: pointer;
+}
+
 .deploc-cell img {
   width: 20px;
 }
@@ -264,12 +268,15 @@ input {
   height: 4rem;
   display: grid;
   align-content: center;
+
   /* INVERT SCROLLBAR */
   direction: ltr;
   text-align: left;
   /**/
 }
-
+.name-cell:hover {
+  cursor: pointer;
+}
 .letter {
   background-color: rgb(190, 190, 190);
   padding: 5px;
@@ -299,6 +306,10 @@ input {
   -moz-transition: all 0.1s;
   -ms-transition: all 0.1s;
   -o-transition: all 0.1s;
+}
+
+.label:hover {
+  cursor: pointer;
 }
 
 .label-agenda {
@@ -393,4 +404,9 @@ input {
 .info {
   grid-column: 2/4;
   padding: 3px 0;
+}
+
+/* DINAMIC CLASSES */
+li.highlight-selection {
+  background-color: rgba(0, 194, 255, 0.18);
 }

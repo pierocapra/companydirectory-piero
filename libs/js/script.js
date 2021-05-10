@@ -14,11 +14,25 @@ $(document).ready(function () {
           const temp = result["data"];
 
           $.each(temp, (department) => {
-            $("#depList").append(`<li>
-            <div class="deploc-cell">
-            <h3 class="dep-name">${temp[department]["name"]}</h3>
-            </div>
+            const depName = temp[department]["name"];
+            const depId = temp[department]["id"];
+            let highlighted = false;
+
+            //POPULATE THE LIST
+            $("#depList").append(`<li class="deploc-cell depCell-${depId}"}>
+              <h3 class="deploc-name">${depName}</h3>
             </li>`);
+
+            //HIGHLIGHT SELECTION ON CLICK
+            $(`.depCell-${depId}`).on("click", () => {
+              if (!highlighted) {
+                $(`.depCell-${depId}`).addClass("highlight-selection");
+                highlighted = true;
+              } else {
+                $(`.depCell-${depId}`).removeClass("highlight-selection");
+                highlighted = false;
+              }
+            });
           });
         }
       },
@@ -40,11 +54,25 @@ $(document).ready(function () {
           const temp = result["data"];
 
           $.each(temp, (location) => {
-            $("#locList").append(`<li>
-            <div class="deploc-cell">
-              <h3 class="dep-name">${temp[location]["name"]}</h3>
-            </div>
-          </li>`);
+            const locName = temp[location]["name"];
+            const locId = temp[location]["id"];
+            let highlighted = false;
+
+            //POPULATE THE LIST
+            $("#locList").append(`<li class="deploc-cell locCell-${locId}"}>
+              <h3 class="deploc-name">${locName}</h3>
+            </li>`);
+
+            //HIGHLIGHT SELECTION ON CLICK
+            $(`.locCell-${locId}`).on("click", () => {
+              if (!highlighted) {
+                $(`.locCell-${locId}`).addClass("highlight-selection");
+                highlighted = true;
+              } else {
+                $(`.locCell-${locId}`).removeClass("highlight-selection");
+                highlighted = false;
+              }
+            });
           });
         }
       },
@@ -57,24 +85,31 @@ $(document).ready(function () {
 
   const retrievePersonnel = function () {
     $.ajax({
-      url: "libs/php/getAllPersonnel.php",
+      url: "libs/php/getAll.php",
       type: "GET",
       success: function (result) {
-        // console.log(result["data"]);
+        console.log(result["data"]);
 
         if (result.status.name == "ok") {
           const temp = result["data"];
 
           $.each(temp, (person) => {
-            const initial = "#" + temp[person]["lastName"][0].toLowerCase();
-            console.log(initial);
-            $(initial).append(`<li>
-                <div class="name-cell">
-                  <h3 class="name">${
-                    temp[person]["lastName"] + " " + temp[person]["firstName"]
-                  }</h3>
-                </div>
+            const lName = temp[person]["lastName"];
+            const fName = temp[person]["firstName"];
+            const personId = temp[person]["id"];
+            const initial = "#" + lName[0].toLowerCase();
+
+            $(initial).append(`<li class="name-cell" id="person-${personId}">
+                  <h3 class="name">${lName + " " + fName}</h3>
               </li>`);
+
+            $(`#person-${personId}`).on("click", () => {
+              $("#infoName").html(fName + " " + lName);
+              $("#email").html(temp[person]["email"]);
+              $("#jobTitle").html(temp[person]["jobTitle"]);
+              $("#department").html(temp[person]["department"]);
+              $("#location").html(temp[person]["location"]);
+            });
           });
         }
       },
@@ -87,6 +122,7 @@ $(document).ready(function () {
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////ACTIONS AND ANIMATIONS////////////////////////////////////////////////////////////////////////////
 
+  //LABELS animations
   $("#btnDep").on("click", () => {
     $("#depSection").css("transform", "translateX(0)");
     $("#locSection").css("transform", "translateX(-110%)");
@@ -100,11 +136,3 @@ $(document).ready(function () {
     $("#btnLoc").css("width", "40px");
   });
 });
-
-{
-  /* <li>
-  <div class="name-cell">
-    <h3 class="name">Abril Jose</h3>
-  </div>
-</li> */
-}
