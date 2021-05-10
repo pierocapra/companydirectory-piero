@@ -15,7 +15,7 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/uikit.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/style1.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/style.css" type="text/css" />
   </head>
   <body>
     <div class="window-container">
@@ -61,9 +61,10 @@
             />
           </div>
           <div class="selection-par">
-            <span>
-              Search for <span>department</span><span>: Engineering</span>
-            </span>
+            <span
+              >Search for
+              <span id="selectionResearch">personnel: All</span></span
+            >
           </div>
           <div class="label label-agenda" id="btnAgenda">
             <img
@@ -133,11 +134,7 @@
           </div>
         </section>
         <section class="secPersonInfo">
-          <img
-            src="img/london.jpg"
-            alt="Tower bridge, London"
-            class="city-image"
-          />
+          <div class="city-container" id="cityImage"></div>
 
           <img
             src="vendors/icons/build-outline.svg"

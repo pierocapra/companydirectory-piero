@@ -18,7 +18,7 @@ $(document).ready(function () {
             const depId = temp[department]["id"];
             let highlighted = false;
 
-            //POPULATE THE LIST
+            //POPULATE THE DEPARTMENT LIST
             $("#depList").append(`<li class="deploc-cell depCell-${depId}"}>
               <h3 class="deploc-name">${depName}</h3>
             </li>`);
@@ -28,9 +28,36 @@ $(document).ready(function () {
               if (!highlighted) {
                 $(`.depCell-${depId}`).addClass("highlight-selection");
                 highlighted = true;
+                $(`.depCell-${depId}`)
+                  .siblings()
+                  .removeClass("highlight-selection");
+
+                //update selection bar
+                $("#selectionResearch").html(`department: ${depName}`);
+                $(".selection-par").css(
+                  "backgroundColor",
+                  "var(--secondary-color)"
+                );
+
+                //Label agenda
+                $(".label-agenda").css("width", "30px");
+
+                retrievePersonnelByDepartment(depId);
               } else {
                 $(`.depCell-${depId}`).removeClass("highlight-selection");
                 highlighted = false;
+
+                //update selection bar
+                $("#selectionResearch").html(`personnel: All`);
+                $(".selection-par").css(
+                  "backgroundColor",
+                  "var(--primary-color)"
+                );
+
+                //Label agenda
+                $(".label-agenda").css("width", "40px");
+
+                retrievePersonnel();
               }
             });
           });
@@ -41,7 +68,6 @@ $(document).ready(function () {
       },
     });
   };
-  retrieveDepartments();
 
   const retrieveLocations = function () {
     $.ajax({
@@ -58,7 +84,7 @@ $(document).ready(function () {
             const locId = temp[location]["id"];
             let highlighted = false;
 
-            //POPULATE THE LIST
+            //POPULATE THE LOCATIONS LIST
             $("#locList").append(`<li class="deploc-cell locCell-${locId}"}>
               <h3 class="deploc-name">${locName}</h3>
             </li>`);
@@ -67,10 +93,38 @@ $(document).ready(function () {
             $(`.locCell-${locId}`).on("click", () => {
               if (!highlighted) {
                 $(`.locCell-${locId}`).addClass("highlight-selection");
+                $(`.locCell-${locId}`)
+                  .siblings()
+                  .removeClass("highlight-selection");
+
                 highlighted = true;
+
+                //update selection bar
+                $("#selectionResearch").html(`location: ${locName}`);
+                $(".selection-par").css(
+                  "backgroundColor",
+                  "var(--tertiary-color)"
+                );
+
+                //Label agenda
+                $(".label-agenda").css("width", "30px");
+
+                retrievePersonnelByLocation(locId);
               } else {
                 $(`.locCell-${locId}`).removeClass("highlight-selection");
                 highlighted = false;
+
+                //update selection bar
+                $("#selectionResearch").html(`personnel: All`);
+                $(".selection-par").css(
+                  "backgroundColor",
+                  "var(--primary-color)"
+                );
+
+                //Label agenda
+                $(".label-agenda").css("width", "40px");
+
+                retrievePersonnel(`.locCell-${locId}`);
               }
             });
           });
@@ -81,36 +135,18 @@ $(document).ready(function () {
       },
     });
   };
-  retrieveLocations();
 
   const retrievePersonnel = function () {
     $.ajax({
       url: "libs/php/getAll.php",
       type: "GET",
       success: function (result) {
-        console.log(result["data"]);
+        // console.log(result["data"]);
 
         if (result.status.name == "ok") {
           const temp = result["data"];
 
-          $.each(temp, (person) => {
-            const lName = temp[person]["lastName"];
-            const fName = temp[person]["firstName"];
-            const personId = temp[person]["id"];
-            const initial = "#" + lName[0].toLowerCase();
-
-            $(initial).append(`<li class="name-cell" id="person-${personId}">
-                  <h3 class="name">${lName + " " + fName}</h3>
-              </li>`);
-
-            $(`#person-${personId}`).on("click", () => {
-              $("#infoName").html(fName + " " + lName);
-              $("#email").html(temp[person]["email"]);
-              $("#jobTitle").html(temp[person]["jobTitle"]);
-              $("#department").html(temp[person]["department"]);
-              $("#location").html(temp[person]["location"]);
-            });
-          });
+          getPersonInfo(temp);
         }
       },
       error: function (result, a, e) {
@@ -118,6 +154,89 @@ $(document).ready(function () {
       },
     });
   };
+
+  const retrievePersonnelByDepartment = function (depId) {
+    $.ajax({
+      url: "libs/php/getAllByDep.php",
+      type: "POST",
+      data: {
+        depId: depId,
+      },
+      success: function (result) {
+        console.log(result["data"]);
+
+        if (result.status.name == "ok") {
+          const temp = result["data"];
+
+          getPersonInfo(temp);
+        }
+      },
+      error: function (result, a, e) {
+        alert("Error! Cannot retrieve locations");
+      },
+    });
+  };
+
+  const retrievePersonnelByLocation = function (locId) {
+    $.ajax({
+      url: "libs/php/getAllByLoc.php",
+      type: "POST",
+      data: {
+        locId: locId,
+      },
+      success: function (result) {
+        console.log(result["data"]);
+
+        if (result.status.name == "ok") {
+          const temp = result["data"];
+
+          getPersonInfo(temp);
+        }
+      },
+      error: function (result, a, e) {
+        alert("Error! Cannot retrieve locations");
+      },
+    });
+  };
+
+  const getPersonInfo = (temp) => {
+    // clear list first
+    $(".names-container ul").html("");
+
+    $.each(temp, (person) => {
+      const lName = temp[person]["lastName"];
+      const fName = temp[person]["firstName"];
+      const email = temp[person]["email"];
+      const personId = temp[person]["id"];
+      const jobTitle = temp[person]["jobTitle"];
+      const department = temp[person]["department"];
+      const location = temp[person]["location"];
+
+      //Populated List of names alphabetically
+      const initial = "#" + lName[0].toLowerCase();
+      $(initial).append(`<li class="name-cell" id="person-${personId}">
+            <h3 class="name">${lName + " " + fName}</h3>
+        </li>`);
+
+      //Show Informations in the card
+      $(`#person-${personId}`).on("click", () => {
+        $("#cityImage").html(`<img
+        src="img/${location}.jpg"
+        alt="City Image"
+        class="city-image"
+      />`);
+        $("#infoName").html(fName + " " + lName);
+        $("#email").html(email);
+        $("#jobTitle").html(jobTitle);
+        $("#department").html(department);
+        $("#location").html(location);
+      });
+    });
+  };
+
+  ////////////////////RETRIEVE DATA ON OPENING/////////////////////////////////
+  retrieveDepartments();
+  retrieveLocations();
   retrievePersonnel();
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////ACTIONS AND ANIMATIONS////////////////////////////////////////////////////////////////////////////

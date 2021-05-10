@@ -342,8 +342,10 @@ input {
   padding: 3rem 4rem 8rem 4rem;
 }
 
-.city-image {
+.city-container {
   grid-column: 1/4;
+}
+.city-image {
   width: 100%;
   border-radius: 50%;
   -webkit-border-radius: 50%;
