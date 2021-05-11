@@ -15,7 +15,7 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/uikit.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/style1.css" type="text/css" />
   </head>
   <body>
     <div class="window-container">
@@ -115,7 +115,12 @@
       </main>
       <div id="my-id" uk-modal>
         <div class="uk-modal-dialog uk-modal-body">
-          <header class="header">
+          <img
+            src="vendors/icons/close-outline.svg"
+            alt="Close X"
+            class="uk-modal-close closeX"
+          />
+          <header class="header header-add-employee">
             <h1 class="header-title">Add New Employee</h1>
             <img
               src="vendors/icons/people-outline.svg"
@@ -124,7 +129,73 @@
             />
           </header>
 
-          <button class="uk-modal-close" type="button">Insert</button>
+          <form class="uk-form-stacked" id="formAddEmployee">
+            <div class="uk-margin form-line">
+              <label class="uk-form-label form-label" for="fname"
+                >First Name:</label
+              >
+              <div class="uk-form-controls">
+                <input
+                  class="uk-input form-input"
+                  id="addfname"
+                  type="text"
+                  name="fname"
+                  required
+                />
+              </div>
+            </div>
+            <div class="uk-margin form-line">
+              <label class="uk-form-label form-label" for="lname"
+                >Last Name:</label
+              >
+              <div class="uk-form-controls">
+                <input
+                  class="uk-input form-input"
+                  id="addlname"
+                  type="text"
+                  name="lname"
+                  required
+                />
+              </div>
+            </div>
+            <div class="uk-margin form-line">
+              <label class="uk-form-label form-label" for="email"
+                >E-mail:</label
+              >
+              <div class="uk-form-controls">
+                <input
+                  class="uk-input form-input"
+                  id="addemail"
+                  type="text"
+                  name="email"
+                  required
+                />
+              </div>
+            </div>
+            <div class="uk-margin form-line">
+              <label class="uk-form-label form-label" for="job"
+                >Job Title:</label
+              >
+              <div class="uk-form-controls">
+                <input
+                  class="uk-input form-input"
+                  id="addjob"
+                  type="text"
+                  name="job"
+                  required
+                />
+              </div>
+            </div>
+            <div class="uk-margin form-line">
+              <label class="uk-form-label form-label" for="dep"
+                >Department:</label
+              >
+              <div class="uk-margin">
+                <select class="uk-select" id="addDep"></select>
+              </div>
+            </div>
+            <input type="submit" class="insert-button" value="submit" />
+          </form>
         </div>
       </div>
     </div>

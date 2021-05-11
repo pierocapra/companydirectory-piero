@@ -23,6 +23,9 @@ $(document).ready(function () {
               <h3 class="deploc-name">${depName}</h3>
             </li>`);
 
+            //POPULATE THE DROPDOWN MENU IN ADD NEW EMPLOYEE
+            $("#addDep").append(`<option value="${depId}">${depName}</option>`);
+
             //HIGHLIGHT SELECTION ON CLICK
             $(`.depCell-${depId}`).on("click", () => {
               if (!highlighted) {
@@ -141,7 +144,7 @@ $(document).ready(function () {
       url: "libs/php/getAll.php",
       type: "GET",
       success: function (result) {
-        // console.log(result["data"]);
+        console.log(result["data"]);
 
         if (result.status.name == "ok") {
           const temp = result["data"];
@@ -274,10 +277,58 @@ $(document).ready(function () {
     });
   };
 
+  const insertNewPerson = (addfname, addlname, addemail, addjob, addDep) => {
+    $.ajax({
+      url: "libs/php/insertPerson.php",
+      type: "POST",
+      data: {
+        firstName: addfname,
+        lastName: addlname,
+        email: addemail,
+        jobTitle: addjob,
+        departmentID: addDep,
+      },
+      success: function (result) {
+        //clear fields once inserted
+        $("#addfname").val(""),
+          $("#addlname").val(""),
+          $("#addemail").val(""),
+          $("#addjob").val("");
+      },
+      error: function (result, a, e) {
+        alert("Error! Cannot Insert New person!");
+      },
+    });
+  };
+
   ////////////////////RETRIEVE DATA ON OPENING/////////////////////////////////
   retrieveDepartments();
   retrieveLocations();
   retrievePersonnel();
+
+  $("#formAddEmployee").submit(function (e) {
+    e.preventDefault();
+
+    insertNewPerson(
+      $("#addfname").val(),
+      $("#addlname").val(),
+      $("#addemail").val(),
+      $("#addjob").val(),
+      $("#addDep").val()
+    );
+
+    console.log($("#addDep").val());
+
+    // clearfields
+    $("#addfname").val("");
+    $("#addlname").val("");
+    $("#addemail").val("");
+    $("#addjob").val("");
+    $("#addDep").val("");
+
+    //reload personnel
+    retrievePersonnel();
+  });
 
   //clear the search input
   $("#searchInput").val("");

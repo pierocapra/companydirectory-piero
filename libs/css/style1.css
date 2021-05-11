@@ -93,18 +93,6 @@ li:nth-child(even) {
   background-color: #ececec;
 }
 
-label {
-  font-size: 1.4rem !important;
-}
-
-input {
-  border-radius: 2rem !important;
-  -webkit-border-radius: 2rem !important;
-  -moz-border-radius: 2rem !important;
-  -ms-border-radius: 2rem !important;
-  -o-border-radius: 2rem !important;
-  background-color: var(--main-graybackground);
-}
 /**/
 
 /* HEADER */
@@ -237,14 +225,15 @@ input {
   justify-content: space-between;
 }
 
-.search {
+.search,
+.search input {
   font-size: 1.4rem;
   width: 100%;
-  border-radius: 2rem !important;
+  /* border-radius: 2rem !important;
   -webkit-border-radius: 2rem !important;
   -moz-border-radius: 2rem !important;
   -ms-border-radius: 2rem !important;
-  -o-border-radius: 2rem !important;
+  -o-border-radius: 2rem !important; */
   background-color: #f8f8f8;
 }
 .plus-sign {
@@ -255,7 +244,6 @@ input {
 .selection-par {
   background-color: var(--primary-color);
   color: var(--white-color);
-  /* max-height: 5px; */
   padding: 10px;
   font-size: 1.2rem;
   color: var(--white-color);
@@ -421,3 +409,63 @@ li.highlight-selection {
 }
 
 /* modal */
+
+.uk-modal-body {
+  position: relative;
+}
+.header-add-employee {
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+}
+
+.form-line {
+  margin: 1.5rem 0;
+  font-size: 1.4rem;
+}
+
+.form-label {
+  font-size: 1.4rem;
+  padding: 0 0 0 10px;
+}
+
+.form-input {
+  /* border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem; */
+  background-color: #f8f8f8;
+}
+
+.insert-button {
+  font-size: 1.8rem;
+  width: 20rem;
+  color: var(--white-color);
+  background-image: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--tertiary-color)
+  );
+  margin-left: 50%;
+  border: none;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+}
+
+.closeX {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 30px;
+}
