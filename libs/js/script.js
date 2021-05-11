@@ -306,6 +306,17 @@ $(document).ready(function () {
   retrieveLocations();
   retrievePersonnel();
 
+  //clear the search input
+  $("#searchInput").val("");
+
+  ///////////////////LOAD agenda by SEARCH
+  $("#searchInput").keyup(function () {
+    retrievePersonnelBySearch($("#searchInput").val());
+  });
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////FORMS LOGIC/////////////////////////////////////////////////////////////
+
+  // SUBMIT ADD EMPLOYEE FORM
   $("#formAddEmployee").submit(function (e) {
     e.preventDefault();
 
@@ -330,27 +341,41 @@ $(document).ready(function () {
     retrievePersonnel();
   });
 
-  //clear the search input
-  $("#searchInput").val("");
-
-  ///////////////////LOAD agenda by SEARCH
-  $("#searchInput").keyup(function () {
-    retrievePersonnelBySearch($("#searchInput").val());
-  });
-
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////ACTIONS AND ANIMATIONS////////////////////////////////////////////////////////////////////////////
 
   //LABELS animations
+  let depSlided = false;
+  let locSlided = false;
   $("#btnDep").on("click", () => {
-    $("#depSection").css("transform", "translateX(0)");
-    $("#locSection").css("transform", "translateX(-110%)");
-    $("#btnDep").css("width", "40px");
-    $("#btnLoc").css("width", "30px");
+    if (!depSlided) {
+      $("#depSection").css("transform", "translateX(0)");
+      $("#locSection").css("transform", "translateX(-110%)");
+      $("#btnDep").css("width", "40px");
+      $("#btnLoc").css("width", "30px");
+      depSlided = true;
+      locSlided = false;
+    } else {
+      $("#depSection").css("transform", "translateX(-110%)");
+      // $("#locSection").css("transform", "translateX(0)");
+      $("#btnDep").css("width", "30px");
+      // $("#btnLoc").css("width", "40px");
+      depSlided = false;
+    }
   });
   $("#btnLoc").on("click", () => {
-    $("#depSection").css("transform", "translateX(-110%)");
-    $("#locSection").css("transform", "translateX(0)");
-    $("#btnDep").css("width", "30px");
-    $("#btnLoc").css("width", "40px");
+    if (!locSlided) {
+      $("#depSection").css("transform", "translateX(-110%)");
+      $("#locSection").css("transform", "translateX(0)");
+      $("#btnDep").css("width", "30px");
+      $("#btnLoc").css("width", "40px");
+      locSlided = true;
+      depSlided = false;
+    } else {
+      // $("#depSection").css("transform", "translateX(0)");
+      $("#locSection").css("transform", "translateX(-110%)");
+      // $("#btnDep").css("width", "40px");
+      $("#btnLoc").css("width", "30px");
+      locSlided = false;
+    }
   });
 });
