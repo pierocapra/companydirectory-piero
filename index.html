@@ -43,13 +43,14 @@
           </div>
         </section>
         <section class="secNameList">
-          <div class="uk-margin">
-            <form class="uk-search uk-search-default">
+          <div class="uk-margin search-bar">
+            <form class="uk-search uk-search-default search">
               <span uk-search-icon></span>
               <input
                 class="uk-search-input"
                 type="search"
                 placeholder="Search"
+                id="searchInput"
               />
             </form>
             <img
@@ -78,60 +79,7 @@
           <div class="label label-loc" id="btnLoc">
             <img src="vendors/icons/location-outline.svg" alt="Location icon" />
           </div>
-          <div class="names-container">
-            <div class="letter">A</div>
-            <ul id="a"></ul>
-            <div class="letter">B</div>
-            <ul id="b"></ul>
-            <div class="letter">C</div>
-            <ul id="c"></ul>
-            <div class="letter">D</div>
-            <ul id="d"></ul>
-            <div class="letter">E</div>
-            <ul id="e"></ul>
-            <div class="letter">F</div>
-            <ul id="f"></ul>
-            <div class="letter">G</div>
-            <ul id="g"></ul>
-            <div class="letter">H</div>
-            <ul id="h"></ul>
-            <div class="letter">I</div>
-            <ul id="i"></ul>
-            <div class="letter">J</div>
-            <ul id="J"></ul>
-            <div class="letter">K</div>
-            <ul id="k"></ul>
-            <div class="letter">L</div>
-            <ul id="l"></ul>
-            <div class="letter">M</div>
-            <ul id="m"></ul>
-            <div class="letter">N</div>
-            <ul id="n"></ul>
-            <div class="letter">O</div>
-            <ul id="o"></ul>
-            <div class="letter">P</div>
-            <ul id="p"></ul>
-            <div class="letter">Q</div>
-            <ul id="q"></ul>
-            <div class="letter">R</div>
-            <ul id="r"></ul>
-            <div class="letter">S</div>
-            <ul id="s"></ul>
-            <div class="letter">T</div>
-            <ul id="t"></ul>
-            <div class="letter">U</div>
-            <ul id="u"></ul>
-            <div class="letter">V</div>
-            <ul id="v"></ul>
-            <div class="letter">W</div>
-            <ul id="w"></ul>
-            <div class="letter">X</div>
-            <ul id="x"></ul>
-            <div class="letter">Y</div>
-            <ul id="y"></ul>
-            <div class="letter">Z</div>
-            <ul id="z"></ul>
-          </div>
+          <div class="names-container" id="name-container"></div>
         </section>
         <section class="secPersonInfo">
           <div class="city-container" id="cityImage"></div>
@@ -175,6 +123,7 @@
               class="white-icon manage-people-icon"
             />
           </header>
+
           <button class="uk-modal-close" type="button">Insert</button>
         </div>
       </div>

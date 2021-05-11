@@ -32,7 +32,9 @@
 
 	}	
 
-	$query = "SELECT p.id, p.lastName, p.firstName, p.jobTitle, p.email, d.name as department, l.name as location FROM personnel p LEFT JOIN department d ON (d.id = p.departmentID) LEFT JOIN location l ON (l.id = d.locationID) WHERE d.id =   {$_REQUEST["depId"]}   ORDER BY p.lastName, p.firstName, d.name, l.name ";
+	$substr = $_REQUEST['substr'];
+
+	$query = "SELECT p.id, p.lastName, p.firstName, p.jobTitle, p.email, d.name as department, l.name as location FROM personnel p LEFT JOIN department d ON (d.id = p.departmentID) LEFT JOIN location l ON (l.id = d.locationID) WHERE firstName LIKE '{$substr}%' OR lastName LIKE '{$substr}%' ORDER BY p.lastName, p.firstName, d.name, l.name ";
 
 	$result = $conn->query($query);
 	

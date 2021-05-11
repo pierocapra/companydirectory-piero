@@ -199,9 +199,39 @@ $(document).ready(function () {
     });
   };
 
+  const retrievePersonnelBySearch = function (substr) {
+    $.ajax({
+      url: "libs/php/getAllBySearch.php",
+      type: "POST",
+      data: {
+        substr: substr,
+      },
+      success: function (result) {
+        console.log(result["data"]);
+
+        if (result.status.name == "ok") {
+          const temp = result["data"];
+
+          //update selection bar
+          $("#selectionResearch").html(`personnel: ${substr}`);
+          if (!substr) {
+            $("#selectionResearch").html(`personnel: All`);
+          }
+
+          getPersonInfo(temp);
+        }
+      },
+      error: function (result, a, e) {
+        alert("Error! Cannot retrieve locations");
+      },
+    });
+  };
+
   const getPersonInfo = (temp) => {
     // clear list first
-    $(".names-container ul").html("");
+    $(".names-container").html("");
+
+    let initial = "";
 
     $.each(temp, (person) => {
       const lName = temp[person]["lastName"];
@@ -213,8 +243,18 @@ $(document).ready(function () {
       const location = temp[person]["location"];
 
       //Populated List of names alphabetically
-      const initial = "#" + lName[0].toLowerCase();
-      $(initial).append(`<li class="name-cell" id="person-${personId}">
+      const initialTemp = lName[0].toUpperCase();
+
+      if (initialTemp != initial) {
+        $("#name-container").append(
+          `</ul><div class="letter">${initialTemp}</div><ul id="${initialTemp}">`
+        );
+        initial = initialTemp;
+      }
+
+      // </ul>
+      $("#name-container")
+        .append(`<li class="name-cell" id="person-${personId}">
             <h3 class="name">${lName + " " + fName}</h3>
         </li>`);
 
@@ -238,6 +278,14 @@ $(document).ready(function () {
   retrieveDepartments();
   retrieveLocations();
   retrievePersonnel();
+
+  //clear the search input
+  $("#searchInput").val("");
+
+  ///////////////////LOAD agenda by SEARCH
+  $("#searchInput").keyup(function () {
+    retrievePersonnelBySearch($("#searchInput").val());
+  });
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////ACTIONS AND ANIMATIONS////////////////////////////////////////////////////////////////////////////
 
