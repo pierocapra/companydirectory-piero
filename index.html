@@ -15,7 +15,7 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/uikit.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/style1.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/style2.css" type="text/css" />
   </head>
   <body>
     <div class="window-container">
@@ -29,19 +29,115 @@
       </header>
       <main class="main-container">
         <section class="secLocDep">
+          <!-- ADD DEPARTMENT SECTION -->
           <div class="off-canv department-section" id="depSection">
             <div class="deploc-header dep-header">
               <h2 class="deploc-title">DEPARTMENT</h2>
             </div>
+
+            <!-- ADD DEPARTMENT SECTION -->
+            <div class="uk-inline">
+              <img
+                src="vendors/icons/add-circle-outline.svg"
+                alt="Plus sign white"
+                class="plus-sign-white"
+                type="button"
+              />
+              <div
+                uk-dropdown="mode: click; pos: bottom-right"
+                class="addDepLocWindow addDepartmentWindow"
+              >
+                <header class="header header-add-dep">
+                  <h1 class="header-add-dep-title">Add New Department</h1>
+                </header>
+
+                <div class="add-deploc-container">
+                  <form class="uk-form-stacked" id="formAddDepartment">
+                    <div class="uk-margin form-line">
+                      <label class="uk-form-label form-label" for="addNewDep"
+                        >Department:</label
+                      >
+                      <div class="uk-form-controls">
+                        <input
+                          class="uk-input form-input"
+                          id="addNewDep"
+                          type="text"
+                          name="addNewDep"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="uk-margin form-line">
+                      <label class="uk-form-label form-label">Location:</label>
+                      <div class="uk-margin">
+                        <select
+                          class="uk-select select-bar"
+                          id="addLoc"
+                        ></select>
+                      </div>
+                    </div>
+                    <input
+                      type="submit"
+                      class="insert-button insert-deploc-button"
+                      value="submit"
+                    />
+                  </form>
+                </div>
+              </div>
+            </div>
+
             <ul class="ul-deploc" id="depList"></ul>
           </div>
           <div class="off-canv location-section" id="locSection">
             <div class="deploc-header loc-header">
               <h2 class="deploc-title">LOCATION</h2>
             </div>
+            <!-- ADD LOCATION SECTION -->
+            <div class="uk-inline">
+              <img
+                src="vendors/icons/add-circle-outline.svg"
+                alt="Plus sign white"
+                class="plus-sign-white plus-sign-white-loc"
+                type="button"
+              />
+              <div
+                uk-dropdown="mode: click; pos: bottom-right"
+                class="addDepLocWindow addLocationWindow"
+              >
+                <header class="header header-add-dep">
+                  <h1 class="header-add-dep-title">Add New Location</h1>
+                </header>
+
+                <div class="add-deploc-container">
+                  <form class="uk-form-stacked" id="formAddLocation">
+                    <div class="uk-margin form-line">
+                      <label class="uk-form-label form-label" for="addNewLoc"
+                        >Location:</label
+                      >
+                      <div class="uk-form-controls">
+                        <input
+                          class="uk-input form-input"
+                          id="addNewLoc"
+                          type="text"
+                          name="addNewLoc"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <input
+                      type="submit"
+                      class="insert-button insert-deploc-button"
+                      value="submit"
+                    />
+                  </form>
+                </div>
+              </div>
+            </div>
             <ul class="ul-deploc" id="locList"></ul>
           </div>
         </section>
+
+        <!-- SECTION AGENDA -->
         <section class="secNameList">
           <div class="uk-margin search-bar">
             <form class="uk-search uk-search-default search">
@@ -55,7 +151,7 @@
             </form>
             <img
               src="vendors/icons/add-outline.svg"
-              alt="Plus sign"
+              alt="Plus sign Blue"
               class="plus-sign"
               uk-toggle="target: #my-id"
               type="button"
@@ -113,6 +209,7 @@
           </div>
         </section>
       </main>
+      <!-- MODAL ADD NEW EMPLOYEE -->
       <div id="my-id" uk-modal>
         <div class="uk-modal-dialog uk-modal-body">
           <img
@@ -191,7 +288,7 @@
                 >Department:</label
               >
               <div class="uk-margin">
-                <select class="uk-select" id="addDep"></select>
+                <select class="uk-select select-bar" id="addDep"></select>
               </div>
             </div>
             <input type="submit" class="insert-button" value="submit" />

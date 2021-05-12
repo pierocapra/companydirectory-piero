@@ -13,6 +13,10 @@ $(document).ready(function () {
         if (result.status.name == "ok") {
           const temp = result["data"];
 
+          //clear fields
+          $("#depList").html("");
+          $("#addDep").html("");
+
           $.each(temp, (department) => {
             const depName = temp[department]["name"];
             const depId = temp[department]["id"];
@@ -82,6 +86,10 @@ $(document).ready(function () {
         if (result.status.name == "ok") {
           const temp = result["data"];
 
+          // clear fields
+          $("#locList").html("");
+          $("#addLoc").html("");
+
           $.each(temp, (location) => {
             const locName = temp[location]["name"];
             const locId = temp[location]["id"];
@@ -91,6 +99,9 @@ $(document).ready(function () {
             $("#locList").append(`<li class="deploc-cell locCell-${locId}"}>
               <h3 class="deploc-name">${locName}</h3>
             </li>`);
+
+            //POPULATE THE DROPDOWN MENU IN ADD NEW LOCATION
+            $("#addLoc").append(`<option value="${locId}">${locName}</option>`);
 
             //HIGHLIGHT SELECTION ON CLICK
             $(`.locCell-${locId}`).on("click", () => {
@@ -144,7 +155,7 @@ $(document).ready(function () {
       url: "libs/php/getAll.php",
       type: "GET",
       success: function (result) {
-        console.log(result["data"]);
+        // console.log(result["data"]);
 
         if (result.status.name == "ok") {
           const temp = result["data"];
@@ -188,7 +199,7 @@ $(document).ready(function () {
         locId: locId,
       },
       success: function (result) {
-        console.log(result["data"]);
+        // console.log(result["data"]);
 
         if (result.status.name == "ok") {
           const temp = result["data"];
@@ -210,7 +221,7 @@ $(document).ready(function () {
         substr: substr,
       },
       success: function (result) {
-        console.log(result["data"]);
+        // console.log(result["data"]);
 
         if (result.status.name == "ok") {
           const temp = result["data"];
@@ -288,15 +299,42 @@ $(document).ready(function () {
         jobTitle: addjob,
         departmentID: addDep,
       },
-      success: function (result) {
-        //clear fields once inserted
-        $("#addfname").val(""),
-          $("#addlname").val(""),
-          $("#addemail").val(""),
-          $("#addjob").val("");
-      },
+      success: function (result) {},
       error: function (result, a, e) {
         alert("Error! Cannot Insert New person!");
+      },
+    });
+  };
+
+  const insertNewDepartment = (name, locationID) => {
+    $.ajax({
+      url: "libs/php/insertDepartment.php",
+      type: "POST",
+      data: {
+        name: name,
+        locationID: locationID,
+      },
+      success: function (result) {
+        // console.log(result);
+      },
+      error: function (result, a, e) {
+        alert("Error! Cannot Insert New Department!");
+      },
+    });
+  };
+
+  const insertNewLocation = (name) => {
+    $.ajax({
+      url: "libs/php/insertLocation.php",
+      type: "POST",
+      data: {
+        name: name,
+      },
+      success: function (result) {
+        // console.log(result);
+      },
+      error: function (result, a, e) {
+        alert("Error! Cannot Insert New Department!");
       },
     });
   };
@@ -328,8 +366,6 @@ $(document).ready(function () {
       $("#addDep").val()
     );
 
-    console.log($("#addDep").val());
-
     // clearfields
     $("#addfname").val("");
     $("#addlname").val("");
@@ -339,6 +375,33 @@ $(document).ready(function () {
 
     //reload personnel
     retrievePersonnel();
+  });
+
+  // SUBMIT ADD DEPARTMENT FORM
+  $("#formAddDepartment").submit(function (e) {
+    e.preventDefault();
+
+    insertNewDepartment($("#addNewDep").val(), $("#addLoc").val());
+
+    // clearfields
+    $("#addNewDep").val("");
+    $("#addLoc").val("");
+
+    //reload departments
+    retrieveDepartments();
+  });
+
+  // SUBMIT ADD LOCATION FORM
+  $("#formAddLocation").submit(function (e) {
+    e.preventDefault();
+
+    insertNewLocation($("#addNewLoc").val());
+
+    // clearfields
+    $("#addNewLoc").val("");
+
+    //reload locations
+    retrieveLocations();
   });
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////ACTIONS AND ANIMATIONS////////////////////////////////////////////////////////////////////////////
