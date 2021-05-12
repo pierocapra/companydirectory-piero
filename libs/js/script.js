@@ -30,6 +30,11 @@ $(document).ready(function () {
             //POPULATE THE DROPDOWN MENU IN ADD NEW EMPLOYEE
             $("#addDep").append(`<option value="${depId}">${depName}</option>`);
 
+            //POPULATE THE DROPDOWN MENU IN EDIT EMPLOYEE
+            $("#editDep").append(
+              `<option value="${depId}">${depName}</option>`
+            );
+
             //HIGHLIGHT SELECTION ON CLICK
             $(`.depCell-${depId}`).on("click", () => {
               if (!highlighted) {
@@ -284,6 +289,13 @@ $(document).ready(function () {
         $("#jobTitle").html(jobTitle);
         $("#department").html(department);
         $("#location").html(location);
+
+        //Show info in the Edit Modal
+        $("#editfname").attr("placeholder", fName);
+        $("#editlname").attr("placeholder", lName);
+        $("#editemail").attr("placeholder", email);
+        $("#editjob").attr("placeholder", jobTitle);
+        // $("#editDep").val(`<option >${department}</option>`);
       });
     });
   };
@@ -299,7 +311,14 @@ $(document).ready(function () {
         jobTitle: addjob,
         departmentID: addDep,
       },
-      success: function (result) {},
+      success: function (result) {
+        UIkit.notification({
+          message: "NEW EMPLOYEE SUCCESSFULLY ADDED!",
+          status: "primary",
+          pos: "top-center",
+          timeout: 4000,
+        });
+      },
       error: function (result, a, e) {
         alert("Error! Cannot Insert New person!");
       },
@@ -316,6 +335,12 @@ $(document).ready(function () {
       },
       success: function (result) {
         // console.log(result);
+        UIkit.notification({
+          message: "NEW DEPARTMENT SUCCESSFULLY ADDED!",
+          status: "primary",
+          pos: "top-right",
+          timeout: 4000,
+        });
       },
       error: function (result, a, e) {
         alert("Error! Cannot Insert New Department!");
@@ -332,6 +357,12 @@ $(document).ready(function () {
       },
       success: function (result) {
         // console.log(result);
+        UIkit.notification({
+          message: "NEW LOCATION SUCCESSFULLY ADDED!",
+          status: "primary",
+          pos: "top-right",
+          timeout: 4000,
+        });
       },
       error: function (result, a, e) {
         alert("Error! Cannot Insert New Department!");
@@ -346,6 +377,13 @@ $(document).ready(function () {
 
   //clear the search input
   $("#searchInput").val("");
+
+  //clear edit employee
+  $("#editfname").val("");
+  $("#editlname").val("");
+  $("#editemail").val("");
+  $("#editjob").val("");
+  $("#editDep").val("");
 
   ///////////////////LOAD agenda by SEARCH
   $("#searchInput").keyup(function () {
@@ -383,12 +421,15 @@ $(document).ready(function () {
 
     insertNewDepartment($("#addNewDep").val(), $("#addLoc").val());
 
+    //reload departments
+    retrieveDepartments();
+
+    // close window
+    $(".addDepartmentWindow").css("opacity", "0");
+
     // clearfields
     $("#addNewDep").val("");
     $("#addLoc").val("");
-
-    //reload departments
-    retrieveDepartments();
   });
 
   // SUBMIT ADD LOCATION FORM
@@ -397,11 +438,14 @@ $(document).ready(function () {
 
     insertNewLocation($("#addNewLoc").val());
 
-    // clearfields
-    $("#addNewLoc").val("");
-
     //reload locations
     retrieveLocations();
+
+    // close window
+    $(".addLocationWindow").css("opacity", "0");
+
+    // clearfields
+    $("#addNewLoc").val("");
   });
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////ACTIONS AND ANIMATIONS////////////////////////////////////////////////////////////////////////////

@@ -115,6 +115,10 @@ li:nth-child(even) {
 .manage-people-icon {
   height: 5rem;
 }
+
+.add-people-icon {
+  height: 4rem;
+}
 /**/
 
 /*MAIN CONTAINER*/
@@ -149,7 +153,7 @@ li:nth-child(even) {
   -moz-border-radius: 0 2rem 0 0;
   -ms-border-radius: 0 2rem 0 0;
   -o-border-radius: 0 2rem 0 0;
-  box-shadow: 5px -5px 8px rgb(138, 138, 138);
+  box-shadow: 4px -4px 8px rgb(105, 105, 105);
   transition: all 0.8s;
   -webkit-transition: all 0.8s;
   -moz-transition: all 0.8s;
@@ -269,6 +273,7 @@ li:nth-child(even) {
 .insert-deploc-button {
   font-size: 1.4rem !important;
   width: 10rem !important;
+
   margin-top: 1rem;
 }
 
@@ -441,6 +446,7 @@ li:nth-child(even) {
   grid-column: 6;
   width: 3rem;
   justify-self: center;
+  cursor: pointer;
 }
 
 .info-container {
@@ -483,16 +489,18 @@ li.highlight-selection {
   -moz-border-radius: 2rem;
   -ms-border-radius: 2rem;
   -o-border-radius: 2rem;
+  margin-bottom: 2rem;
 }
 
 .form-line {
-  margin: 1.5rem 0;
+  /* margin: 5.5rem 0; */
   font-size: 1.4rem;
 }
 
 .form-label {
   font-size: 1.4rem;
   padding: 0 0 0 10px;
+  color: var(--primary-color);
 }
 
 .form-input {
@@ -517,7 +525,9 @@ li.highlight-selection {
     var(--primary-color),
     var(--tertiary-color)
   );
+
   margin-left: 50%;
+  padding: 5px 0 !important;
   border: none;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
@@ -529,6 +539,7 @@ li.highlight-selection {
   -moz-border-radius: 2rem;
   -ms-border-radius: 2rem;
   -o-border-radius: 2rem;
+  cursor: pointer;
 }
 
 .closeX {
