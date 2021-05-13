@@ -1,6 +1,9 @@
 "use strict";
 ///////////////////////////////DATABASE/////////////////////////////////////////
 
+////////////////////////GLOBAL VARIABLES/////////////////////////////////////
+let currentPersonID = "";
+
 /////////////////////////POPULATE WEBSITE DATA ON LOAD////////////////////////
 $(document).ready(function () {
   const retrieveDepartments = function () {
@@ -182,7 +185,7 @@ $(document).ready(function () {
         depId: depId,
       },
       success: function (result) {
-        console.log(result["data"]);
+        // console.log(result["data"]);
 
         if (result.status.name == "ok") {
           const temp = result["data"];
@@ -290,6 +293,8 @@ $(document).ready(function () {
         $("#department").html(department);
         $("#location").html(location);
 
+        currentPersonID = personId;
+
         //Show info in the Edit Modal
         $("#editfname").attr("placeholder", fName);
         $("#editlname").attr("placeholder", lName);
@@ -370,6 +375,62 @@ $(document).ready(function () {
     });
   };
 
+  const editPersonDetails = (
+    editfname,
+    editlname,
+    editemail,
+    editjob,
+    editDep,
+    personID
+  ) => {
+    $.ajax({
+      url: "libs/php/editPerson.php",
+      type: "POST",
+      data: {
+        firstName: editfname,
+        lastName: editlname,
+        email: editemail,
+        jobTitle: editjob,
+        departmentID: editDep,
+        personID: personID,
+      },
+      success: function (result) {
+        // console.log(result["data"]);
+        const temp = result["data"];
+
+        const lName = temp["lastName"];
+        const fName = temp["firstName"];
+        const email = temp["email"];
+        const jobTitle = temp["jobTitle"];
+        const department = temp["department"];
+        const location = temp["location"];
+
+        //UPDATE INFO IN PERSON WINDOW
+
+        $("#cityImage").html(`<img
+          src="img/${location}.jpg"
+          alt="City Image"
+          class="city-image"
+        />`);
+        $("#infoName").html(fName + " " + lName);
+        $("#email").html(email);
+        $("#jobTitle").html(jobTitle);
+        $("#department").html(department);
+        $("#location").html(location);
+
+        UIkit.notification({
+          message: "PERSON DETAILS SUCCESSFULLY EDITED!",
+          status: "primary",
+          pos: "top-center",
+          timeout: 4000,
+        });
+      },
+      error: function (result, a, e) {
+        alert("Error! Cannot edit this person!");
+      },
+    });
+  };
+
   ////////////////////RETRIEVE DATA ON OPENING/////////////////////////////////
   retrieveDepartments();
   retrieveLocations();
@@ -446,6 +507,33 @@ $(document).ready(function () {
 
     // clearfields
     $("#addNewLoc").val("");
+  });
+
+  // SUBMIT EDIT EMPLOYEE FORM
+  $("#formEditEmployee").submit(function (e) {
+    e.preventDefault();
+
+    editPersonDetails(
+      $("#editfname").val(),
+      $("#editlname").val(),
+      $("#editemail").val(),
+      $("#editjob").val(),
+      $("#editDep").val(),
+      currentPersonID
+    );
+
+    // clear fields
+    $("#editfname").val(""),
+      $("#editlname").val(""),
+      $("#editemail").val(""),
+      $("#editjob").val(""),
+      $("#editDep").val("");
+
+    // close window
+    UIkit.modal("#editEmployee").hide();
+
+    //reload personnel
+    retrievePersonnel();
   });
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////ACTIONS AND ANIMATIONS////////////////////////////////////////////////////////////////////////////
