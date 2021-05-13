@@ -15,7 +15,7 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/uikit.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/style1.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/style2.css" type="text/css" />
   </head>
 
   <body>
@@ -79,7 +79,7 @@
                     </div>
                     <input
                       type="submit"
-                      class="insert-button insert-deploc-button"
+                      class="button insert-deploc-button"
                       value="submit"
                     />
                   </form>
@@ -128,7 +128,7 @@
                     </div>
                     <input
                       type="submit"
-                      class="insert-button insert-deploc-button"
+                      class="button insert-deploc-button"
                       value="submit"
                     />
                   </form>
@@ -183,7 +183,7 @@
           <div class="city-container" id="cityImage"></div>
 
           <img
-            src="vendors/icons/build-outline.svg"
+            src="vendors/icons/person.svg"
             alt="Spanner tool"
             class="info-icon"
           />
@@ -295,7 +295,7 @@
                 <select class="uk-select select-bar" id="addDep"></select>
               </div>
             </div>
-            <input type="submit" class="insert-button" value="submit" />
+            <input type="submit" class="button insert-button" value="submit" />
           </form>
         </div>
       </div>
@@ -382,7 +382,14 @@
                 <select class="uk-select select-bar" id="editDep"></select>
               </div>
             </div>
-            <input type="submit" class="insert-button" value="submit" />
+            <div class="edit-buttons">
+              <input
+                type="submit"
+                class="button submit-edit-button"
+                value="Save changes"
+              />
+              <button class="button delete-button">DELETE</button>
+            </div>
           </form>
         </div>
       </div>

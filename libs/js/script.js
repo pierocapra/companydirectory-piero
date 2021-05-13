@@ -418,6 +418,7 @@ $(document).ready(function () {
         $("#department").html(department);
         $("#location").html(location);
 
+        //notification
         UIkit.notification({
           message: "PERSON DETAILS SUCCESSFULLY EDITED!",
           status: "primary",

@@ -93,6 +93,25 @@ li:nth-child(even) {
   background-color: #ececec;
 }
 
+.button {
+  font-size: 1.8rem;
+  width: 20rem;
+  color: var(--white-color);
+  background-image: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--tertiary-color)
+  );
+
+  padding: 5px 0 !important;
+  border: none;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+  cursor: pointer;
+}
 /**/
 
 /* HEADER */
@@ -273,8 +292,13 @@ li:nth-child(even) {
 .insert-deploc-button {
   font-size: 1.4rem !important;
   width: 10rem !important;
-
   margin-top: 1rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
 }
 
 /*SECTION LIST NAMES*/
@@ -517,29 +541,13 @@ li.highlight-selection {
   background-color: #f8f8f8;
 }
 .insert-button {
-  font-size: 1.8rem;
-  width: 20rem;
-  color: var(--white-color);
-  background-image: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--tertiary-color)
-  );
-
   margin-left: 50%;
-  padding: 5px 0 !important;
-  border: none;
+
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
-  border-radius: 2rem;
-  -webkit-border-radius: 2rem;
-  -moz-border-radius: 2rem;
-  -ms-border-radius: 2rem;
-  -o-border-radius: 2rem;
-  cursor: pointer;
 }
 
 .closeX {
@@ -547,4 +555,15 @@ li.highlight-selection {
   top: 0.5rem;
   right: 0.5rem;
   width: 30px;
+}
+
+/* MODAL EDIT PERSON */
+.edit-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.delete-button {
+  background-image: none;
+  background-color: red;
 }
