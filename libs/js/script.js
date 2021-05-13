@@ -432,6 +432,28 @@ $(document).ready(function () {
     });
   };
 
+  const deletePerson = (personID) => {
+    $.ajax({
+      url: "libs/php/deletePerson.php",
+      type: "POST",
+      data: {
+        id: personID,
+      },
+      success: function (result) {
+        console.log(result);
+        UIkit.notification({
+          message: "PERSON SUCCESSFULLY DELETED!",
+          status: "primary",
+          pos: "top-center",
+          timeout: 4000,
+        });
+      },
+      error: function (result, a, e) {
+        alert("Error! Cannot delete this person!");
+      },
+    });
+  };
+
   ////////////////////RETRIEVE DATA ON OPENING/////////////////////////////////
   retrieveDepartments();
   retrieveLocations();
@@ -535,6 +557,27 @@ $(document).ready(function () {
 
     //reload personnel
     retrievePersonnel();
+  });
+
+  $("#deleteButton").on("click", () => {
+    (() => {
+      if (confirm("Are you sure you want to delete this employee details?")) {
+        deletePerson(currentPersonID);
+
+        //clear fields
+        $("#cityImage").html("");
+        $("#infoName").html("");
+        $("#email").html("");
+        $("#jobTitle").html("");
+        $("#department").html("");
+        $("#location").html("");
+
+        //reload personnel
+        retrievePersonnel();
+      } else {
+        return;
+      }
+    })();
   });
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////ACTIONS AND ANIMATIONS////////////////////////////////////////////////////////////////////////////

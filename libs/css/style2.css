@@ -497,6 +497,15 @@ li:nth-child(even) {
   padding: 3px 0;
 }
 
+.delete-button {
+  width: 10rem;
+  background-image: none;
+  background-color: red;
+  position: absolute;
+  bottom: 2rem;
+  right: 4rem;
+}
+
 /* DINAMIC CLASSES */
 li.highlight-selection {
   background-color: rgba(0, 194, 255, 0.18);
@@ -558,12 +567,12 @@ li.highlight-selection {
 }
 
 /* MODAL EDIT PERSON */
-.edit-buttons {
-  display: flex;
-  justify-content: space-evenly;
-}
+.submit-edit-button {
+  margin-left: 50%;
 
-.delete-button {
-  background-image: none;
-  background-color: red;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
 }
