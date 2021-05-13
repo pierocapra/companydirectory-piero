@@ -846,4 +846,13 @@ $(document).ready(function () {
       locSlided = false;
     }
   });
+
+  $(window).on("load", function () {
+    $("#preloader").length &&
+      $("#preloader")
+        .delay(100)
+        .fadeOut("slow", function () {
+          $(this).remove();
+        });
+  });
 });
