@@ -23,7 +23,7 @@ $(document).ready(function () {
           $.each(temp, (department) => {
             const depName = temp[department]["name"];
             const depId = temp[department]["id"];
-            let highlighted = false;
+            // let highlighted = false;
 
             //POPULATE THE DEPARTMENT LIST
             $("#depList").append(`<li class="deploc-cell depCell-${depId}"}>
@@ -40,40 +40,42 @@ $(document).ready(function () {
 
             //HIGHLIGHT SELECTION ON CLICK
             $(`.depCell-${depId}`).on("click", () => {
-              if (!highlighted) {
-                $(`.depCell-${depId}`).addClass("highlight-selection");
-                highlighted = true;
-                $(`.depCell-${depId}`)
-                  .siblings()
-                  .removeClass("highlight-selection");
+              //update selection bar
+              $("#selectionResearch").html(`department: ${depName}`);
+              $(".selection-par").css(
+                "backgroundColor",
+                "var(--secondary-color)"
+              );
+              //Label agenda
+              $(".label-agenda").css("width", "30px");
 
-                //update selection bar
-                $("#selectionResearch").html(`department: ${depName}`);
-                $(".selection-par").css(
-                  "backgroundColor",
-                  "var(--secondary-color)"
-                );
+              retrievePersonnelByDepartment(depId);
 
-                //Label agenda
-                $(".label-agenda").css("width", "30px");
+              //clear the search input
+              $("#searchInput").val("");
 
-                retrievePersonnelByDepartment(depId);
-              } else {
-                $(`.depCell-${depId}`).removeClass("highlight-selection");
-                highlighted = false;
+              // if (!highlighted) {
+              //   $(`.depCell-${depId}`).addClass("highlight-selection");
+              //   highlighted = true;
+              //   $(`.depCell-${depId}`)
+              //     .siblings()
+              //     .removeClass("highlight-selection");
+              // } else {
+              //   $(`.depCell-${depId}`).removeClass("highlight-selection");
+              //   highlighted = false;
 
-                //update selection bar
-                $("#selectionResearch").html(`personnel: All`);
-                $(".selection-par").css(
-                  "backgroundColor",
-                  "var(--primary-color)"
-                );
+              //   //update selection bar
+              //   $("#selectionResearch").html(`personnel: All`);
+              //   $(".selection-par").css(
+              //     "backgroundColor",
+              //     "var(--primary-color)"
+              //   );
 
-                //Label agenda
-                $(".label-agenda").css("width", "40px");
+              //   //Label agenda
+              //   $(".label-agenda").css("width", "40px");
 
-                retrievePersonnel();
-              }
+              //   retrievePersonnel();
+              // }
             });
           });
         }
@@ -101,7 +103,7 @@ $(document).ready(function () {
           $.each(temp, (location) => {
             const locName = temp[location]["name"];
             const locId = temp[location]["id"];
-            let highlighted = false;
+            // let highlighted = false;
 
             //POPULATE THE LOCATIONS LIST
             $("#locList").append(`<li class="deploc-cell locCell-${locId}"}>
@@ -113,41 +115,44 @@ $(document).ready(function () {
 
             //HIGHLIGHT SELECTION ON CLICK
             $(`.locCell-${locId}`).on("click", () => {
-              if (!highlighted) {
-                $(`.locCell-${locId}`).addClass("highlight-selection");
-                $(`.locCell-${locId}`)
-                  .siblings()
-                  .removeClass("highlight-selection");
+              //update selection bar
+              $("#selectionResearch").html(`location: ${locName}`);
+              $(".selection-par").css(
+                "backgroundColor",
+                "var(--tertiary-color)"
+              );
 
-                highlighted = true;
+              //Label agenda
+              $(".label-agenda").css("width", "30px");
 
-                //update selection bar
-                $("#selectionResearch").html(`location: ${locName}`);
-                $(".selection-par").css(
-                  "backgroundColor",
-                  "var(--tertiary-color)"
-                );
+              retrievePersonnelByLocation(locId);
 
-                //Label agenda
-                $(".label-agenda").css("width", "30px");
+              //clear the search input
+              $("#searchInput").val("");
+              // if (!highlighted) {
+              //   $(`.locCell-${locId}`).addClass("highlight-selection");
+              //   $(`.locCell-${locId}`)
+              //     .siblings()
+              //     .removeClass("highlight-selection");
 
-                retrievePersonnelByLocation(locId);
-              } else {
-                $(`.locCell-${locId}`).removeClass("highlight-selection");
-                highlighted = false;
+              //   highlighted = true;
 
-                //update selection bar
-                $("#selectionResearch").html(`personnel: All`);
-                $(".selection-par").css(
-                  "backgroundColor",
-                  "var(--primary-color)"
-                );
+              // } else {
+              //   $(`.locCell-${locId}`).removeClass("highlight-selection");
+              //   highlighted = false;
 
-                //Label agenda
-                $(".label-agenda").css("width", "40px");
+              //   //update selection bar
+              //   $("#selectionResearch").html(`personnel: All`);
+              //   $(".selection-par").css(
+              //     "backgroundColor",
+              //     "var(--primary-color)"
+              //   );
 
-                retrievePersonnel(`.locCell-${locId}`);
-              }
+              //   //Label agenda
+              //   $(".label-agenda").css("width", "40px");
+
+              //   retrievePersonnel(`.locCell-${locId}`);
+              // }
             });
           });
         }
@@ -236,15 +241,17 @@ $(document).ready(function () {
 
           //update selection bar
           $("#selectionResearch").html(`personnel: ${substr}`);
+          $(".selection-par").css("backgroundColor", "var(--primary-color)");
+
           if (!substr) {
-            $("#selectionResearch").html(`personnel: All`);
+            $("#selectionResearch").html("personnel: All");
           }
 
           getPersonInfo(temp);
         }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot retrieve locations");
+        alert("Error! Cannot retrieve any people");
       },
     });
   };
@@ -282,16 +289,33 @@ $(document).ready(function () {
 
       //Show Informations in the card
       $(`#person-${personId}`).on("click", () => {
-        $("#cityImage").html(`<img
-        src="img/${location}.jpg"
-        alt="City Image"
-        class="city-image"
-      />`);
+        if (
+          location == "London" ||
+          location == "New York" ||
+          location == "Paris" ||
+          location == "Munich" ||
+          location === "Rome"
+        ) {
+          $("#cityImage").html(`<img
+          src="img/${location}.jpg"
+          alt="City Image"
+          class="city-image "
+        />`);
+        } else {
+          $("#cityImage").html(`<img
+          src="img/skyline-silhouette.jpg"
+          alt="City Image"
+          class="city-image "
+        />`);
+        }
         $("#infoName").html(fName + " " + lName);
         $("#email").html(email);
         $("#jobTitle").html(jobTitle);
         $("#department").html(department);
         $("#location").html(location);
+
+        //show delete button
+        $("#deleteButton").css("display", "block");
 
         currentPersonID = personId;
 
@@ -320,9 +344,12 @@ $(document).ready(function () {
         UIkit.notification({
           message: "NEW EMPLOYEE SUCCESSFULLY ADDED!",
           status: "primary",
-          pos: "top-center",
+          pos: "top-right",
           timeout: 4000,
         });
+
+        //reload personnel
+        retrievePersonnel();
       },
       error: function (result, a, e) {
         alert("Error! Cannot Insert New person!");
@@ -346,6 +373,9 @@ $(document).ready(function () {
           pos: "top-right",
           timeout: 4000,
         });
+
+        //reload departments
+        retrieveDepartments();
       },
       error: function (result, a, e) {
         alert("Error! Cannot Insert New Department!");
@@ -368,6 +398,9 @@ $(document).ready(function () {
           pos: "top-right",
           timeout: 4000,
         });
+
+        //reload locations
+        retrieveLocations();
       },
       error: function (result, a, e) {
         alert("Error! Cannot Insert New Department!");
@@ -407,11 +440,25 @@ $(document).ready(function () {
 
         //UPDATE INFO IN PERSON WINDOW
 
-        $("#cityImage").html(`<img
+        if (
+          location == "London" ||
+          location == "New York" ||
+          location == "Paris" ||
+          location == "Munich" ||
+          location === "Rome"
+        ) {
+          $("#cityImage").html(`<img
           src="img/${location}.jpg"
           alt="City Image"
-          class="city-image"
+          class="city-image "
         />`);
+        } else {
+          $("#cityImage").html(`<img
+          src="img/skyline-silhouette.jpg"
+          alt="City Image"
+          class="city-image "
+        />`);
+        }
         $("#infoName").html(fName + " " + lName);
         $("#email").html(email);
         $("#jobTitle").html(jobTitle);
@@ -420,11 +467,14 @@ $(document).ready(function () {
 
         //notification
         UIkit.notification({
-          message: "PERSON DETAILS SUCCESSFULLY EDITED!",
+          message: "EMPLOYEE DETAILS SUCCESSFULLY EDITED!",
           status: "primary",
-          pos: "top-center",
+          pos: "top-right",
           timeout: 4000,
         });
+
+        //reload personnel
+        retrievePersonnel();
       },
       error: function (result, a, e) {
         alert("Error! Cannot edit this person!");
@@ -440,20 +490,24 @@ $(document).ready(function () {
         id: personID,
       },
       success: function (result) {
-        console.log(result);
+        // console.log(result);
+
         UIkit.notification({
-          message: "PERSON SUCCESSFULLY DELETED!",
+          message: "EMPLOYEE SUCCESSFULLY DELETED!",
           status: "primary",
-          pos: "top-center",
+          pos: "top-right",
           timeout: 4000,
         });
+
+        //reload personnel
+        retrievePersonnel();
       },
       error: function (result, a, e) {
         alert("Error! Cannot delete this person!");
       },
     });
   };
-
+  //////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////RETRIEVE DATA ON OPENING/////////////////////////////////
   retrieveDepartments();
   retrieveLocations();
@@ -469,7 +523,8 @@ $(document).ready(function () {
   $("#editjob").val("");
   $("#editDep").val("");
 
-  ///////////////////LOAD agenda by SEARCH
+  //////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////LOAD agenda by SEARCH//////////////////////////////
   $("#searchInput").keyup(function () {
     retrievePersonnelBySearch($("#searchInput").val());
   });
@@ -494,9 +549,6 @@ $(document).ready(function () {
     $("#addemail").val("");
     $("#addjob").val("");
     $("#addDep").val("");
-
-    //reload personnel
-    retrievePersonnel();
   });
 
   // SUBMIT ADD DEPARTMENT FORM
@@ -504,9 +556,6 @@ $(document).ready(function () {
     e.preventDefault();
 
     insertNewDepartment($("#addNewDep").val(), $("#addLoc").val());
-
-    //reload departments
-    retrieveDepartments();
 
     // close window
     $(".addDepartmentWindow").css("opacity", "0");
@@ -522,9 +571,6 @@ $(document).ready(function () {
 
     insertNewLocation($("#addNewLoc").val());
 
-    //reload locations
-    retrieveLocations();
-
     // close window
     $(".addLocationWindow").css("opacity", "0");
 
@@ -536,27 +582,47 @@ $(document).ready(function () {
   $("#formEditEmployee").submit(function (e) {
     e.preventDefault();
 
+    let editfname = "";
+    let editlname = "";
+    let editemail = "";
+    let editjob = "";
+
+    $("#editfname").val() == ""
+      ? (editfname = $("#editfname").attr("placeholder"))
+      : (editfname = $("#editfname").val());
+    $("#editlname").val() == ""
+      ? (editlname = $("#editlname").attr("placeholder"))
+      : (editlname = $("#editlname").val());
+    $("#editemail").val() == ""
+      ? (editemail = $("#editemail").attr("placeholder"))
+      : (editemail = $("#editemail").val());
+    $("#editjob").val() == ""
+      ? (editjob = $("#editjob").attr("placeholder"))
+      : (editjob = $("#editjob").val());
+
     editPersonDetails(
-      $("#editfname").val(),
-      $("#editlname").val(),
-      $("#editemail").val(),
-      $("#editjob").val(),
+      editfname,
+      editlname,
+      editemail,
+      editjob,
       $("#editDep").val(),
       currentPersonID
     );
 
-    // clear fields
+    // clear and update fields
     $("#editfname").val(""),
       $("#editlname").val(""),
       $("#editemail").val(""),
       $("#editjob").val(""),
       $("#editDep").val("");
+    $("#editfname").attr("placeholder", editfname),
+      $("#editlname").attr("placeholder", editlname),
+      $("#editemail").attr("placeholder", editemail),
+      $("#editjob").attr("placeholder", editjob),
+      // $("#editDep").val("");
 
-    // close window
-    UIkit.modal("#editEmployee").hide();
-
-    //reload personnel
-    retrievePersonnel();
+      // close window
+      UIkit.modal("#editEmployee").hide();
   });
 
   $("#deleteButton").on("click", () => {
@@ -565,15 +631,18 @@ $(document).ready(function () {
         deletePerson(currentPersonID);
 
         //clear fields
-        $("#cityImage").html("");
+        $("#cityImage").html(`<img
+        src="img/skyline-silhouette.jpg"
+        alt="City Image"
+        class="city-image "
+      />`);
         $("#infoName").html("");
         $("#email").html("");
         $("#jobTitle").html("");
         $("#department").html("");
         $("#location").html("");
 
-        //reload personnel
-        retrievePersonnel();
+        $("#deleteButton").css("display", "none");
       } else {
         return;
       }
@@ -585,8 +654,40 @@ $(document).ready(function () {
   //LABELS animations
   let depSlided = false;
   let locSlided = false;
+  $("#btnPersonnel").on("click", () => {
+    retrievePersonnel();
+    $("#btnPersonnel").css("width", "40px");
+    $("#depSection").css("transform", "translateX(-110%)");
+    $("#locSection").css("transform", "translateX(-110%)");
+    $("#btnDep").css("width", "30px");
+    $("#btnLoc").css("width", "30px");
+    locSlided = false;
+    depSlided = false;
+
+    //update selection bar
+    $("#selectionResearch").html(`personnel: All`);
+    $(".selection-par").css("backgroundColor", "var(--primary-color)");
+
+    //clear the search input
+    $("#searchInput").val("");
+
+    // if (!depSlided) {
+    // $("#btnDep").css("width", "40px");
+    // $("#btnLoc").css("width", "30px");
+    //   depSlided = true;
+    //   locSlided = false;
+    // } else {
+    //   $("#depSection").css("transform", "translateX(-110%)");
+    //   // $("#locSection").css("transform", "translateX(0)");
+    //   $("#btnDep").css("width", "30px");
+    //   // $("#btnLoc").css("width", "40px");
+    //   depSlided = false;
+    // }
+  });
   $("#btnDep").on("click", () => {
     if (!depSlided) {
+      retrieveDepartments();
+
       $("#depSection").css("transform", "translateX(0)");
       $("#locSection").css("transform", "translateX(-110%)");
       $("#btnDep").css("width", "40px");
@@ -603,6 +704,8 @@ $(document).ready(function () {
   });
   $("#btnLoc").on("click", () => {
     if (!locSlided) {
+      retrieveLocations();
+
       $("#depSection").css("transform", "translateX(-110%)");
       $("#locSection").css("transform", "translateX(0)");
       $("#btnDep").css("width", "30px");

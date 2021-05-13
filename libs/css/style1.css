@@ -92,7 +92,13 @@ li {
 li:nth-child(even) {
   background-color: #ececec;
 }
+li:hover {
+  background-color: rgba(0, 194, 255, 0.18);
+}
 
+li:active {
+  background-color: rgba(255, 174, 0, 0.18);
+}
 .button {
   font-size: 1.8rem;
   width: 20rem;
@@ -149,7 +155,7 @@ li:nth-child(even) {
 }
 
 /*SECTION DEPARTMENT AND LOCATION*/
-.secLocDep {
+.fillerLocDep {
   background-image: url("../../img/workHands.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -162,7 +168,7 @@ li:nth-child(even) {
   bottom: 0;
   left: 0;
   display: grid;
-  height: 97%;
+  height: 86%;
   width: 28%;
   /*INVERTSCROLLBAR*/
   direction: rtl;
@@ -178,6 +184,8 @@ li:nth-child(even) {
   -moz-transition: all 0.8s;
   -ms-transition: all 0.8s;
   -o-transition: all 0.8s;
+
+  z-index: 9999;
 }
 
 .location-section,
@@ -254,7 +262,11 @@ li:nth-child(even) {
   cursor: pointer;
 }
 
-.plus-sign-white-loc {
+.minus-sign-white {
+  top: 7.5rem;
+}
+.plus-sign-white-loc,
+.minus-sign-white-loc {
   background-color: var(--tertiary-color);
 }
 
@@ -274,7 +286,9 @@ li:nth-child(even) {
   height: 30rem;
 }
 
-.addLocationWindow {
+.addLocationWindow,
+.removeDepartmentWindow,
+.removeLocationWindow {
   height: 21rem;
 }
 
@@ -299,6 +313,12 @@ li:nth-child(even) {
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
+}
+
+.deleteloc-button,
+.deletedep-button {
+  background-image: none;
+  background-color: red;
 }
 
 /*SECTION LIST NAMES*/
@@ -432,6 +452,7 @@ li:nth-child(even) {
 
 .city-container {
   grid-column: 1/4;
+  position: relative;
 }
 .city-image {
   width: 100%;
@@ -441,6 +462,7 @@ li:nth-child(even) {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
+
 .info-icon {
   /* background-color: var(--white-color); */
   grid-column: 5/7;
@@ -504,6 +526,7 @@ li:nth-child(even) {
   position: absolute;
   bottom: 2rem;
   right: 4rem;
+  display: none;
 }
 
 /* DINAMIC CLASSES */
