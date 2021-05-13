@@ -185,7 +185,7 @@ li:active {
   -ms-transition: all 0.8s;
   -o-transition: all 0.8s;
 
-  z-index: 9999;
+  z-index: 300;
 }
 
 .location-section,
@@ -317,6 +317,7 @@ li:active {
 
 .deleteloc-button,
 .deletedep-button {
+  text-align: center;
   background-image: none;
   background-color: red;
 }

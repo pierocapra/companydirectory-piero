@@ -19,6 +19,8 @@ $(document).ready(function () {
           //clear fields
           $("#depList").html("");
           $("#addDep").html("");
+          $("#editDep").html("");
+          $("#deleteDep").html("");
 
           $.each(temp, (department) => {
             const depName = temp[department]["name"];
@@ -35,6 +37,11 @@ $(document).ready(function () {
 
             //POPULATE THE DROPDOWN MENU IN EDIT EMPLOYEE
             $("#editDep").append(
+              `<option value="${depId}">${depName}</option>`
+            );
+
+            //POPULATE THE DROPDOWN MENU IN DELETE DEPARTMENT WINDOW
+            $("#deleteDep").append(
               `<option value="${depId}">${depName}</option>`
             );
 
@@ -100,6 +107,8 @@ $(document).ready(function () {
           $("#locList").html("");
           $("#addLoc").html("");
 
+          $("#deleteLoc").html("");
+
           $.each(temp, (location) => {
             const locName = temp[location]["name"];
             const locId = temp[location]["id"];
@@ -112,6 +121,11 @@ $(document).ready(function () {
 
             //POPULATE THE DROPDOWN MENU IN ADD NEW LOCATION
             $("#addLoc").append(`<option value="${locId}">${locName}</option>`);
+
+            //POPULATE THE DROPDOWN MENU IN DELETE DEPARTMENT WINDOW
+            $("#deleteLoc").append(
+              `<option value="${locId}">${locName}</option>`
+            );
 
             //HIGHLIGHT SELECTION ON CLICK
             $(`.locCell-${locId}`).on("click", () => {
@@ -129,6 +143,7 @@ $(document).ready(function () {
 
               //clear the search input
               $("#searchInput").val("");
+
               // if (!highlighted) {
               //   $(`.locCell-${locId}`).addClass("highlight-selection");
               //   $(`.locCell-${locId}`)
@@ -507,6 +522,58 @@ $(document).ready(function () {
       },
     });
   };
+
+  const deleteDepartment = (depID) => {
+    $.ajax({
+      url: "libs/php/deleteDepartment.php",
+      type: "POST",
+      data: {
+        id: depID,
+      },
+      success: function (result) {
+        // console.log(result);
+
+        UIkit.notification({
+          message: "DEPARTMENT SUCCESSFULLY DELETED!",
+          status: "primary",
+          pos: "top-right",
+          timeout: 4000,
+        });
+
+        //reload personnel
+        retrieveDepartments();
+      },
+      error: function (result, a, e) {
+        alert("Error! Cannot delete this department!");
+      },
+    });
+  };
+
+  const deleteLocation = (locID) => {
+    $.ajax({
+      url: "libs/php/deleteLocation.php",
+      type: "POST",
+      data: {
+        id: locID,
+      },
+      success: function (result) {
+        // console.log(result);
+
+        UIkit.notification({
+          message: "LOCATION SUCCESSFULLY DELETED!",
+          status: "primary",
+          pos: "top-right",
+          timeout: 4000,
+        });
+
+        //reload personnel
+        retrieveLocations();
+      },
+      error: function (result, a, e) {
+        alert("Error! Cannot delete this location!");
+      },
+    });
+  };
   //////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////RETRIEVE DATA ON OPENING/////////////////////////////////
   retrieveDepartments();
@@ -643,6 +710,30 @@ $(document).ready(function () {
         $("#location").html("");
 
         $("#deleteButton").css("display", "none");
+      } else {
+        return;
+      }
+    })();
+  });
+
+  $("#deleteDepButton").on("click", () => {
+    (() => {
+      if (confirm("Are you sure you want to delete this department? ")) {
+        deleteDepartment($("#deleteDep").val());
+
+        UIkit.dropdown("#deleteDepWindow").hide(false);
+      } else {
+        return;
+      }
+    })();
+  });
+
+  $("#deleteLocButton").on("click", () => {
+    (() => {
+      if (confirm("Are you sure you want to delete this location? ")) {
+        deleteLocation($("#deleteLoc").val());
+
+        UIkit.dropdown("#deleteLocWindow").hide(false);
       } else {
         return;
       }
