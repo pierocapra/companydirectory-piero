@@ -649,6 +649,8 @@ $(document).ready(function () {
     $("#addjob").val("");
     $("#addDep").val("");
 
+    $("#deleteButton").css("display", "none");
+
     // close window
     UIkit.modal("#addEmployee").hide();
   });
