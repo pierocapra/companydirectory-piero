@@ -283,6 +283,7 @@ $(document).ready(function () {
       const email = temp[person]["email"];
       const personId = temp[person]["id"];
       const jobTitle = temp[person]["jobTitle"];
+      const depID = temp[person]["depID"];
       const department = temp[person]["department"];
       const location = temp[person]["location"];
 
@@ -339,7 +340,9 @@ $(document).ready(function () {
         $("#editlname").attr("placeholder", lName);
         $("#editemail").attr("placeholder", email);
         $("#editjob").attr("placeholder", jobTitle);
-        // $("#editDep").val(`<option >${department}</option>`);
+        $("#editDep").prepend(
+          `<option value=${depID} class="placeholder-look" selected>${department}</option>`
+        );
       });
     });
   };
@@ -356,6 +359,35 @@ $(document).ready(function () {
         departmentID: addDep,
       },
       success: function (result) {
+        //UPDATE INFO IN PERSON WINDOW
+        let location = result["data"]["location"];
+        if (
+          location == "London" ||
+          location == "New York" ||
+          location == "Paris" ||
+          location == "Munich" ||
+          location === "Rome"
+        ) {
+          $("#cityImage").html(`<img
+          src="img/${location}.jpg"
+          alt="City Image"
+          class="city-image "
+        />`);
+        } else {
+          $("#cityImage").html(`<img
+          src="img/skyline-silhouette.jpg"
+          alt="City Image"
+          class="city-image "
+        />`);
+        }
+
+        $("#infoName").html(addfname + " " + addlname);
+        $("#email").html(addemail);
+        $("#jobTitle").html(addjob);
+
+        $("#department").html(result["data"]["department"]);
+        $("#location").html(location);
+
         UIkit.notification({
           message: "NEW EMPLOYEE SUCCESSFULLY ADDED!",
           status: "primary",
@@ -576,9 +608,9 @@ $(document).ready(function () {
   };
   //////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////RETRIEVE DATA ON OPENING/////////////////////////////////
+  retrievePersonnel();
   retrieveDepartments();
   retrieveLocations();
-  retrievePersonnel();
 
   //clear the search input
   $("#searchInput").val("");
@@ -616,6 +648,9 @@ $(document).ready(function () {
     $("#addemail").val("");
     $("#addjob").val("");
     $("#addDep").val("");
+
+    // close window
+    UIkit.modal("#addEmployee").hide();
   });
 
   // SUBMIT ADD DEPARTMENT FORM

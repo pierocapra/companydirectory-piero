@@ -99,6 +99,11 @@ li:hover {
 li:active {
   background-color: rgba(255, 174, 0, 0.18);
 }
+
+.placeholder-look {
+  color: rgb(150, 150, 150) !important;
+}
+
 .button {
   font-size: 1.8rem;
   width: 20rem;
@@ -108,7 +113,6 @@ li:active {
     var(--primary-color),
     var(--tertiary-color)
   );
-
   padding: 5px 0 !important;
   border: none;
   border-radius: 2rem;

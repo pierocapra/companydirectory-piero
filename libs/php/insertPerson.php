@@ -5,8 +5,8 @@
 
 	// remove next two lines for production
 	
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
+	// ini_set('display_errors', 'On');
+	// error_reporting(E_ALL);
 
 	$executionStartTime = microtime(true);
 
@@ -34,12 +34,14 @@
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 
-	// $query = 'INSERT INTO personnel (`firstName`, `lastName`, `email`, `jobTitle`, `departmentID`) VALUES("' . $_REQUEST['firstName'] . '",' . $_REQUEST["lastName"] . ')';
 	$query = 'INSERT INTO `personnel` (`firstName`, `lastName`, `email`, `jobTitle`, `departmentId`) VALUES ("' . $_REQUEST['firstName'] . '", "' . $_REQUEST['lastName'] . '", "' . $_REQUEST['email'] . '", "' . $_REQUEST['jobTitle'] . '", ' . $_REQUEST['departmentID'] . ') ';
 
+	$query2.= 'SELECT d.name as department, l.name as location FROM department d LEFT JOIN location l ON (l.id = d.locationID) WHERE d.id =' . $_REQUEST['departmentID'] . '';
+
 	$result = $conn->query($query);
+	$result2 = $conn->query($query2);
 	
-	if (!$result) {
+	if (!$result || !$result2) {
 
 		$output['status']['code'] = "400";
 		$output['status']['name'] = "executed";
@@ -58,7 +60,7 @@
 	$output['status']['name'] = "ok";
 	$output['status']['description'] = "success";
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
-	$output['data'] = [];
+	$output['data'] = mysqli_fetch_assoc($result2);
 	
 	mysqli_close($conn);
 
