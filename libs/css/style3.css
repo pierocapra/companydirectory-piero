@@ -19,6 +19,7 @@ html {
 
 body {
   background-color: var(--main-graybackground);
+  /* background-color: rgb(255, 196, 0); */
   height: 100vh;
   width: 100%;
   /* DESIGN SCROLLBAR */
@@ -150,23 +151,8 @@ li:active {
 }
 /**/
 
-/*MAIN CONTAINER*/
-.main-container {
-  height: calc(100vh - 7rem);
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr 40%;
-}
-
-/*SECTION DEPARTMENT AND LOCATION*/
-.fillerLocDep {
-  background-image: url("../../img/workHands.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  /* background-color: brown; */
-}
-.off-canv {
+/* EXTERNAL SLIDES WINDOWS */
+.deploc-off-canvas {
   position: absolute;
   background-color: var(--white-color);
   bottom: 0;
@@ -177,24 +163,22 @@ li:active {
   /*INVERTSCROLLBAR*/
   direction: rtl;
   /**/
+  z-index: 300;
+  align-content: start;
+  box-shadow: 4px -4px 8px rgb(105, 105, 105);
+
   border-radius: 0 2rem 0 0;
   -webkit-border-radius: 0 2rem 0 0;
   -moz-border-radius: 0 2rem 0 0;
   -ms-border-radius: 0 2rem 0 0;
   -o-border-radius: 0 2rem 0 0;
-  box-shadow: 4px -4px 8px rgb(105, 105, 105);
+
   transition: all 0.8s;
   -webkit-transition: all 0.8s;
   -moz-transition: all 0.8s;
   -ms-transition: all 0.8s;
   -o-transition: all 0.8s;
 
-  z-index: 300;
-}
-
-.location-section,
-.department-section {
-  align-content: start;
   transform: translateX(-110%);
   -webkit-transform: translateX(-110%);
   -moz-transform: translateX(-110%);
@@ -241,23 +225,15 @@ li:active {
   cursor: pointer;
 }
 
-.deploc-cell img {
+/* .deploc-cell img {
   width: 20px;
-}
+} */
 
-.ul-deploc {
-  height: 100%;
-
-  overflow: auto;
-}
-
-.plus-sign-white {
+.deploc-label {
   width: 3.5rem;
   position: absolute;
   right: 0;
-  top: 2.5rem;
   padding: 5px;
-  background-color: var(--secondary-color);
   border-radius: 2rem 0 0 2rem;
   -webkit-border-radius: 2rem 0 0 2rem;
   -moz-border-radius: 2rem 0 0 2rem;
@@ -266,17 +242,21 @@ li:active {
   cursor: pointer;
 }
 
-.minus-sign-white {
-  top: 7.5rem;
+.dep-label {
+  background-color: var(--secondary-color);
 }
-.plus-sign-white-loc,
-.minus-sign-white-loc {
+.loc-label {
   background-color: var(--tertiary-color);
+}
+.deploc-label_plus {
+  top: 2.5rem;
+}
+.deploc-label_minus {
+  top: 7.5rem;
 }
 
 .addDepLocWindow {
   width: 80%;
-
   right: 50%;
   direction: ltr;
   padding: 0;
@@ -286,6 +266,7 @@ li:active {
   -ms-transform: translateX(50%);
   -o-transform: translateX(50%);
 }
+
 .addDepartmentWindow {
   height: 30rem;
 }
@@ -296,18 +277,18 @@ li:active {
   height: 21rem;
 }
 
-.header-add-dep {
+.header-adddel-deploc {
   height: 5rem;
 }
-.header-add-dep-title {
+.header-adddel-deploc_title {
   font-size: 1.6rem;
 }
 
-.add-deploc-container {
+.adddel-deploc-container {
   padding: 1.5rem;
 }
 
-.insert-deploc-button {
+.adddel-deploc-button {
   font-size: 1.4rem !important;
   width: 10rem !important;
   margin-top: 1rem;
@@ -319,15 +300,38 @@ li:active {
   -o-transform: translateX(-50%);
 }
 
-.deleteloc-button,
-.deletedep-button {
+.delete-deploc-button {
   text-align: center;
   background-image: none;
   background-color: red;
 }
 
-/*SECTION LIST NAMES*/
-.secNameList {
+.ul-deploc {
+  height: 100%;
+  overflow: auto;
+}
+
+/* MAIN */
+
+/*MAIN CONTAINER*/
+.main-container {
+  height: calc(100vh - 7rem);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 40%;
+}
+
+/*FILLER FOR SECTION DEPARTMENT AND LOCATION*/
+.fillerLocDep {
+  background-image: url("../../img/workHands.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* background-color: brown; */
+}
+
+/*SECTION AGENDA*/
+.secAgenda {
   position: relative;
   background-color: var(--white-color);
   height: calc(100vh - 7rem);
@@ -353,6 +357,7 @@ li:active {
   -o-border-radius: 2rem !important; */
   background-color: #f8f8f8;
 }
+
 .plus-sign {
   width: 3rem;
   margin-left: 15px;
@@ -363,7 +368,7 @@ li:active {
   background-color: var(--primary-color);
   color: var(--white-color);
   padding: 10px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: var(--white-color);
 }
 
@@ -535,17 +540,12 @@ li:active {
   display: none;
 }
 
-/* DINAMIC CLASSES */
-li.highlight-selection {
-  background-color: rgba(0, 194, 255, 0.18);
-}
-
 /* modal */
 
-.uk-modal-body {
+.modal-container {
   position: relative;
 }
-.header-add-employee {
+.header-modal {
   border-radius: 2rem;
   -webkit-border-radius: 2rem;
   -moz-border-radius: 2rem;
@@ -578,7 +578,7 @@ li.highlight-selection {
   margin-top: -1.5rem;
   background-color: #f8f8f8;
 }
-.insert-button {
+.submit-insert-button {
   margin-left: 50%;
 
   transform: translateX(-50%);

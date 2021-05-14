@@ -15,7 +15,7 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/uikit.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/style1.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/style3.css" type="text/css" />
   </head>
 
   <body>
@@ -25,14 +25,14 @@
         <img
           src="vendors/icons/manage_people.svg"
           alt="Manage People Icon"
-          class="white-icon manage-people-icon"
+          class="manage-people-icon"
         />
       </header>
 
       <!-- SECTIONS EXTERNAL TO THE MAIN WINDOW -->
 
       <!-- DEPARTMENT SECTION -->
-      <div class="off-canv department-section" id="depSection">
+      <div class="deploc-off-canvas" id="depSection">
         <div class="deploc-header dep-header">
           <h2 class="deploc-title">DEPARTMENT</h2>
         </div>
@@ -42,18 +42,18 @@
           <img
             src="vendors/icons/add-circle-outline.svg"
             alt="Plus sign white"
-            class="plus-sign-white"
+            class="deploc-label dep-label deploc-label_plus"
             type="button"
           />
           <div
             uk-dropdown="mode: click; pos: bottom-right"
             class="addDepLocWindow addDepartmentWindow"
           >
-            <header class="header header-add-dep">
-              <h1 class="header-add-dep-title">Add New Department</h1>
+            <header class="header header-adddel-deploc">
+              <h1 class="header-adddel-deploc_title">Add New Department</h1>
             </header>
 
-            <div class="add-deploc-container">
+            <div class="adddel-deploc-container">
               <form class="uk-form-stacked" id="formAddDepartment">
                 <div class="uk-margin form-line">
                   <label class="uk-form-label form-label" for="addNewDep"
@@ -77,7 +77,7 @@
                 </div>
                 <input
                   type="submit"
-                  class="button insert-deploc-button"
+                  class="button adddel-deploc-button"
                   value="submit"
                 />
               </form>
@@ -90,7 +90,7 @@
           <img
             src="vendors/icons/remove-circle-outline.svg"
             alt="Plus sign white"
-            class="plus-sign-white minus-sign-white"
+            class="deploc-label dep-label deploc-label_minus"
             type="button"
           />
           <div
@@ -98,11 +98,11 @@
             class="addDepLocWindow removeDepartmentWindow"
             id="deleteDepWindow"
           >
-            <header class="header header-add-dep">
-              <h1 class="header-add-dep-title">Delete Department</h1>
+            <header class="header header-adddel-deploc">
+              <h1 class="header-adddel-deploc_title">Delete Department</h1>
             </header>
 
-            <div class="add-deploc-container">
+            <div class="adddel-deploc-container">
               <div class="uk-margin form-line">
                 <label class="uk-form-label form-label" for="addNewDep"
                   >Department:</label
@@ -112,7 +112,7 @@
                 </div>
               </div>
               <input
-                class="button insert-deploc-button deletedep-button"
+                class="button adddel-deploc-button delete-deploc-button"
                 id="deleteDepButton"
                 value="DELETE"
               />
@@ -125,7 +125,7 @@
       </div>
 
       <!-- LOCATION SECTION -->
-      <div class="off-canv location-section" id="locSection">
+      <div class="deploc-off-canvas" id="locSection">
         <div class="deploc-header loc-header">
           <h2 class="deploc-title">LOCATION</h2>
         </div>
@@ -135,18 +135,18 @@
           <img
             src="vendors/icons/add-circle-outline.svg"
             alt="Plus sign white"
-            class="plus-sign-white plus-sign-white-loc"
+            class="deploc-label loc-label deploc-label_plus"
             type="button"
           />
           <div
             uk-dropdown="mode: click; pos: bottom-right"
             class="addDepLocWindow addLocationWindow"
           >
-            <header class="header header-add-dep">
-              <h1 class="header-add-dep-title">Add New Location</h1>
+            <header class="header header-adddel-deploc">
+              <h1 class="header-adddel-deploc_title">Add New Location</h1>
             </header>
 
-            <div class="add-deploc-container">
+            <div class="adddel-deploc-container">
               <form class="uk-form-stacked" id="formAddLocation">
                 <div class="uk-margin form-line">
                   <label class="uk-form-label form-label" for="addNewLoc"
@@ -164,7 +164,7 @@
                 </div>
                 <input
                   type="submit"
-                  class="button insert-deploc-button"
+                  class="button adddel-deploc-button"
                   value="submit"
                 />
               </form>
@@ -177,7 +177,7 @@
           <img
             src="vendors/icons/remove-circle-outline.svg"
             alt="Plus sign white"
-            class="plus-sign-white minus-sign-white minus-sign-white-loc"
+            class="deploc-label loc-label deploc-label_minus"
             type="button"
           />
           <div
@@ -185,11 +185,11 @@
             class="addDepLocWindow removeLocationWindow"
             id="deleteLocWindow"
           >
-            <header class="header header-add-dep">
-              <h1 class="header-add-dep-title">Remove Location</h1>
+            <header class="header header-adddel-deploc">
+              <h1 class="header-adddel-deploc_title">Remove Location</h1>
             </header>
 
-            <div class="add-deploc-container">
+            <div class="adddel-deploc-container">
               <div class="uk-margin form-line">
                 <label class="uk-form-label form-label">Location:</label>
                 <div class="uk-margin">
@@ -197,7 +197,7 @@
                 </div>
               </div>
               <input
-                class="button insert-deploc-button deleteloc-button"
+                class="button adddel-deploc-button delete-deploc-button"
                 value="DELETE"
                 id="deleteLocButton"
               />
@@ -209,11 +209,14 @@
         <ul class="ul-deploc" id="locList"></ul>
       </div>
 
+      <!--  -->
+      <!-- MAIN -->
+      <!--  -->
       <main class="main-container">
         <section class="fillerLocDep"></section>
 
         <!-- SECTION AGENDA -->
-        <section class="secNameList">
+        <section class="secAgenda">
           <div class="uk-margin search-bar">
             <form class="uk-search uk-search-default search">
               <span uk-search-icon></span>
@@ -298,18 +301,18 @@
 
       <!-- MODAL ADD NEW EMPLOYEE -->
       <div id="addEmployee" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body">
+        <div class="uk-modal-dialog uk-modal-body modal-container">
           <img
             src="vendors/icons/close-outline.svg"
             alt="Close X"
             class="uk-modal-close closeX"
           />
-          <header class="header header-add-employee">
-            <h1 class="header-title">Add New Employee</h1>
+          <header class="header header-modal">
+            <h1 class="header-modal-title">Add New Employee</h1>
             <img
               src="vendors/icons/person-add-outline.svg"
               alt="Add People Icon"
-              class="white-icon add-people-icon"
+              class="add-people-icon"
             />
           </header>
 
@@ -378,7 +381,11 @@
                 <select class="uk-select select-bar" id="addDep"></select>
               </div>
             </div>
-            <input type="submit" class="button insert-button" value="submit" />
+            <input
+              type="submit"
+              class="button submit-insert-button"
+              value="submit"
+            />
           </form>
         </div>
       </div>
@@ -391,12 +398,12 @@
             alt="Close X"
             class="uk-modal-close closeX"
           />
-          <header class="header header-add-employee">
-            <h1 class="header-title">Edit Employee Details</h1>
+          <header class="header header-modal">
+            <h1 class="header-modal-title">Edit Employee Details</h1>
             <img
               src="vendors/icons/people-outline.svg"
               alt="Edit People Icon"
-              class="white-icon manage-people-icon"
+              class="manage-people-icon"
             />
           </header>
 
