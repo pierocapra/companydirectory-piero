@@ -330,8 +330,9 @@ $(document).ready(function () {
         $("#department").html(department);
         $("#location").html(location);
 
-        //show delete button
+        //show delete and edit button
         $("#deleteButton").css("display", "block");
+        $("#editButton").css("display", "block");
 
         currentPersonID = personId;
 
@@ -650,6 +651,7 @@ $(document).ready(function () {
     $("#addDep").val("");
 
     $("#deleteButton").css("display", "none");
+    $("#editButton").css("display", "none");
 
     // close window
     UIkit.modal("#addEmployee").hide();

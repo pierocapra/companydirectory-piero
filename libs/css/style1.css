@@ -97,7 +97,7 @@ li:hover {
 }
 
 li:active {
-  background-color: rgba(255, 174, 0, 0.18);
+  background-color: rgba(0, 195, 255, 0.425);
 }
 
 .placeholder-look {
@@ -498,6 +498,7 @@ li:active {
   width: 3rem;
   justify-self: center;
   cursor: pointer;
+  display: none;
 }
 
 .info-container {
