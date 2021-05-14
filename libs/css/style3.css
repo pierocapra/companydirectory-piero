@@ -158,12 +158,12 @@ li:active {
   bottom: 0;
   left: 0;
   display: grid;
-  height: 86%;
+  height: calc(98% - 7rem);
   width: 28%;
   /*INVERTSCROLLBAR*/
   direction: rtl;
   /**/
-  z-index: 300;
+  z-index: 999;
   align-content: start;
   box-shadow: 4px -4px 8px rgb(105, 105, 105);
 
@@ -341,21 +341,27 @@ li:active {
 }
 
 .search-bar {
-  margin: 15px;
+  margin: 15px !important;
   display: flex;
   justify-content: space-between;
+  align-content: center;
 }
 
 .search,
 .search input {
-  font-size: 1.4rem;
+  font-size: 14px;
   width: 100%;
+
   /* border-radius: 2rem !important;
   -webkit-border-radius: 2rem !important;
   -moz-border-radius: 2rem !important;
   -ms-border-radius: 2rem !important;
   -o-border-radius: 2rem !important; */
   background-color: #f8f8f8;
+  /* background-color: darkblue; */
+}
+
+.search-input {
 }
 
 .plus-sign {
@@ -397,7 +403,7 @@ li:active {
 }
 .letter {
   background-color: rgb(190, 190, 190);
-  padding: 5px;
+  padding: 5px 12px;
   color: var(--white-color);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   /* INVERT SCROLLBAR */
@@ -432,18 +438,18 @@ li:active {
 
 .label-agenda {
   background-color: var(--primary-color);
-  top: 15rem;
+  top: 150px;
   width: 40px;
 }
 
 .label-dep {
   background-color: var(--secondary-color);
-  top: 21.5rem;
+  top: 215px;
   width: 30px;
 }
 .label-loc {
   background-color: var(--tertiary-color);
-  top: 28rem;
+  top: 280px;
   width: 30px;
 }
 /**/
