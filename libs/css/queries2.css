@@ -97,13 +97,29 @@
   .manage-people-icon {
     height: 4rem;
   }
+  .addedit-people-icon {
+    height: 3rem;
+  }
+  .header-modal {
+    height: 5rem;
+  }
 }
 
 /* SMALL PHONES 360px */
 @media only screen and (max-width: 25em) {
-  .manage-people-icon {
+  .addedit-people-icon {
     display: none;
   }
+  .header-modal {
+    justify-content: center;
+  }
+  .header-modal-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+  /* .search input {
+    height: 20px !important;
+  } */
 }
 
 /* VERY SMALL PHONES 310px */
@@ -113,5 +129,53 @@
   }
   .manage-people-icon {
     display: none;
+  }
+}
+
+/* HEIGHT */
+
+/* PORTRAIT SMALL TABLETS 480px */
+@media only screen and (max-height: 30em) {
+  .city-container {
+    display: none;
+  }
+  .info-icon {
+    display: none;
+  }
+}
+
+/* PHONES 430px */
+@media only screen and (max-height: 26.875em) {
+  .label-agenda {
+    top: 100px;
+  }
+
+  .label-dep {
+    top: 165px;
+  }
+  .label-loc {
+    top: 230px;
+  }
+}
+
+/* VERY SMALL PHONES 340px*/
+@media only screen and (max-height: 21.25em) {
+  html {
+    font-size: 48%;
+  }
+}
+
+/* VERY SMALL PHONES 340px*/
+@media only screen and (max-height: 21.25em) {
+  html {
+    font-size: 48%;
+  }
+}
+
+/* BIG SCREENS 1440px*/
+
+@media only screen and (min-width: 90em) {
+  html {
+    font-size: 76%;
   }
 }

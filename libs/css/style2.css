@@ -27,31 +27,38 @@ body {
   width: 100%;
   overflow: hidden;
   /* DESIGN SCROLLBAR */
-  scrollbar-color: #dfdfdf #ffffff;
+  scrollbar-color: #e1e1e1 #ffffff00;
   /**/
 }
 
-/* Designing for scroll-bar */
-/* ::-webkit-scrollbar {
-  width: 6px;
+/*Hide scrollbar*/
+.names-container::-webkit-scrollbar,
+.ul-deploc::-webkit-scrollbar {
+  display: none;
+}
+.names-container,
+.ul-deploc {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/**/
+
+/* .names-container::-webkit-scrollbar-thumb {
+  background-color: #e1e1e1; 
+  border-radius: 20px;
+  border: none; 
 } */
 
-/* Track */
-/* ::-webkit-scrollbar-track {
-  background: gainsboro;
-  border-radius: 5px;
+/* show scrollbar */
+/* .li:hover .names-container::-webkit-scrollbar {
+  display: unset;
+}
+.li:hover .names-container {
+  -ms-overflow-style: unset; 
+  scrollbar-width: unset; 
+  margin: 0rem 24px 24px 0;
 } */
-
-/* Handle */
-/* ::-webkit-scrollbar-thumb {
-  background: black;
-  border-radius: 5px;
-} */
-
-/* Handle on hover */
-/* ::-webkit-scrollbar-thumb:hover {
-  background: #555;
-} */
+/**/
 
 /* REUSABLE */
 h1 {
@@ -150,7 +157,7 @@ li:active {
   height: 5rem;
 }
 
-.add-people-icon {
+.addedit-people-icon {
   height: 4rem;
 }
 /**/
