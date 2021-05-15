@@ -15,466 +15,467 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/uikit.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/style3.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/queries.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/style1.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/queries1.css" type="text/css" />
   </head>
 
   <body>
-    <div class="window-container">
-      <header class="header">
-        <h1 class="header-title">Company Directory</h1>
+    <header class="header">
+      <h1 class="header-title">Company Directory</h1>
+      <img
+        src="vendors/icons/manage_people.svg"
+        alt="Manage People Icon"
+        class="manage-people-icon"
+      />
+    </header>
+
+    <!-- SECTIONS EXTERNAL TO THE MAIN WINDOW -->
+
+    <!-- DEPARTMENT SECTION -->
+    <div class="deploc-off-canvas" id="depSection">
+      <div class="deploc-header dep-header">
+        <h2 class="deploc-title">DEPARTMENT</h2>
+      </div>
+
+      <!-- ADD DEPARTMENT SECTION -->
+      <div class="uk-inline">
         <img
-          src="vendors/icons/manage_people.svg"
-          alt="Manage People Icon"
-          class="manage-people-icon"
+          src="vendors/icons/add-circle-outline.svg"
+          alt="Plus sign white"
+          class="deploc-label dep-label deploc-label_plus"
+          type="button"
         />
-      </header>
+        <div
+          uk-dropdown="mode: click; pos: bottom-right"
+          class="addDepLocWindow addDepartmentWindow"
+        >
+          <header class="header header-adddel-deploc">
+            <h1 class="header-adddel-deploc_title">Add New Department</h1>
+          </header>
 
-      <!-- SECTIONS EXTERNAL TO THE MAIN WINDOW -->
-
-      <!-- DEPARTMENT SECTION -->
-      <div class="deploc-off-canvas" id="depSection">
-        <div class="deploc-header dep-header">
-          <h2 class="deploc-title">DEPARTMENT</h2>
-        </div>
-
-        <!-- ADD DEPARTMENT SECTION -->
-        <div class="uk-inline">
-          <img
-            src="vendors/icons/add-circle-outline.svg"
-            alt="Plus sign white"
-            class="deploc-label dep-label deploc-label_plus"
-            type="button"
-          />
-          <div
-            uk-dropdown="mode: click; pos: bottom-right"
-            class="addDepLocWindow addDepartmentWindow"
-          >
-            <header class="header header-adddel-deploc">
-              <h1 class="header-adddel-deploc_title">Add New Department</h1>
-            </header>
-
-            <div class="adddel-deploc-container">
-              <form class="uk-form-stacked" id="formAddDepartment">
-                <div class="uk-margin form-line">
-                  <label class="uk-form-label form-label" for="addNewDep"
-                    >Department:</label
-                  >
-                  <div class="uk-form-controls">
-                    <input
-                      class="uk-input form-input"
-                      id="addNewDep"
-                      type="text"
-                      name="addNewDep"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="uk-margin form-line">
-                  <label class="uk-form-label form-label">Location:</label>
-                  <div class="uk-margin">
-                    <select class="uk-select select-bar" id="addLoc"></select>
-                  </div>
-                </div>
-                <input
-                  type="submit"
-                  class="button adddel-deploc-button"
-                  value="submit"
-                />
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <!-- REMOVE DEPARTMENT SECTION -->
-        <div class="uk-inline">
-          <img
-            src="vendors/icons/remove-circle-outline.svg"
-            alt="Plus sign white"
-            class="deploc-label dep-label deploc-label_minus"
-            type="button"
-          />
-          <div
-            uk-dropdown="mode: click; pos: bottom-right"
-            class="addDepLocWindow removeDepartmentWindow"
-            id="deleteDepWindow"
-          >
-            <header class="header header-adddel-deploc">
-              <h1 class="header-adddel-deploc_title">Delete Department</h1>
-            </header>
-
-            <div class="adddel-deploc-container">
+          <div class="adddel-deploc-container">
+            <form class="uk-form-stacked" id="formAddDepartment">
               <div class="uk-margin form-line">
                 <label class="uk-form-label form-label" for="addNewDep"
                   >Department:</label
                 >
-                <div class="uk-margin">
-                  <select class="uk-select select-bar" id="deleteDep"></select>
+                <div class="uk-form-controls">
+                  <input
+                    class="uk-input form-input"
+                    id="addNewDep"
+                    type="text"
+                    name="addNewDep"
+                    required
+                  />
                 </div>
               </div>
-              <input
-                class="button adddel-deploc-button delete-deploc-button"
-                id="deleteDepButton"
-                value="DELETE"
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- LIST OF DEPARTMENTS -->
-        <ul class="ul-deploc" id="depList"></ul>
-      </div>
-
-      <!-- LOCATION SECTION -->
-      <div class="deploc-off-canvas" id="locSection">
-        <div class="deploc-header loc-header">
-          <h2 class="deploc-title">LOCATION</h2>
-        </div>
-
-        <!-- ADD LOCATION SECTION -->
-        <div class="uk-inline">
-          <img
-            src="vendors/icons/add-circle-outline.svg"
-            alt="Plus sign white"
-            class="deploc-label loc-label deploc-label_plus"
-            type="button"
-          />
-          <div
-            uk-dropdown="mode: click; pos: bottom-right"
-            class="addDepLocWindow addLocationWindow"
-          >
-            <header class="header header-adddel-deploc">
-              <h1 class="header-adddel-deploc_title">Add New Location</h1>
-            </header>
-
-            <div class="adddel-deploc-container">
-              <form class="uk-form-stacked" id="formAddLocation">
-                <div class="uk-margin form-line">
-                  <label class="uk-form-label form-label" for="addNewLoc"
-                    >Location:</label
-                  >
-                  <div class="uk-form-controls">
-                    <input
-                      class="uk-input form-input"
-                      id="addNewLoc"
-                      type="text"
-                      name="addNewLoc"
-                      required
-                    />
-                  </div>
-                </div>
-                <input
-                  type="submit"
-                  class="button adddel-deploc-button"
-                  value="submit"
-                />
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <!-- REMOVE LOCATION SECTION -->
-        <div class="uk-inline">
-          <img
-            src="vendors/icons/remove-circle-outline.svg"
-            alt="Plus sign white"
-            class="deploc-label loc-label deploc-label_minus"
-            type="button"
-          />
-          <div
-            uk-dropdown="mode: click; pos: bottom-right"
-            class="addDepLocWindow removeLocationWindow"
-            id="deleteLocWindow"
-          >
-            <header class="header header-adddel-deploc">
-              <h1 class="header-adddel-deploc_title">Remove Location</h1>
-            </header>
-
-            <div class="adddel-deploc-container">
               <div class="uk-margin form-line">
                 <label class="uk-form-label form-label">Location:</label>
                 <div class="uk-margin">
-                  <select class="uk-select select-bar" id="deleteLoc"></select>
+                  <select class="uk-select select-bar" id="addLoc"></select>
                 </div>
               </div>
               <input
-                class="button adddel-deploc-button delete-deploc-button"
-                value="DELETE"
-                id="deleteLocButton"
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- LIST OF LOCATIONS -->
-        <ul class="ul-deploc" id="locList"></ul>
-      </div>
-
-      <!--  -->
-      <!-- MAIN -->
-      <!--  -->
-      <main class="main-container">
-        <section class="fillerLocDep"></section>
-
-        <!-- SECTION AGENDA -->
-        <section class="secAgenda">
-          <div class="uk-margin search-bar">
-            <form class="uk-search uk-search-default search">
-              <span uk-search-icon></span>
-              <input
-                class="uk-search-input search-input"
-                type="search"
-                placeholder="Search"
-                id="searchInput"
+                type="submit"
+                class="button adddel-deploc-button"
+                value="submit"
               />
             </form>
-            <img
-              src="vendors/icons/add-outline.svg"
-              alt="Plus sign Blue"
-              class="plus-sign"
-              uk-toggle="target: #addEmployee"
-              type="button"
-            />
           </div>
-          <div class="selection-par">
-            <span
-              >Search for
-              <span id="selectionResearch">personnel: All</span></span
-            >
-          </div>
-          <div class="label label-agenda" id="btnPersonnel">
-            <img
-              src="vendors/icons/people-circle-outline.svg"
-              alt="People icon"
-            />
-          </div>
-          <div class="label label-dep" id="btnDep">
-            <img src="vendors/icons/hammer-outline.svg" alt="Hammer icon" />
-          </div>
-          <div class="label label-loc" id="btnLoc">
-            <img src="vendors/icons/location-outline.svg" alt="Location icon" />
-          </div>
-          <div class="names-container" id="name-container"></div>
-        </section>
+        </div>
+      </div>
 
-        <!-- SECTION PERSON INFO -->
-        <section class="secPersonInfo">
-          <div class="city-container" id="cityImage">
-            <img
-              src="img/skyline-silhouette.jpg"
-              alt="City Image"
-              class="city-image"
-            />
-          </div>
-
-          <img
-            src="vendors/icons/person.svg"
-            alt="Spanner tool"
-            class="info-icon"
-          />
-
-          <h2 class="info-name" id="infoName"></h2>
-          <img
-            src="vendors/icons/create-outline.svg"
-            alt="Edit Icon"
-            class="info-edit"
-            id="editButton"
-            uk-toggle="target: #editEmployee"
-          />
-          <div class="info-container">
-            <p class="info-label">e-mail:</p>
-            <p class="info" id="email"></p>
-          </div>
-
-          <div class="info-container">
-            <p class="info-label">Job title:</p>
-            <p class="info" id="jobTitle"></p>
-
-            <p class="info-label">Department:</p>
-            <p class="info" id="department"></p>
-
-            <p class="info-label">Location:</p>
-            <p class="info" id="location"></p>
-          </div>
-          <button class="button delete-button" id="deleteButton">DELETE</button>
-        </section>
-      </main>
-
-      <!-- MODAL ADD NEW EMPLOYEE -->
-      <div id="addEmployee" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body modal-container">
-          <img
-            src="vendors/icons/close-outline.svg"
-            alt="Close X"
-            class="uk-modal-close closeX"
-          />
-          <header class="header header-modal">
-            <h1 class="header-modal-title">Add New Employee</h1>
-            <img
-              src="vendors/icons/person-add-outline.svg"
-              alt="Add People Icon"
-              class="add-people-icon"
-            />
+      <!-- REMOVE DEPARTMENT SECTION -->
+      <div class="uk-inline">
+        <img
+          src="vendors/icons/remove-circle-outline.svg"
+          alt="Plus sign white"
+          class="deploc-label dep-label deploc-label_minus"
+          type="button"
+        />
+        <div
+          uk-dropdown="mode: click; pos: bottom-right"
+          class="addDepLocWindow removeDepartmentWindow"
+          id="deleteDepWindow"
+        >
+          <header class="header header-adddel-deploc">
+            <h1 class="header-adddel-deploc_title">Delete Department</h1>
           </header>
 
-          <form class="uk-form-stacked" id="formAddEmployee">
+          <div class="adddel-deploc-container">
             <div class="uk-margin form-line">
-              <label class="uk-form-label form-label" for="fname"
-                >First Name:</label
-              >
-              <div class="uk-form-controls">
-                <input
-                  class="uk-input form-input"
-                  id="addfname"
-                  type="text"
-                  name="fname"
-                  required
-                />
-              </div>
-            </div>
-            <div class="uk-margin form-line">
-              <label class="uk-form-label form-label" for="lname"
-                >Last Name:</label
-              >
-              <div class="uk-form-controls">
-                <input
-                  class="uk-input form-input"
-                  id="addlname"
-                  type="text"
-                  name="lname"
-                  required
-                />
-              </div>
-            </div>
-            <div class="uk-margin form-line">
-              <label class="uk-form-label form-label" for="email"
-                >E-mail:</label
-              >
-              <div class="uk-form-controls">
-                <input
-                  class="uk-input form-input"
-                  id="addemail"
-                  type="text"
-                  name="email"
-                  required
-                />
-              </div>
-            </div>
-            <div class="uk-margin form-line">
-              <label class="uk-form-label form-label" for="job"
-                >Job Title:</label
-              >
-              <div class="uk-form-controls">
-                <input
-                  class="uk-input form-input"
-                  id="addjob"
-                  type="text"
-                  name="job"
-                  required
-                />
-              </div>
-            </div>
-            <div class="uk-margin form-line">
-              <label class="uk-form-label form-label" for="dep"
+              <label class="uk-form-label form-label" for="addNewDep"
                 >Department:</label
               >
               <div class="uk-margin">
-                <select class="uk-select select-bar" id="addDep"></select>
+                <select class="uk-select select-bar" id="deleteDep"></select>
               </div>
             </div>
             <input
-              type="submit"
-              class="button submit-insert-button"
-              value="submit"
+              class="button adddel-deploc-button delete-deploc-button"
+              id="deleteDepButton"
+              value="DELETE"
             />
-          </form>
+          </div>
         </div>
       </div>
 
-      <!-- MODAL EDIT EMPLOYEE -->
-      <div id="editEmployee" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body">
-          <img
-            src="vendors/icons/close-outline.svg"
-            alt="Close X"
-            class="uk-modal-close closeX"
-          />
-          <header class="header header-modal">
-            <h1 class="header-modal-title">Edit Employee Details</h1>
-            <img
-              src="vendors/icons/people-outline.svg"
-              alt="Edit People Icon"
-              class="manage-people-icon"
-            />
+      <!-- LIST OF DEPARTMENTS -->
+      <ul class="ul-deploc" id="depList"></ul>
+    </div>
+
+    <!-- LOCATION SECTION -->
+    <div class="deploc-off-canvas" id="locSection">
+      <div class="deploc-header loc-header">
+        <h2 class="deploc-title">LOCATION</h2>
+      </div>
+
+      <!-- ADD LOCATION SECTION -->
+      <div class="uk-inline">
+        <img
+          src="vendors/icons/add-circle-outline.svg"
+          alt="Plus sign white"
+          class="deploc-label loc-label deploc-label_plus"
+          type="button"
+        />
+        <div
+          uk-dropdown="mode: click; pos: bottom-right"
+          class="addDepLocWindow addLocationWindow"
+        >
+          <header class="header header-adddel-deploc">
+            <h1 class="header-adddel-deploc_title">Add New Location</h1>
           </header>
 
-          <form class="uk-form-stacked" id="formEditEmployee">
-            <div class="uk-margin form-line">
-              <label class="uk-form-label form-label" for="editfname"
-                >First Name:</label
-              >
-              <div class="uk-form-controls">
-                <input
-                  class="uk-input form-input"
-                  id="editfname"
-                  type="text"
-                  name="editfname"
-                />
+          <div class="adddel-deploc-container">
+            <form class="uk-form-stacked" id="formAddLocation">
+              <div class="uk-margin form-line">
+                <label class="uk-form-label form-label" for="addNewLoc"
+                  >Location:</label
+                >
+                <div class="uk-form-controls">
+                  <input
+                    class="uk-input form-input"
+                    id="addNewLoc"
+                    type="text"
+                    name="addNewLoc"
+                    required
+                  />
+                </div>
               </div>
-            </div>
-            <div class="uk-margin form-line">
-              <label class="uk-form-label form-label" for="editlname"
-                >Last Name:</label
-              >
-              <div class="uk-form-controls">
-                <input
-                  class="uk-input form-input"
-                  id="editlname"
-                  type="text"
-                  name="editlname"
-                />
-              </div>
-            </div>
-            <div class="uk-margin form-line">
-              <label class="uk-form-label form-label" for="editemail"
-                >E-mail:</label
-              >
-              <div class="uk-form-controls">
-                <input
-                  class="uk-input form-input"
-                  id="editemail"
-                  type="text"
-                  name="editemail"
-                />
-              </div>
-            </div>
-            <div class="uk-margin form-line">
-              <label class="uk-form-label form-label" for="editjob"
-                >Job Title:</label
-              >
-              <div class="uk-form-controls">
-                <input
-                  class="uk-input form-input"
-                  id="editjob"
-                  type="text"
-                  name="editjob"
-                />
-              </div>
-            </div>
-            <div class="uk-margin form-line">
-              <label class="uk-form-label form-label">Department:</label>
-              <div class="uk-margin">
-                <select class="uk-select select-bar" id="editDep"></select>
-              </div>
-            </div>
+              <input
+                type="submit"
+                class="button adddel-deploc-button"
+                value="submit"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
 
+      <!-- REMOVE LOCATION SECTION -->
+      <div class="uk-inline">
+        <img
+          src="vendors/icons/remove-circle-outline.svg"
+          alt="Plus sign white"
+          class="deploc-label loc-label deploc-label_minus"
+          type="button"
+        />
+        <div
+          uk-dropdown="mode: click; pos: bottom-right"
+          class="addDepLocWindow removeLocationWindow"
+          id="deleteLocWindow"
+        >
+          <header class="header header-adddel-deploc">
+            <h1 class="header-adddel-deploc_title">Remove Location</h1>
+          </header>
+
+          <div class="adddel-deploc-container">
+            <div class="uk-margin form-line">
+              <label class="uk-form-label form-label">Location:</label>
+              <div class="uk-margin">
+                <select class="uk-select select-bar" id="deleteLoc"></select>
+              </div>
+            </div>
             <input
-              type="submit"
-              class="button submit-edit-button"
-              value="Save changes"
+              class="button adddel-deploc-button delete-deploc-button"
+              value="DELETE"
+              id="deleteLocButton"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- LIST OF LOCATIONS -->
+      <ul class="ul-deploc" id="locList"></ul>
+    </div>
+
+    <!--  -->
+    <!-- MAIN -->
+    <!--  -->
+    <main class="main-container">
+      <section class="fillerLocDep"></section>
+
+      <!-- SECTION AGENDA -->
+      <section class="secAgenda">
+        <div class="uk-margin search-bar">
+          <form class="uk-search uk-search-default search">
+            <span uk-search-icon></span>
+            <input
+              class="uk-search-input search-input"
+              type="search"
+              placeholder="Search"
+              id="searchInput"
             />
           </form>
+          <img
+            src="vendors/icons/add-outline.svg"
+            alt="Plus sign Blue"
+            class="plus-sign"
+            uk-toggle="target: #addEmployee"
+            type="button"
+          />
         </div>
+        <div class="selection-par">
+          <span
+            >Search for <span id="selectionResearch">personnel: All</span></span
+          >
+        </div>
+        <div class="label label-agenda" id="btnPersonnel">
+          <img
+            src="vendors/icons/people-circle-outline.svg"
+            alt="People icon"
+          />
+        </div>
+        <div class="label label-dep" id="btnDep">
+          <img src="vendors/icons/hammer-outline.svg" alt="Hammer icon" />
+        </div>
+        <div class="label label-loc" id="btnLoc">
+          <img src="vendors/icons/location-outline.svg" alt="Location icon" />
+        </div>
+        <div class="names-container" id="name-container"></div>
+      </section>
+    </main>
+
+    <!-- SECTION PERSON INFO -->
+    <div class="secPersonInfo" id="secPersoninfo">
+      <div class="grid-info-container">
+        <div class="city-container" id="cityImage">
+          <img
+            src="img/skyline-silhouette.jpg"
+            alt="City Image"
+            class="city-image"
+          />
+        </div>
+
+        <img
+          src="vendors/icons/person.svg"
+          alt="Spanner tool"
+          class="info-icon"
+        />
+
+        <h2 class="info-name" id="infoName"></h2>
+        <img
+          src="vendors/icons/create-outline.svg"
+          alt="Edit Icon"
+          class="info-edit"
+          id="editButton"
+          uk-toggle="target: #editEmployee"
+        />
+        <div class="info-container">
+          <p class="info-label">e-mail:</p>
+          <p class="info" id="email"></p>
+        </div>
+
+        <div class="info-container">
+          <p class="info-label">Job title:</p>
+          <p class="info" id="jobTitle"></p>
+
+          <p class="info-label">Department:</p>
+          <p class="info" id="department"></p>
+
+          <p class="info-label">Location:</p>
+          <p class="info" id="location"></p>
+        </div>
+        <button class="button delete-button" id="deleteButton">DELETE</button>
+        <img
+          src="vendors/icons/close-outline.svg"
+          alt="Close"
+          class="close-person-info"
+          id="closePersonInfo"
+        />
+      </div>
+    </div>
+
+    <!-- MODAL ADD NEW EMPLOYEE -->
+    <div id="addEmployee" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body modal-container">
+        <img
+          src="vendors/icons/close-outline.svg"
+          alt="Close X"
+          class="uk-modal-close close-modal"
+        />
+        <header class="header header-modal">
+          <h1 class="header-modal-title">Add New Employee</h1>
+          <img
+            src="vendors/icons/person-add-outline.svg"
+            alt="Add People Icon"
+            class="add-people-icon"
+          />
+        </header>
+
+        <form class="uk-form-stacked" id="formAddEmployee">
+          <div class="uk-margin form-line">
+            <label class="uk-form-label form-label" for="fname"
+              >First Name:</label
+            >
+            <div class="uk-form-controls">
+              <input
+                class="uk-input form-input"
+                id="addfname"
+                type="text"
+                name="fname"
+                required
+              />
+            </div>
+          </div>
+          <div class="uk-margin form-line">
+            <label class="uk-form-label form-label" for="lname"
+              >Last Name:</label
+            >
+            <div class="uk-form-controls">
+              <input
+                class="uk-input form-input"
+                id="addlname"
+                type="text"
+                name="lname"
+                required
+              />
+            </div>
+          </div>
+          <div class="uk-margin form-line">
+            <label class="uk-form-label form-label" for="email">E-mail:</label>
+            <div class="uk-form-controls">
+              <input
+                class="uk-input form-input"
+                id="addemail"
+                type="text"
+                name="email"
+                required
+              />
+            </div>
+          </div>
+          <div class="uk-margin form-line">
+            <label class="uk-form-label form-label" for="job">Job Title:</label>
+            <div class="uk-form-controls">
+              <input
+                class="uk-input form-input"
+                id="addjob"
+                type="text"
+                name="job"
+                required
+              />
+            </div>
+          </div>
+          <div class="uk-margin form-line">
+            <label class="uk-form-label form-label" for="dep"
+              >Department:</label
+            >
+            <div class="uk-margin">
+              <select class="uk-select select-bar" id="addDep"></select>
+            </div>
+          </div>
+          <input
+            type="submit"
+            class="button submit-insert-button"
+            value="submit"
+          />
+        </form>
+      </div>
+    </div>
+
+    <!-- MODAL EDIT EMPLOYEE -->
+    <div id="editEmployee" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+        <img
+          src="vendors/icons/close-outline.svg"
+          alt="Close X"
+          class="uk-modal-close close-modal"
+        />
+        <header class="header header-modal">
+          <h1 class="header-modal-title">Edit Employee Details</h1>
+          <img
+            src="vendors/icons/people-outline.svg"
+            alt="Edit People Icon"
+            class="manage-people-icon"
+          />
+        </header>
+
+        <form class="uk-form-stacked" id="formEditEmployee">
+          <div class="uk-margin form-line">
+            <label class="uk-form-label form-label" for="editfname"
+              >First Name:</label
+            >
+            <div class="uk-form-controls">
+              <input
+                class="uk-input form-input"
+                id="editfname"
+                type="text"
+                name="editfname"
+              />
+            </div>
+          </div>
+          <div class="uk-margin form-line">
+            <label class="uk-form-label form-label" for="editlname"
+              >Last Name:</label
+            >
+            <div class="uk-form-controls">
+              <input
+                class="uk-input form-input"
+                id="editlname"
+                type="text"
+                name="editlname"
+              />
+            </div>
+          </div>
+          <div class="uk-margin form-line">
+            <label class="uk-form-label form-label" for="editemail"
+              >E-mail:</label
+            >
+            <div class="uk-form-controls">
+              <input
+                class="uk-input form-input"
+                id="editemail"
+                type="text"
+                name="editemail"
+              />
+            </div>
+          </div>
+          <div class="uk-margin form-line">
+            <label class="uk-form-label form-label" for="editjob"
+              >Job Title:</label
+            >
+            <div class="uk-form-controls">
+              <input
+                class="uk-input form-input"
+                id="editjob"
+                type="text"
+                name="editjob"
+              />
+            </div>
+          </div>
+          <div class="uk-margin form-line">
+            <label class="uk-form-label form-label">Department:</label>
+            <div class="uk-margin">
+              <select class="uk-select select-bar" id="editDep"></select>
+            </div>
+          </div>
+
+          <input
+            type="submit"
+            class="button submit-edit-button"
+            value="Save changes"
+          />
+        </form>
       </div>
     </div>
 

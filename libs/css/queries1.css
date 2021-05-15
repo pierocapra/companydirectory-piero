@@ -1,0 +1,117 @@
+/* BIG TABLETS 960px*/
+@media only screen and (max-width: 60em) {
+  .secPersonInfo {
+    padding: 3rem;
+    /* background-color: brown; */
+  }
+}
+
+/* SMALL TABLETS 820px*/
+@media only screen and (max-width: 51.25em) {
+  html {
+    font-size: 52%;
+  }
+
+  .secPersonInfo {
+    /* background-color: rgb(216, 187, 19); */
+    width: 55%;
+  }
+
+  .main-container {
+    grid-template-columns: 45% 55%;
+  }
+  .fillerLocDep {
+    display: none;
+  }
+  .deploc-off-canvas {
+    height: calc(98% - 17rem);
+    width: 37%;
+  }
+
+  .search input {
+    height: 30px !important;
+  }
+}
+
+/* BIG PHONES 660px */
+@media only screen and (max-width: 41.25em) {
+  .secPersonInfo {
+    /* background-color: rgb(26, 255, 5); */
+    width: 60%;
+  }
+  .main-container {
+    grid-template-columns: 40% 60%;
+  }
+
+  .deploc-off-canvas {
+    width: 28%;
+  }
+}
+
+/* CELLPHONES 580px */
+@media only screen and (max-width: 36.25em) {
+  html {
+    font-size: 62.5%;
+  }
+
+  .secPersonInfo {
+    /* background-color: rgb(255, 5, 243); */
+    width: 100%;
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+  }
+  .main-container {
+    grid-template-columns: 100%;
+  }
+
+  .header-title {
+    font-size: 2.5rem;
+  }
+
+  .filler-person-info {
+    display: none;
+  }
+  .deploc-off-canvas {
+    width: 28%;
+  }
+
+  .deploc-header {
+    height: 5rem;
+  }
+  .search input {
+    height: 40px !important;
+  }
+
+  .deploc-off-canvas {
+    width: calc(100% - 70px);
+  }
+  .close-person-info {
+    display: block;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  .manage-people-icon {
+    height: 4rem;
+  }
+}
+
+/* SMALL PHONES 360px */
+@media only screen and (max-width: 25em) {
+  .manage-people-icon {
+    display: none;
+  }
+}
+
+/* VERY SMALL PHONES 310px */
+@media only screen and (max-width: 19.375em) {
+  h1 {
+    font-size: 2.3rem;
+  }
+  .manage-people-icon {
+    display: none;
+  }
+}

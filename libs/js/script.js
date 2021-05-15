@@ -54,7 +54,7 @@ $(document).ready(function () {
                 "var(--secondary-color)"
               );
               //Label agenda
-              $(".label-agenda").css("width", "30px");
+              $(".label-agenda").css("width", "45px");
 
               retrievePersonnelByDepartment(depId);
 
@@ -137,7 +137,7 @@ $(document).ready(function () {
               );
 
               //Label agenda
-              $(".label-agenda").css("width", "30px");
+              $(".label-agenda").css("width", "45px");
 
               retrievePersonnelByLocation(locId);
 
@@ -344,6 +344,7 @@ $(document).ready(function () {
         $("#editDep").prepend(
           `<option value=${depID} class="placeholder-look" selected>${department}</option>`
         );
+        $("#secPersoninfo").css("transform", "translateX(0)");
       });
     });
   };
@@ -786,11 +787,11 @@ $(document).ready(function () {
   let locSlided = false;
   $("#btnPersonnel").on("click", () => {
     retrievePersonnel();
-    $("#btnPersonnel").css("width", "40px");
+    $("#btnPersonnel").css("width", "55px");
     $("#depSection").css("transform", "translateX(-110%)");
     $("#locSection").css("transform", "translateX(-110%)");
-    $("#btnDep").css("width", "30px");
-    $("#btnLoc").css("width", "30px");
+    $("#btnDep").css("width", "45px");
+    $("#btnLoc").css("width", "45px");
     locSlided = false;
     depSlided = false;
 
@@ -820,14 +821,14 @@ $(document).ready(function () {
 
       $("#depSection").css("transform", "translateX(0)");
       $("#locSection").css("transform", "translateX(-110%)");
-      $("#btnDep").css("width", "40px");
-      $("#btnLoc").css("width", "30px");
+      $("#btnDep").css("width", "55px");
+      $("#btnLoc").css("width", "45px");
       depSlided = true;
       locSlided = false;
     } else {
       $("#depSection").css("transform", "translateX(-110%)");
       // $("#locSection").css("transform", "translateX(0)");
-      $("#btnDep").css("width", "30px");
+      $("#btnDep").css("width", "45px");
       // $("#btnLoc").css("width", "40px");
       depSlided = false;
     }
@@ -838,17 +839,21 @@ $(document).ready(function () {
 
       $("#depSection").css("transform", "translateX(-110%)");
       $("#locSection").css("transform", "translateX(0)");
-      $("#btnDep").css("width", "30px");
-      $("#btnLoc").css("width", "40px");
+      $("#btnDep").css("width", "45px");
+      $("#btnLoc").css("width", "55px");
       locSlided = true;
       depSlided = false;
     } else {
       // $("#depSection").css("transform", "translateX(0)");
       $("#locSection").css("transform", "translateX(-110%)");
       // $("#btnDep").css("width", "40px");
-      $("#btnLoc").css("width", "30px");
+      $("#btnLoc").css("width", "45px");
       locSlided = false;
     }
+  });
+
+  $("#closePersonInfo").on("click", () => {
+    $(".secPersonInfo").css("transform", "translate(100%)");
   });
 
   $(window).on("load", function () {
