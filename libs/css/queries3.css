@@ -64,7 +64,7 @@
     -o-transform: translateX(100%);
   }
   .main-container {
-    grid-template-columns: 100%;
+    grid-template-columns: 1fr;
   }
 
   .header-title {

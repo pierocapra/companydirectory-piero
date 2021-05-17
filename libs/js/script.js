@@ -292,7 +292,7 @@ $(document).ready(function () {
 
       if (initialTemp != initial) {
         $("#name-container").append(
-          `</ul><div class="letter">${initialTemp}</div><ul id="${initialTemp}">`
+          `</ul><div class="letter" >${initialTemp}</div><ul id="${initialTemp}">`
         );
         initial = initialTemp;
       }
