@@ -369,24 +369,55 @@ $(document).ready(function () {
   };
 
   const insertNewDepartment = (name, locationID) => {
+    //check if the department already exists
     $.ajax({
-      url: "libs/php/insertDepartment.php",
-      type: "POST",
-      data: {
-        name: name,
-        locationID: locationID,
-      },
+      url: "libs/php/getAllDepartments.php",
+      type: "GET",
       success: function (result) {
-        // console.log(result);
-        UIkit.notification({
-          message: "NEW DEPARTMENT SUCCESSFULLY ADDED!",
-          status: "primary",
-          pos: "top-right",
-          timeout: 4000,
-        });
+        // console.log(result["data"]);
+        let departmentExist = false;
 
-        //reload departments
-        retrieveDepartments();
+        if (result.status.name == "ok") {
+          const temp = result["data"];
+
+          $.each(temp, (department) => {
+            if (
+              temp[department]["name"].toLowerCase() ===
+              name.trim().toLowerCase()
+            ) {
+              departmentExist = true;
+            }
+          });
+        }
+
+        if (departmentExist === false) {
+          //if doesn't exist can be added
+          $.ajax({
+            url: "libs/php/insertDepartment.php",
+            type: "POST",
+            data: {
+              name: name.trim(),
+              locationID: locationID,
+            },
+            success: function (result) {
+              // console.log(result);
+              UIkit.notification({
+                message: "NEW DEPARTMENT SUCCESSFULLY ADDED!",
+                status: "primary",
+                pos: "top-right",
+                timeout: 4000,
+              });
+
+              //reload departments
+              retrieveDepartments();
+            },
+            error: function (result, a, e) {
+              alert("Error! Cannot Insert New Department!");
+            },
+          });
+        } else {
+          alert("This department already exist!");
+        }
       },
       error: function (result, a, e) {
         alert("Error! Cannot Insert New Department!");
@@ -395,23 +426,53 @@ $(document).ready(function () {
   };
 
   const insertNewLocation = (name) => {
+    //check if location already exist
     $.ajax({
-      url: "libs/php/insertLocation.php",
-      type: "POST",
-      data: {
-        name: name,
-      },
+      url: "libs/php/getAllLocations.php",
+      type: "GET",
       success: function (result) {
-        // console.log(result);
-        UIkit.notification({
-          message: "NEW LOCATION SUCCESSFULLY ADDED!",
-          status: "primary",
-          pos: "top-right",
-          timeout: 4000,
-        });
+        // console.log(result["data"]);
+        let locationExist = false;
 
-        //reload locations
-        retrieveLocations();
+        if (result.status.name == "ok") {
+          const temp = result["data"];
+
+          $.each(temp, (location) => {
+            if (
+              temp[location]["name"].toLowerCase() === name.trim().toLowerCase()
+            ) {
+              locationExist = true;
+            }
+          });
+        }
+
+        if (locationExist === false) {
+          //if it doesn't can be added
+          $.ajax({
+            url: "libs/php/insertLocation.php",
+            type: "POST",
+            data: {
+              name: name.trim(),
+            },
+            success: function (result) {
+              // console.log(result);
+              UIkit.notification({
+                message: "NEW LOCATION SUCCESSFULLY ADDED!",
+                status: "primary",
+                pos: "top-right",
+                timeout: 4000,
+              });
+
+              //reload locations
+              retrieveLocations();
+            },
+            error: function (result, a, e) {
+              alert("Error! Cannot Insert New Department!");
+            },
+          });
+        } else {
+          alert("This location already exist!");
+        }
       },
       error: function (result, a, e) {
         alert("Error! Cannot Insert New Department!");
@@ -450,7 +511,6 @@ $(document).ready(function () {
         const location = temp["location"];
 
         //UPDATE INFO IN PERSON WINDOW
-
         if (
           location == "London" ||
           location == "New York" ||
@@ -520,6 +580,7 @@ $(document).ready(function () {
   };
 
   const deleteDepartment = (depID) => {
+    //check if department have any dependencies
     $.ajax({
       url: "libs/php/checkDepartmentEmpty.php",
       type: "POST",
@@ -528,6 +589,7 @@ $(document).ready(function () {
       },
 
       success: function (result) {
+        // if it's empty can be deleted
         if (result["data"]["COUNT"] == 0) {
           $.ajax({
             url: "libs/php/deleteDepartment.php",
@@ -563,6 +625,7 @@ $(document).ready(function () {
   };
 
   const deleteLocation = (locID) => {
+    //check if location have any dependencies
     $.ajax({
       url: "libs/php/checkLocationEmpty.php",
       type: "POST",
@@ -571,7 +634,7 @@ $(document).ready(function () {
       },
 
       success: function (result) {
-        // console.log(result["data"]["COUNT"]);
+        // if it's empty can be deleted
         if (result["data"]["COUNT"] == 0) {
           $.ajax({
             url: "libs/php/deleteLocation.php",
@@ -662,7 +725,7 @@ $(document).ready(function () {
     insertNewDepartment($("#addNewDep").val(), $("#addLoc").val());
 
     // close window
-    $(".addDepartmentWindow").css("opacity", "0");
+    UIkit.dropdown("#addDepWindow").hide();
 
     // clearfields
     $("#addNewDep").val("");
@@ -676,7 +739,7 @@ $(document).ready(function () {
     insertNewLocation($("#addNewLoc").val());
 
     // close window
-    $(".addLocationWindow").css("opacity", "0");
+    UIkit.dropdown("#addLocWindow").hide();
 
     // clearfields
     $("#addNewLoc").val("");

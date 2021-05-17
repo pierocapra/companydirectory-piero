@@ -133,6 +133,37 @@ li:active {
   -ms-border-radius: 2rem;
   -o-border-radius: 2rem;
   cursor: pointer;
+  box-shadow: 3px -3px 6px rgb(124, 124, 124);
+  /*outline: 2px solid var(--secondary-color);
+  outline-offset: 10px;
+  */
+  margin-left: 50%;
+  transition: transform 0.1s;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -webkit-transition: transform 0.1s;
+  -moz-transition: transform 0.1s;
+  -ms-transition: transform 0.1s;
+  -o-transition: transform 0.1s;
+}
+.button:hover {
+  box-shadow: 4px -4px 6px rgb(124, 124, 124);
+  transform: translateX(-50%) scale(1.02);
+  -webkit-transform: translateX(-50%) scale(1.02);
+  -moz-transform: translateX(-50%) scale(1.02);
+  -ms-transform: translateX(-50%) scale(1.02);
+  -o-transform: translateX(-50%) scale(1.02);
+}
+.button:active {
+  box-shadow: 3px -3px 6px rgb(124, 124, 124);
+  transform: translateX(-50%) scale(1.01);
+  -webkit-transform: translateX(-50%) scale(1.01);
+  -moz-transform: translateX(-50%) scale(1.01);
+  -ms-transform: translateX(-50%) scale(1.01);
+  -o-transform: translateX(-50%) scale(1.01);
 }
 /**/
 
@@ -256,8 +287,16 @@ li:active {
 .dep-label {
   background-color: var(--secondary-color);
 }
+
+.dep-label:hover {
+  background-color: #4abbfc;
+}
+
 .loc-label {
   background-color: var(--tertiary-color);
+}
+.loc-label:hover {
+  background-color: #34e0b8;
 }
 .deploc-label_plus {
   top: 25px;
@@ -272,11 +311,6 @@ li:active {
   right: 45px;
   direction: ltr;
   padding: 0;
-  /* transform: translateX(50%);
-  -webkit-transform: translateX(50%);
-  -moz-transform: translateX(50%);
-  -ms-transform: translateX(50%);
-  -o-transform: translateX(50%); */
 }
 
 .addDepartmentWindow {
@@ -305,11 +339,6 @@ li:active {
   width: 10rem !important;
   margin-top: 1rem;
   margin-left: 50%;
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
 }
 
 .delete-deploc-button {
@@ -453,16 +482,30 @@ li:active {
   width: 55px;
 }
 
+.label-agenda:hover {
+  background-color: #485aff;
+}
+/* --primary-color: ;
+  --secondary-color: #00a3ff;
+  --tertiary-color: #00cf9e; */
 .label-dep {
   background-color: var(--secondary-color);
   top: 205px;
   width: 45px;
 }
+.label-dep:hover {
+  background-color: #4abbfc;
+}
+
 .label-loc {
   background-color: var(--tertiary-color);
   top: 270px;
   width: 45px;
 }
+.label-loc:hover {
+  background-color: #34e0b8;
+}
+
 /**/
 
 /*SECTION PERSON INFO OUTSIDE MAIN SLIDABLE*/
@@ -570,10 +613,34 @@ li:active {
   background-color: red;
   grid-column: 5/7;
   justify-self: flex-end;
-  /* position: absolute;
+  /*position: absolute;
   bottom: 2rem;
-  right: 4rem; */
+  right: 4rem;
+  */
   display: none;
+  margin-left: 0;
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+}
+
+.delete-button:hover {
+  box-shadow: 4px -4px 6px rgb(124, 124, 124);
+  transform: translateX(0) scale(1.02);
+  -webkit-transform: translateX(0) scale(1.02);
+  -moz-transform: translateX(0) scale(1.02);
+  -ms-transform: translateX(0) scale(1.02);
+  -o-transform: translateX(0) scale(1.02);
+}
+.delete-button:active {
+  box-shadow: 3px -3px 6px rgb(124, 124, 124);
+  transform: translateX(0) scale(1.01);
+  -webkit-transform: translateX(0) scale(1.01);
+  -moz-transform: translateX(0) scale(1.01);
+  -ms-transform: translateX(0) scale(1.01);
+  -o-transform: translateX(0) scale(1.01);
 }
 
 .close-person-info {
@@ -626,12 +693,6 @@ li:active {
 }
 .submit-insert-button {
   margin-left: 50%;
-
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
 }
 
 .close-modal {
@@ -644,12 +705,6 @@ li:active {
 /* MODAL EDIT PERSON */
 .submit-edit-button {
   margin-left: 50%;
-
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
 }
 
 /* PRELOADER */
