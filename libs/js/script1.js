@@ -16,7 +16,6 @@ $(document).ready(function () {
   // });
   //////////////////////////////////////////////////////////////////////////////////////////
 
-  /////////////////////////POPULATE WEBSITE DATA ON LOAD////////////////////////
   const retrieveDepartments = function () {
     $.ajax({
       url: "libs/php/getAllDepartments.php",
@@ -71,29 +70,6 @@ $(document).ready(function () {
 
               //clear the search input
               $("#searchInput").val("");
-
-              // if (!highlighted) {
-              //   $(`.depCell-${depId}`).addClass("highlight-selection");
-              //   highlighted = true;
-              //   $(`.depCell-${depId}`)
-              //     .siblings()
-              //     .removeClass("highlight-selection");
-              // } else {
-              //   $(`.depCell-${depId}`).removeClass("highlight-selection");
-              //   highlighted = false;
-
-              //   //update selection bar
-              //   $("#selectionResearch").html(`personnel: All`);
-              //   $(".selection-par").css(
-              //     "backgroundColor",
-              //     "var(--primary-color)"
-              //   );
-
-              //   //Label agenda
-              //   $(".label-agenda").css("width", "40px");
-
-              //   retrievePersonnel();
-              // }
             });
           });
         }
@@ -154,31 +130,6 @@ $(document).ready(function () {
 
               //clear the search input
               $("#searchInput").val("");
-
-              // if (!highlighted) {
-              //   $(`.locCell-${locId}`).addClass("highlight-selection");
-              //   $(`.locCell-${locId}`)
-              //     .siblings()
-              //     .removeClass("highlight-selection");
-
-              //   highlighted = true;
-
-              // } else {
-              //   $(`.locCell-${locId}`).removeClass("highlight-selection");
-              //   highlighted = false;
-
-              //   //update selection bar
-              //   $("#selectionResearch").html(`personnel: All`);
-              //   $(".selection-par").css(
-              //     "backgroundColor",
-              //     "var(--primary-color)"
-              //   );
-
-              //   //Label agenda
-              //   $(".label-agenda").css("width", "40px");
-
-              //   retrievePersonnel(`.locCell-${locId}`);
-              // }
             });
           });
         }
@@ -570,52 +521,87 @@ $(document).ready(function () {
 
   const deleteDepartment = (depID) => {
     $.ajax({
-      url: "libs/php/deleteDepartment.php",
+      url: "libs/php/checkDepartmentEmpty.php",
       type: "POST",
       data: {
-        id: depID,
+        departmentID: depID,
       },
+
       success: function (result) {
-        // console.log(result);
+        if (result["data"]["COUNT"] == 0) {
+          $.ajax({
+            url: "libs/php/deleteDepartment.php",
+            type: "POST",
+            data: {
+              id: depID,
+            },
+            success: function (result) {
+              // console.log(result);
 
-        UIkit.notification({
-          message: "DEPARTMENT SUCCESSFULLY DELETED!",
-          status: "primary",
-          pos: "top-right",
-          timeout: 4000,
-        });
+              UIkit.notification({
+                message: "DEPARTMENT SUCCESSFULLY DELETED!",
+                status: "primary",
+                pos: "top-right",
+                timeout: 4000,
+              });
 
-        //reload personnel
-        retrieveDepartments();
+              //reload personnel
+              retrieveDepartments();
+            },
+            error: function (result, a, e) {
+              alert("Error in retrieving employees inside department");
+            },
+          });
+        } else {
+          alert("This department contains employees!! It can't be deleted!");
+        }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot delete this department!");
+        alert("Error! Cannot delete the department from the database!");
       },
     });
   };
 
   const deleteLocation = (locID) => {
     $.ajax({
-      url: "libs/php/deleteLocation.php",
+      url: "libs/php/checkLocationEmpty.php",
       type: "POST",
       data: {
-        id: locID,
+        locationID: locID,
       },
+
       success: function (result) {
-        // console.log(result);
+        // console.log(result["data"]["COUNT"]);
+        if (result["data"]["COUNT"] == 0) {
+          $.ajax({
+            url: "libs/php/deleteLocation.php",
+            type: "POST",
+            data: {
+              id: locID,
+            },
+            success: function (result) {
+              UIkit.notification({
+                message: "LOCATION SUCCESSFULLY DELETED!",
+                status: "primary",
+                pos: "top-right",
+                timeout: 4000,
+              });
 
-        UIkit.notification({
-          message: "LOCATION SUCCESSFULLY DELETED!",
-          status: "primary",
-          pos: "top-right",
-          timeout: 4000,
-        });
-
-        //reload personnel
-        retrieveLocations();
+              //reload personnel
+              retrieveLocations();
+            },
+            error: function (result, a, e) {
+              alert("Error in retrieving departments inside location");
+            },
+          });
+        } else {
+          alert(
+            "This location contains departments and employees!! It can't be deleted!"
+          );
+        }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot delete this location!");
+        alert("Error! Cannot delete the location from the database!");
       },
     });
   };
@@ -812,19 +798,6 @@ $(document).ready(function () {
 
     //clear the search input
     $("#searchInput").val("");
-
-    // if (!depSlided) {
-    // $("#btnDep").css("width", "40px");
-    // $("#btnLoc").css("width", "30px");
-    //   depSlided = true;
-    //   locSlided = false;
-    // } else {
-    //   $("#depSection").css("transform", "translateX(-110%)");
-    //   // $("#locSection").css("transform", "translateX(0)");
-    //   $("#btnDep").css("width", "30px");
-    //   // $("#btnLoc").css("width", "40px");
-    //   depSlided = false;
-    // }
   });
   $("#btnDep").on("click", () => {
     if (!depSlided) {
@@ -838,9 +811,7 @@ $(document).ready(function () {
       locSlided = false;
     } else {
       $("#depSection").css("transform", "translateX(-110%)");
-      // $("#locSection").css("transform", "translateX(0)");
       $("#btnDep").css("width", "45px");
-      // $("#btnLoc").css("width", "40px");
       depSlided = false;
     }
   });
@@ -855,9 +826,7 @@ $(document).ready(function () {
       locSlided = true;
       depSlided = false;
     } else {
-      // $("#depSection").css("transform", "translateX(0)");
       $("#locSection").css("transform", "translateX(-110%)");
-      // $("#btnDep").css("width", "40px");
       $("#btnLoc").css("width", "45px");
       locSlided = false;
     }
