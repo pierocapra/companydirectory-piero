@@ -3,7 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Piero Capra" />
+    <meta name="description" content="Employees management system" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Company Directory</title>
+
+    <!-- FAVICONS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/vendors/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/vendors/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/vendors/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/vendors/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/vendors/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/vendors/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/vendors/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
 
     <!-- GOOGLE FONT -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -15,11 +30,12 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/uikit.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/style3.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/queries3.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/style1.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/queries1.css" type="text/css" />
   </head>
 
   <body>
+    <!-- <div id="preloader"></div> -->
     <header class="header">
       <h1 class="header-title">Company Directory</h1>
       <img
@@ -32,7 +48,7 @@
     <!-- SECTIONS EXTERNAL TO THE MAIN WINDOW -->
 
     <!-- DEPARTMENT SECTION -->
-    <div class="deploc-off-canvas" id="depSection">
+    <section class="deploc-off-canvas" id="depSection">
       <div class="deploc-header dep-header">
         <h2 class="deploc-title">DEPARTMENT</h2>
       </div>
@@ -120,10 +136,10 @@
 
       <!-- LIST OF DEPARTMENTS -->
       <ul class="ul-deploc" id="depList"></ul>
-    </div>
+    </section>
 
     <!-- LOCATION SECTION -->
-    <div class="deploc-off-canvas" id="locSection">
+    <section class="deploc-off-canvas" id="locSection">
       <div class="deploc-header loc-header">
         <h2 class="deploc-title">LOCATION</h2>
       </div>
@@ -203,7 +219,7 @@
 
       <!-- LIST OF LOCATIONS -->
       <ul class="ul-deploc" id="locList"></ul>
-    </div>
+    </section>
 
     <!--  -->
     <!-- MAIN -->
@@ -252,7 +268,7 @@
     </main>
 
     <!-- SECTION PERSON INFO -->
-    <div class="secPersonInfo" id="secPersoninfo">
+    <section class="secPersonInfo" id="secPersoninfo">
       <div class="grid-info-container">
         <div class="city-container" id="cityImage">
           <img
@@ -299,7 +315,7 @@
           id="closePersonInfo"
         />
       </div>
-    </div>
+    </section>
 
     <!-- MODAL ADD NEW EMPLOYEE -->
     <div id="addEmployee" uk-modal>
@@ -474,10 +490,9 @@
       </div>
     </div>
 
-    <div id="preloader"></div>
     <!-- SCRIPTS -->
     <script src="libs/js/jquery-2.2.3.min.js"></script>
     <script src="libs/js/uikit.js"></script>
-    <script src="libs/js/script.js"></script>
+    <script src="libs/js/script1.js"></script>
   </body>
 </html>

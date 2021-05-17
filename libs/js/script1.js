@@ -4,8 +4,19 @@
 ////////////////////////GLOBAL VARIABLES/////////////////////////////////////
 let currentPersonID = "";
 
-/////////////////////////POPULATE WEBSITE DATA ON LOAD////////////////////////
 $(document).ready(function () {
+  //////PRELOADER
+  // $(window).on("load", function () {
+  //   $("#preloader").length &&
+  //     $("#preloader")
+  //       .delay(100)
+  //       .fadeOut("slow", function () {
+  //         $(this).remove();
+  //       });
+  // });
+  //////////////////////////////////////////////////////////////////////////////////////////
+
+  /////////////////////////POPULATE WEBSITE DATA ON LOAD////////////////////////
   const retrieveDepartments = function () {
     $.ajax({
       url: "libs/php/getAllDepartments.php",
@@ -854,14 +865,5 @@ $(document).ready(function () {
 
   $("#closePersonInfo").on("click", () => {
     $(".secPersonInfo").css("transform", "translate(100%)");
-  });
-
-  $(window).on("load", function () {
-    $("#preloader").length &&
-      $("#preloader")
-        .delay(100)
-        .fadeOut("slow", function () {
-          $(this).remove();
-        });
   });
 });

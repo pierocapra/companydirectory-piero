@@ -268,14 +268,15 @@ li:active {
 
 .addDepLocWindow {
   width: 80%;
-  right: 50%;
+  min-width: 0;
+  right: 45px;
   direction: ltr;
   padding: 0;
-  transform: translateX(50%);
+  /* transform: translateX(50%);
   -webkit-transform: translateX(50%);
   -moz-transform: translateX(50%);
   -ms-transform: translateX(50%);
-  -o-transform: translateX(50%);
+  -o-transform: translateX(50%); */
 }
 
 .addDepartmentWindow {
@@ -652,7 +653,7 @@ li:active {
 }
 
 /* PRELOADER */
-#preloader {
+/* #preloader {
   position: fixed;
   top: 0;
   left: 0;
@@ -694,4 +695,4 @@ li:active {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-}
+} */
