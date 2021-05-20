@@ -16,6 +16,7 @@ $(document).ready(function () {
   //         $(this).remove();
   //       });
   // });
+
   //////////////////////////////////////////////////////////////////////////////////////////
 
   const retrieveDepartments = function () {
@@ -82,7 +83,8 @@ $(document).ready(function () {
         }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot retrieve departments!");
+        $("#alertMessage").html("Error! Cannot retrieve departments!");
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -147,7 +149,8 @@ $(document).ready(function () {
         }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot retrieve locations");
+        $("#alertMessage").html("Error! Cannot retrieve locations!");
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -166,7 +169,8 @@ $(document).ready(function () {
         }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot retrieve locations");
+        $("#alertMessage").html("Error! Cannot retrieve Personnel!");
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -188,7 +192,10 @@ $(document).ready(function () {
         }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot retrieve locations");
+        $("#alertMessage").html(
+          "Error! Cannot retrieve Personnel by Department!"
+        );
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -210,7 +217,10 @@ $(document).ready(function () {
         }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot retrieve locations");
+        $("#alertMessage").html(
+          "Error! Cannot retrieve Personnel by Location!"
+        );
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -240,7 +250,8 @@ $(document).ready(function () {
         }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot retrieve any people");
+        $("#alertMessage").html("Error! Cannot retrieve Personnel by Search!");
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -384,7 +395,8 @@ $(document).ready(function () {
         retrievePersonnel();
       },
       error: function (result, a, e) {
-        alert("Error! Cannot Insert New person!");
+        $("#alertMessage").html("Error! Cannot Insert a new employee!");
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -433,15 +445,18 @@ $(document).ready(function () {
               retrieveDepartments();
             },
             error: function (result, a, e) {
-              alert("Error! Cannot Insert New Department!");
+              $("#alertMessage").html("Error! Cannot insert a new department!");
+              UIkit.modal("#alertModal").show();
             },
           });
         } else {
-          alert("This department already exist!");
+          $("#alertMessage").html("This department already exist!");
+          UIkit.modal("#alertModal").show();
         }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot Insert New Department!");
+        $("#alertMessage").html("Error! Cannot insert a new department!");
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -488,15 +503,18 @@ $(document).ready(function () {
               retrieveLocations();
             },
             error: function (result, a, e) {
-              alert("Error! Cannot Insert New Department!");
+              $("#alertMessage").html("Error! Cannot insert a new Location!");
+              UIkit.modal("#alertModal").show();
             },
           });
         } else {
-          alert("This location already exist!");
+          $("#alertMessage").html("This location already exist!");
+          UIkit.modal("#alertModal").show();
         }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot Insert New Department!");
+        $("#alertMessage").html("Error! Cannot insert a new Location!");
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -569,7 +587,8 @@ $(document).ready(function () {
         retrievePersonnel();
       },
       error: function (result, a, e) {
-        alert("Error! Cannot edit this person!");
+        $("#alertMessage").html("Error! Cannot edit this person!");
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -595,7 +614,8 @@ $(document).ready(function () {
         retrievePersonnel();
       },
       error: function (result, a, e) {
-        alert("Error! Cannot delete this person!");
+        $("#alertMessage").html("Error! Cannot delete this person!");
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -612,35 +632,53 @@ $(document).ready(function () {
       success: function (result) {
         // if it's empty can be deleted
         if (result["data"]["COUNT"] == 0) {
-          $.ajax({
-            url: "libs/php/deleteDepartment.php",
-            type: "POST",
-            data: {
-              id: depID,
-            },
-            success: function (result) {
-              // console.log(result);
+          $("#confirmDeleteMessage").append(
+            `<span class="confirm-message">Are you sure you want to delete this department?</span>`
+          );
+          UIkit.modal("#confirmDelete").show();
 
-              UIkit.notification({
-                message: "DEPARTMENT SUCCESSFULLY DELETED!",
-                status: "primary",
-                pos: "top-right",
-                timeout: 4000,
-              });
+          $("#deleteConfirmed").on("click", () => {
+            $.ajax({
+              url: "libs/php/deleteDepartment.php",
+              type: "POST",
+              data: {
+                id: depID,
+              },
+              success: function (result) {
+                // console.log(result);
 
-              //reload personnel
-              retrieveDepartments();
-            },
-            error: function (result, a, e) {
-              alert("Error in retrieving employees inside department");
-            },
+                UIkit.notification({
+                  message: "DEPARTMENT SUCCESSFULLY DELETED!",
+                  status: "primary",
+                  pos: "top-right",
+                  timeout: 4000,
+                });
+
+                //reload personnel
+                retrieveDepartments();
+              },
+              error: function (result, a, e) {
+                $("#alertMessage").html(
+                  "Error in retrieving employees inside department"
+                );
+                UIkit.modal("#alertModal").show();
+              },
+            });
+
+            UIkit.dropdown("#deleteDepWindow").hide(0);
           });
         } else {
-          alert("This department contains employees!! It can't be deleted!");
+          $("#alertMessage").html(
+            "This department contains employees!! It cannot be deleted!"
+          );
+          UIkit.modal("#alertModal").show();
         }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot delete the department from the database!");
+        $("#alertMessage").html(
+          "Error! Cannot delete the department from the database!"
+        );
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -657,35 +695,51 @@ $(document).ready(function () {
       success: function (result) {
         // if it's empty can be deleted
         if (result["data"]["COUNT"] == 0) {
-          $.ajax({
-            url: "libs/php/deleteLocation.php",
-            type: "POST",
-            data: {
-              id: locID,
-            },
-            success: function (result) {
-              UIkit.notification({
-                message: "LOCATION SUCCESSFULLY DELETED!",
-                status: "primary",
-                pos: "top-right",
-                timeout: 4000,
-              });
+          $("#confirmDeleteMessage").append(
+            `<span class="confirm-message">Are you sure you want to delete this location?</span>`
+          );
+          UIkit.modal("#confirmDelete").show();
 
-              //reload personnel
-              retrieveLocations();
-            },
-            error: function (result, a, e) {
-              alert("Error in retrieving departments inside location");
-            },
+          $("#deleteConfirmed").on("click", () => {
+            $.ajax({
+              url: "libs/php/deleteLocation.php",
+              type: "POST",
+              data: {
+                id: locID,
+              },
+              success: function (result) {
+                UIkit.notification({
+                  message: "LOCATION SUCCESSFULLY DELETED!",
+                  status: "primary",
+                  pos: "top-right",
+                  timeout: 4000,
+                });
+
+                //reload personnel
+                retrieveLocations();
+              },
+              error: function (result, a, e) {
+                $("#alertMessage").html(
+                  "Error in retrieving departments inside location"
+                );
+                UIkit.modal("#alertModal").show();
+              },
+            });
+
+            UIkit.dropdown("#deleteLocWindow").hide(0);
           });
         } else {
-          alert(
-            "This location contains departments and employees!! It can't be deleted!"
+          $("#alertMessage").html(
+            "This location contains departments and employees!! It cannot be deleted!"
           );
+          UIkit.modal("#alertModal").show();
         }
       },
       error: function (result, a, e) {
-        alert("Error! Cannot delete the location from the database!");
+        $("#alertMessage").html(
+          "Error! Cannot delete the location from the database!"
+        );
+        UIkit.modal("#alertModal").show();
       },
     });
   };
@@ -746,7 +800,7 @@ $(document).ready(function () {
     insertNewDepartment($("#addNewDep").val(), $("#addLoc").val());
 
     // close window
-    UIkit.dropdown("#addDepWindow").hide();
+    UIkit.dropdown("#addDepWindow").hide(0);
 
     // clearfields
     $("#addNewDep").val("");
@@ -760,7 +814,7 @@ $(document).ready(function () {
     insertNewLocation($("#addNewLoc").val());
 
     // close window
-    UIkit.dropdown("#addLocWindow").hide();
+    UIkit.dropdown("#addLocWindow").hide(0);
 
     // clearfields
     $("#addNewLoc").val("");
@@ -838,27 +892,11 @@ $(document).ready(function () {
   });
 
   $("#deleteDepButton").on("click", () => {
-    (() => {
-      if (confirm("Are you sure you want to delete this department? ")) {
-        deleteDepartment($("#deleteDep").val());
-
-        UIkit.dropdown("#deleteDepWindow").hide(false);
-      } else {
-        return;
-      }
-    })();
+    deleteDepartment($("#deleteDep").val());
   });
 
   $("#deleteLocButton").on("click", () => {
-    (() => {
-      if (confirm("Are you sure you want to delete this location? ")) {
-        deleteLocation($("#deleteLoc").val());
-
-        UIkit.dropdown("#deleteLocWindow").hide(false);
-      } else {
-        return;
-      }
-    })();
+    deleteLocation($("#deleteLoc").val());
   });
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////ACTIONS AND ANIMATIONS////////////////////////////////////////////////////////////////////////////
@@ -915,7 +953,21 @@ $(document).ready(function () {
     }
   });
 
+  //CLOSE BUTTONS
   $("#closePersonInfo").on("click", () => {
     $(".secPersonInfo").css("transform", "translate(100%)");
+  });
+
+  $("#closeAddDep").on("click", () => {
+    UIkit.dropdown("#addDepWindow").hide(0);
+  });
+  $("#closeDelDep").on("click", () => {
+    UIkit.dropdown("#deleteDepWindow").hide(0);
+  });
+  $("#closeAddLoc").on("click", () => {
+    UIkit.dropdown("#addLocWindow").hide(0);
+  });
+  $("#closeDelLoc").on("click", () => {
+    UIkit.dropdown("#deleteLocWindow").hide(0);
   });
 });

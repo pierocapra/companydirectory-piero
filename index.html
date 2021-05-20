@@ -49,13 +49,16 @@
 
     <!-- STYLES -->
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/uikit.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/uikit1.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/style3.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/queries1.css" type="text/css" />
   </head>
 
   <body>
     <!-- <div id="preloader"></div> -->
+
+    <!--  -->
+
     <header class="header">
       <h1 class="header-title">Company Directory</h1>
       <img
@@ -120,6 +123,7 @@
                 src="vendors/icons/close-outline.svg"
                 alt="Close X"
                 class="uk-modal-close close-dropdown"
+                id="closeAddDep"
               />
             </form>
           </div>
@@ -155,6 +159,12 @@
               class="button adddel-deploc-button delete-deploc-button"
               id="deleteDepButton"
               value="DELETE"
+            />
+            <img
+              src="vendors/icons/close-outline.svg"
+              alt="Close X"
+              class="uk-modal-close close-dropdown"
+              id="closeDelDep"
             />
           </div>
         </div>
@@ -207,6 +217,12 @@
                 class="button adddel-deploc-button add-loc-button"
                 value="ADD"
               />
+              <img
+                src="vendors/icons/close-outline.svg"
+                alt="Close X"
+                class="uk-modal-close close-dropdown"
+                id="closeAddLoc"
+              />
             </form>
           </div>
         </div>
@@ -240,6 +256,12 @@
               value="DELETE"
               id="deleteLocButton"
             />
+            <img
+              src="vendors/icons/close-outline.svg"
+              alt="Close X"
+              class="uk-modal-close close-dropdown"
+              id="closeDelLoc"
+            />
           </div>
         </div>
       </div>
@@ -251,6 +273,7 @@
     <!--  -->
     <!-- MAIN -->
     <!--  -->
+
     <main class="main-container">
       <section class="fillerLocDep"></section>
 
@@ -510,6 +533,43 @@
             value="Save changes"
           />
         </form>
+      </div>
+    </div>
+
+    <!-- ALERTS -->
+    <div id="alertModal" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body alert">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <p id="alertMessage"></p>
+      </div>
+    </div>
+
+    <!-- CONFIRM DELETE ALERT -->
+    <div id="confirmDelete" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body alert">
+        <p id="confirmDeleteMessage">
+          <span
+            ><img
+              src="vendors/icons/warning.svg"
+              alt="Warning Icon"
+              class="warning-icon"
+          /></span>
+        </p>
+        <p class="uk-text-right">
+          <button
+            class="uk-button uk-button-default uk-modal-close"
+            type="button"
+          >
+            Cancel
+          </button>
+          <button
+            class="uk-button uk-button-primary uk-modal-close"
+            type="button"
+            id="deleteConfirmed"
+          >
+            DELETE
+          </button>
+        </p>
       </div>
     </div>
 
