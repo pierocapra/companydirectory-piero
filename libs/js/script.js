@@ -3,6 +3,7 @@
 
 ////////////////////////GLOBAL VARIABLES/////////////////////////////////////
 let currentPersonID = "";
+
 let depSlided = false;
 let locSlided = false;
 
@@ -621,6 +622,37 @@ $(document).ready(function () {
   };
 
   const deleteDepartment = (depID) => {
+    $.ajax({
+      url: "libs/php/deleteDepartment.php",
+      type: "POST",
+      data: {
+        id: depID,
+      },
+      success: function (result) {
+        // console.log(result);
+        UIkit.notification({
+          message: "DEPARTMENT SUCCESSFULLY DELETED!",
+          status: "primary",
+          pos: "top-right",
+          timeout: 4000,
+        });
+
+        //reload personnel
+        retrieveDepartments();
+
+        UIkit.modal("#confirmDeleteDep").hide();
+        UIkit.dropdown("#deleteDepWindow").hide(0);
+      },
+      error: function (result, a, e) {
+        $("#alertMessage").html(
+          "Error in retrieving employees inside department"
+        );
+        UIkit.modal("#alertModal").show();
+      },
+    });
+  };
+
+  const checkDepartment = (depID) => {
     //check if department have any dependencies
     $.ajax({
       url: "libs/php/checkDepartmentEmpty.php",
@@ -632,41 +664,24 @@ $(document).ready(function () {
       success: function (result) {
         // if it's empty can be deleted
         if (result["data"]["COUNT"] == 0) {
-          $("#confirmDeleteMessage").append(
-            `<span class="confirm-message">Are you sure you want to delete this department?</span>`
-          );
-          UIkit.modal("#confirmDelete").show();
+          (() => {
+            if (confirm("Are you sure you want to delete this department?")) {
+              deleteDepartment(depID);
+            } else {
+              return;
+            }
+          })();
 
-          $("#deleteConfirmed").on("click", () => {
-            $.ajax({
-              url: "libs/php/deleteDepartment.php",
-              type: "POST",
-              data: {
-                id: depID,
-              },
-              success: function (result) {
-                // console.log(result);
+          // $("#confirmDeleteMessageDep").html(
+          //   "Are you sure you want to delete this department?"
+          // );
+          // UIkit.modal("#confirmDeleteDep").show();
 
-                UIkit.notification({
-                  message: "DEPARTMENT SUCCESSFULLY DELETED!",
-                  status: "primary",
-                  pos: "top-right",
-                  timeout: 4000,
-                });
+          // $("#deleteConfirmedDep").on("click", () => {
+          //   deleteDepartment(depId)
 
-                //reload personnel
-                retrieveDepartments();
-              },
-              error: function (result, a, e) {
-                $("#alertMessage").html(
-                  "Error in retrieving employees inside department"
-                );
-                UIkit.modal("#alertModal").show();
-              },
-            });
-
-            UIkit.dropdown("#deleteDepWindow").hide(0);
-          });
+          //   UIkit.dropdown("#deleteDepWindow").hide(0);
+          // });
         } else {
           $("#alertMessage").html(
             "This department contains employees!! It cannot be deleted!"
@@ -684,6 +699,38 @@ $(document).ready(function () {
   };
 
   const deleteLocation = (locID) => {
+    $.ajax({
+      url: "libs/php/deleteLocation.php",
+      type: "POST",
+      data: {
+        id: locID,
+      },
+      success: function (result) {
+        console.log(locID);
+
+        UIkit.notification({
+          message: "LOCATION SUCCESSFULLY DELETED!",
+          status: "primary",
+          pos: "top-right",
+          timeout: 4000,
+        });
+
+        //reload personnel
+        retrieveLocations();
+
+        UIkit.modal("#confirmDeleteLoc").hide();
+        UIkit.dropdown("#deleteLocWindow").hide(0);
+      },
+      error: function (result, a, e) {
+        $("#alertMessage").html(
+          "Error in retrieving departments inside location"
+        );
+        UIkit.modal("#alertModal").show();
+      },
+    });
+  };
+
+  const checkLocation = (locID) => {
     //check if location have any dependencies
     $.ajax({
       url: "libs/php/checkLocationEmpty.php",
@@ -695,39 +742,26 @@ $(document).ready(function () {
       success: function (result) {
         // if it's empty can be deleted
         if (result["data"]["COUNT"] == 0) {
-          $("#confirmDeleteMessage").append(
-            `<span class="confirm-message">Are you sure you want to delete this location?</span>`
-          );
-          UIkit.modal("#confirmDelete").show();
+          (() => {
+            if (confirm("Are you sure you want to delete this location?")) {
+              deleteLocation(locID);
+            } else {
+              return;
+            }
+          })();
 
-          $("#deleteConfirmed").on("click", () => {
-            $.ajax({
-              url: "libs/php/deleteLocation.php",
-              type: "POST",
-              data: {
-                id: locID,
-              },
-              success: function (result) {
-                UIkit.notification({
-                  message: "LOCATION SUCCESSFULLY DELETED!",
-                  status: "primary",
-                  pos: "top-right",
-                  timeout: 4000,
-                });
+          // $("#confirmDeleteMessageLoc").html(
+          //   "Are you sure you want to delete this location?"
+          // );
+          // UIkit.modal("#confirmDeleteLoc").show();
 
-                //reload personnel
-                retrieveLocations();
-              },
-              error: function (result, a, e) {
-                $("#alertMessage").html(
-                  "Error in retrieving departments inside location"
-                );
-                UIkit.modal("#alertModal").show();
-              },
-            });
+          // $("#deleteCancelledLoc").on("click", () => {
+          //   UIkit.modal("#confirmDeleteLoc").hide();
+          // });
 
-            UIkit.dropdown("#deleteLocWindow").hide(0);
-          });
+          // $("#deleteConfirmedLoc").on("click", () => {
+          //   deleteLocation(locID);
+          // });
         } else {
           $("#alertMessage").html(
             "This location contains departments and employees!! It cannot be deleted!"
@@ -868,8 +902,15 @@ $(document).ready(function () {
   });
 
   $("#deleteButton").on("click", () => {
+    // $("#confirmDeleteMessage").html(
+    //   "Are you sure you want to delete this Employee?"
+    // );
+    // UIkit.modal("#confirmDelete").show();
+
+    // $("#deleteConfirmed").on("click", () => {
+    // });
     (() => {
-      if (confirm("Are you sure you want to delete this employee details?")) {
+      if (confirm("Are you sure you want to delete this person?")) {
         deletePerson(currentPersonID);
 
         //clear fields
@@ -884,6 +925,7 @@ $(document).ready(function () {
         $("#department").html("");
         $("#location").html("");
 
+        $("#editButton").css("display", "none");
         $("#deleteButton").css("display", "none");
       } else {
         return;
@@ -892,11 +934,11 @@ $(document).ready(function () {
   });
 
   $("#deleteDepButton").on("click", () => {
-    deleteDepartment($("#deleteDep").val());
+    checkDepartment($("#deleteDep").val());
   });
 
   $("#deleteLocButton").on("click", () => {
-    deleteLocation($("#deleteLoc").val());
+    checkLocation($("#deleteLoc").val());
   });
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////ACTIONS AND ANIMATIONS////////////////////////////////////////////////////////////////////////////

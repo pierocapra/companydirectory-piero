@@ -50,7 +50,7 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/uikit1.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/style3.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/style2.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/queries1.css" type="text/css" />
   </head>
 
@@ -58,7 +58,6 @@
     <!-- <div id="preloader"></div> -->
 
     <!--  -->
-
     <header class="header">
       <h1 class="header-title">Company Directory</h1>
       <img
@@ -545,27 +544,57 @@
     </div>
 
     <!-- CONFIRM DELETE ALERT -->
-    <div id="confirmDelete" uk-modal>
+    <div id="confirmDeleteDep" uk-modal>
       <div class="uk-modal-dialog uk-modal-body alert">
-        <p id="confirmDeleteMessage">
+        <p>
           <span
             ><img
               src="vendors/icons/warning.svg"
               alt="Warning Icon"
-              class="warning-icon"
-          /></span>
+              class="warning-icon" /></span
+          ><span class="confirm-message" id="confirmDeleteMessageDep"></span>
         </p>
         <p class="uk-text-right">
           <button
-            class="uk-button uk-button-default uk-modal-close"
+            class="uk-button uk-button-default"
             type="button"
+            id="deleteCancelledDep"
           >
             Cancel
           </button>
           <button
-            class="uk-button uk-button-primary uk-modal-close"
+            class="uk-button uk-button-primary"
             type="button"
-            id="deleteConfirmed"
+            id="deleteConfirmedDep"
+          >
+            DELETE
+          </button>
+        </p>
+      </div>
+    </div>
+
+    <div id="confirmDeleteLoc" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body alert">
+        <p>
+          <span
+            ><img
+              src="vendors/icons/warning.svg"
+              alt="Warning Icon"
+              class="warning-icon" /></span
+          ><span class="confirm-message" id="confirmDeleteMessageLoc"></span>
+        </p>
+        <p class="uk-text-right">
+          <button
+            class="uk-button uk-button-default"
+            type="button"
+            id="deleteCancelledLoc"
+          >
+            Cancel
+          </button>
+          <button
+            class="uk-button uk-button-primary"
+            type="button"
+            id="deleteConfirmedLoc"
           >
             DELETE
           </button>
