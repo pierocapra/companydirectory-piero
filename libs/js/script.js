@@ -3,6 +3,8 @@
 
 ////////////////////////GLOBAL VARIABLES/////////////////////////////////////
 let currentPersonID = "";
+let depSlided = false;
+let locSlided = false;
 
 $(document).ready(function () {
   //////PRELOADER
@@ -70,6 +72,11 @@ $(document).ready(function () {
 
               //clear the search input
               $("#searchInput").val("");
+
+              //close section and reset buttons
+              $("#depSection").css("transform", "translateX(-110%)");
+              $("#btnDep").css("width", "45px");
+              depSlided = false;
             });
           });
         }
@@ -130,6 +137,11 @@ $(document).ready(function () {
 
               //clear the search input
               $("#searchInput").val("");
+
+              //close section and reset buttons
+              $("#locSection").css("transform", "translateX(-110%)");
+              $("#btnLoc").css("width", "45px");
+              locSlided = false;
             });
           });
         }
@@ -262,7 +274,7 @@ $(document).ready(function () {
       // </ul>
       $("#name-container")
         .append(`<li class="name-cell" id="person-${personId}">
-            <h3 class="name">${lName + " " + fName}</h3>
+            <h3 class="name">${lName + ", " + fName}</h3>
         </li>`);
 
       //Show Informations in the card
@@ -307,6 +319,15 @@ $(document).ready(function () {
           `<option value=${depID} class="placeholder-look" selected>${department}</option>`
         );
         $("#secPersoninfo").css("transform", "translateX(0)");
+
+        //close sections dep and loc and reset buttons
+        $("#depSection").css("transform", "translateX(-110%)");
+        $("#btnDep").css("width", "45px");
+        depSlided = false;
+
+        $("#locSection").css("transform", "translateX(-110%)");
+        $("#btnLoc").css("width", "45px");
+        locSlided = false;
       });
     });
   };
@@ -843,8 +864,7 @@ $(document).ready(function () {
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////ACTIONS AND ANIMATIONS////////////////////////////////////////////////////////////////////////////
 
   //LABELS animations
-  let depSlided = false;
-  let locSlided = false;
+
   $("#btnPersonnel").on("click", () => {
     retrievePersonnel();
     $("#btnPersonnel").css("width", "55px");

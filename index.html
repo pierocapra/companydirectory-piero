@@ -12,31 +12,31 @@
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="/vendors/favicons/apple-touch-icon.png"
+      href="vendors/favicons/apple-touch-icon.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="/vendors/favicons/favicon-32x32.png"
+      href="vendors/favicons/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="/vendors/favicons/favicon-16x16.png"
+      href="vendors/favicons/favicon-16x16.png"
     />
-    <link rel="manifest" href="/vendors/favicons/site.webmanifest" />
+    <link rel="manifest" href="vendors/favicons/site.webmanifest" />
     <link
       rel="mask-icon"
-      href="/vendors/favicons/safari-pinned-tab.svg"
+      href="vendors/favicons/safari-pinned-tab.svg"
       color="#5bbad5"
     />
-    <link rel="shortcut icon" href="/vendors/favicons/favicon.ico" />
+    <link rel="shortcut icon" href="vendors/favicons/favicon.ico" />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta
       name="msapplication-config"
-      content="/vendors/favicons/browserconfig.xml"
+      content="vendors/favicons/browserconfig.xml"
     />
     <meta name="theme-color" content="#ffffff" />
 
@@ -50,8 +50,8 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/uikit.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/style.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/queries.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/style3.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/queries1.css" type="text/css" />
   </head>
 
   <body>
@@ -85,7 +85,7 @@
           class="addDepLocWindow addDepartmentWindow"
           id="addDepWindow"
         >
-          <header class="header header-adddel-deploc">
+          <header class="header header-adddel-deploc header-adddel-Dep">
             <h1 class="header-adddel-deploc_title">Add New Department</h1>
           </header>
 
@@ -113,8 +113,13 @@
               </div>
               <input
                 type="submit"
-                class="button adddel-deploc-button"
+                class="button adddel-deploc-button add-dep-button"
                 value="ADD"
+              />
+              <img
+                src="vendors/icons/close-outline.svg"
+                alt="Close X"
+                class="uk-modal-close close-dropdown"
               />
             </form>
           </div>
@@ -133,7 +138,7 @@
           class="addDepLocWindow removeDepartmentWindow"
           id="deleteDepWindow"
         >
-          <header class="header header-adddel-deploc">
+          <header class="header header-adddel-deploc header-adddel-Dep">
             <h1 class="header-adddel-deploc_title">Delete Department</h1>
           </header>
 
@@ -177,7 +182,7 @@
           class="addDepLocWindow addLocationWindow"
           id="addLocWindow"
         >
-          <header class="header header-adddel-deploc">
+          <header class="header header-adddel-deploc header-adddel-Loc">
             <h1 class="header-adddel-deploc_title">Add New Location</h1>
           </header>
 
@@ -199,7 +204,7 @@
               </div>
               <input
                 type="submit"
-                class="button adddel-deploc-button"
+                class="button adddel-deploc-button add-loc-button"
                 value="ADD"
               />
             </form>
@@ -219,7 +224,7 @@
           class="addDepLocWindow removeLocationWindow"
           id="deleteLocWindow"
         >
-          <header class="header header-adddel-deploc">
+          <header class="header header-adddel-deploc header-adddel-Loc">
             <h1 class="header-adddel-deploc_title">Remove Location</h1>
           </header>
 
@@ -269,9 +274,7 @@
           />
         </div>
         <div class="selection-par">
-          <span
-            >Search for <span id="selectionResearch">personnel: All</span></span
-          >
+          <p>Search for <span id="selectionResearch">personnel: All</span></p>
         </div>
         <div class="label label-agenda" id="btnPersonnel">
           <img
@@ -359,7 +362,7 @@
         <form class="uk-form-stacked" id="formAddEmployee">
           <div class="uk-margin form-line">
             <label class="uk-form-label form-label" for="fname"
-              >First Name:</label
+              >First Name</label
             >
             <div class="uk-form-controls">
               <input
@@ -373,7 +376,7 @@
           </div>
           <div class="uk-margin form-line">
             <label class="uk-form-label form-label" for="lname"
-              >Last Name:</label
+              >Last Name</label
             >
             <div class="uk-form-controls">
               <input
@@ -386,7 +389,7 @@
             </div>
           </div>
           <div class="uk-margin form-line">
-            <label class="uk-form-label form-label" for="email">E-mail:</label>
+            <label class="uk-form-label form-label" for="email">E-mail</label>
             <div class="uk-form-controls">
               <input
                 class="uk-input form-input"
@@ -398,7 +401,7 @@
             </div>
           </div>
           <div class="uk-margin form-line">
-            <label class="uk-form-label form-label" for="job">Job Title:</label>
+            <label class="uk-form-label form-label" for="job">Job Title</label>
             <div class="uk-form-controls">
               <input
                 class="uk-input form-input"
@@ -410,9 +413,7 @@
             </div>
           </div>
           <div class="uk-margin form-line">
-            <label class="uk-form-label form-label" for="dep"
-              >Department:</label
-            >
+            <label class="uk-form-label form-label" for="dep">Department</label>
             <div class="uk-margin">
               <select class="uk-select select-bar" id="addDep"></select>
             </div>
@@ -446,7 +447,7 @@
         <form class="uk-form-stacked" id="formEditEmployee">
           <div class="uk-margin form-line">
             <label class="uk-form-label form-label" for="editfname"
-              >First Name:</label
+              >First Name</label
             >
             <div class="uk-form-controls">
               <input
@@ -459,7 +460,7 @@
           </div>
           <div class="uk-margin form-line">
             <label class="uk-form-label form-label" for="editlname"
-              >Last Name:</label
+              >Last Name</label
             >
             <div class="uk-form-controls">
               <input
@@ -472,7 +473,7 @@
           </div>
           <div class="uk-margin form-line">
             <label class="uk-form-label form-label" for="editemail"
-              >E-mail:</label
+              >E-mail</label
             >
             <div class="uk-form-controls">
               <input
@@ -485,7 +486,7 @@
           </div>
           <div class="uk-margin form-line">
             <label class="uk-form-label form-label" for="editjob"
-              >Job Title:</label
+              >Job Title</label
             >
             <div class="uk-form-controls">
               <input
@@ -497,7 +498,7 @@
             </div>
           </div>
           <div class="uk-margin form-line">
-            <label class="uk-form-label form-label">Department:</label>
+            <label class="uk-form-label form-label">Department</label>
             <div class="uk-margin">
               <select class="uk-select select-bar" id="editDep"></select>
             </div>
