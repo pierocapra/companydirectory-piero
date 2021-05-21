@@ -51,7 +51,7 @@
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/uikit1.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/style2.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/queries4.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/queries3.css" type="text/css" />
   </head>
 
   <body>
@@ -63,6 +63,8 @@
         src="vendors/icons/manage_people.svg"
         alt="Manage People Icon"
         class="manage-people-icon"
+        href="#modal-sections"
+        uk-toggle
       />
     </header>
 
@@ -541,10 +543,42 @@
       </div>
     </div>
 
+    <!-- MODAL PROJECT INFO -->
+    <div id="modal-sections" uk-modal>
+      <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+          <h1 class="uk-modal-title project-info-title">Company Directory</h1>
+        </div>
+        <div class="uk-modal-body">
+          <p>
+            This project is meant to simulate an Employees management system.
+            <br />
+            You can search through the database by department, location or using
+            the search bar. Then you can click on the employee name to retrieve
+            his information in detail. <br />
+            Also you can add, edit and delete any element having full control in
+            managing this fictional company database.
+          </p>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+          <p>
+            Copyright © 2021 by
+            <a href="https://pierocapra.com/" target="_blank">Piero Capra</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- ALERTS -->
     <div id="alertModal" uk-modal>
       <div class="uk-modal-dialog uk-modal-body alert">
         <button class="uk-modal-close-default" type="button" uk-close></button>
+        <img
+          src="vendors/icons/alert-circle-outline.svg"
+          alt="Alert Icon"
+          class="alert-icon"
+        />
         <p id="alertMessage"></p>
       </div>
     </div>

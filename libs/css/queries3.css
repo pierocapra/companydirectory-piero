@@ -20,6 +20,16 @@
     font-size: 52%;
   } */
 
+  #depSection {
+    transform: translateX(-110%);
+    -webkit-transform: translateX(-110%);
+    -moz-transform: translateX(-110%);
+    -ms-transform: translateX(-110%);
+    -o-transform: translateX(-110%);
+  }
+  .label-dep {
+    width: 45px;
+  }
   .secPersonInfo {
     /* background-color: rgb(216, 187, 19); */
     width: 60%;

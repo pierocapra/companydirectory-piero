@@ -101,6 +101,9 @@ p {
   margin: 0;
 }
 
+a {
+  color: var(--secondary-color);
+}
 ul {
   padding: 0;
   margin: 0;
@@ -182,7 +185,21 @@ li:active {
 /* ALERTS */
 .alert {
   background-color: var(--main-graybackground);
+  background-color: #eff9ff;
+  display: grid;
+  grid-template-columns: 35px 1fr;
+  align-content: center;
+  border: 1px solid #93d6ff;
 }
+.alert p {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  vertical-align: 50%;
+  margin-left: 10px;
+  align-self: center;
+}
+
+.alert-icon,
 .warning-icon {
   height: 30px;
 }
@@ -219,6 +236,15 @@ li:active {
 }
 .manage-people-icon {
   height: 5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.manage-people-icon:hover {
+  background-color: rgba(255, 255, 255, 0.13);
 }
 
 .addedit-people-icon {
@@ -253,7 +279,9 @@ li:active {
   -moz-transition: all 0.8s;
   -ms-transition: all 0.8s;
   -o-transition: all 0.8s;
+}
 
+#locSection {
   transform: translateX(-110%);
   -webkit-transform: translateX(-110%);
   -moz-transform: translateX(-110%);
@@ -418,6 +446,9 @@ li:active {
   background-position: center;
   background-size: cover;
   /* background-color: brown; */
+  display: grid;
+  justify-content: center;
+  align-content: center;
 }
 
 /*SECTION AGENDA*/
@@ -427,7 +458,6 @@ li:active {
   height: calc(100vh - 7rem);
   display: grid;
   grid-template-rows: 7rem 3.5rem 2.5rem 1fr;
-  border-right: 1px solid rgb(214, 214, 214);
 }
 
 .search-bar {
@@ -557,7 +587,7 @@ li:active {
 .label-dep {
   background-color: var(--secondary-color);
   top: 205px;
-  width: 45px;
+  width: 55px;
 }
 .label-dep:hover {
   background-color: #4abbfc;
@@ -586,6 +616,7 @@ li:active {
   align-content: center;
   padding: 3rem 4rem;
   z-index: 600;
+  border-left: 1px solid rgb(214, 214, 214);
   /*overflow: auto;
   */
   transition: transform 0.8s;
@@ -624,7 +655,7 @@ li:active {
 
 .info-icon {
   grid-column: 5/7;
-  width: 60%;
+  width: 55%;
   justify-self: center;
 }
 
@@ -646,7 +677,6 @@ li:active {
   width: 3rem;
   justify-self: center;
   cursor: pointer;
-  display: none;
 }
 
 .info-container {
@@ -679,11 +709,6 @@ li:active {
   background-color: red;
   grid-column: 5/7;
   justify-self: flex-end;
-  /*position: absolute;
-  bottom: 2rem;
-  right: 4rem;
-  */
-  display: none;
   margin-left: 0;
   transform: translateX(0);
   -webkit-transform: translateX(0);
@@ -774,6 +799,10 @@ li:active {
   margin-left: 50%;
 }
 
+.project-info-title {
+  color: var(--secondary-color);
+  text-align: center;
+}
 /* PRELOADER */
 /* #preloader {
   position: fixed;

@@ -4,7 +4,7 @@
 ////////////////////////GLOBAL VARIABLES/////////////////////////////////////
 let currentPersonID = "";
 
-let depSlided = false;
+let depSlided = true;
 let locSlided = false;
 
 $(document).ready(function () {
@@ -318,10 +318,6 @@ $(document).ready(function () {
         $("#department").html(department);
         $("#location").html(location);
 
-        //show delete and edit button
-        $("#deleteButton").css("display", "block");
-        $("#editButton").css("display", "block");
-
         currentPersonID = personId;
 
         //Show info in the Edit Modal
@@ -613,6 +609,8 @@ $(document).ready(function () {
           timeout: 4000,
         });
 
+        $("#secPersoninfo").css("transform", "translateX(100%)");
+
         //reload personnel
         retrievePersonnel();
       },
@@ -822,9 +820,6 @@ $(document).ready(function () {
     $("#addjob").val("");
     $("#addDep").val("");
 
-    $("#deleteButton").css("display", "none");
-    $("#editButton").css("display", "none");
-
     // close window
     UIkit.modal("#addEmployee").hide();
   });
@@ -926,9 +921,6 @@ $(document).ready(function () {
         $("#jobTitle").html("");
         $("#department").html("");
         $("#location").html("");
-
-        $("#editButton").css("display", "none");
-        $("#deleteButton").css("display", "none");
       } else {
         return;
       }
