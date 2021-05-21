@@ -7,6 +7,19 @@ let currentPersonID = "";
 let depSlided = true;
 let locSlided = false;
 
+//SET department variable according to MEDIA QUERY
+function myFunction(x) {
+  if (x.matches) {
+    depSlided = false;
+  }
+}
+
+let x = window.matchMedia("(max-width: 51.25em)");
+myFunction(x); // Call listener function at run time
+x.addListener(myFunction); // Attach listener function on state changes
+
+///////////////////////////////////////////////////////////////////////////////
+
 $(document).ready(function () {
   //////PRELOADER
   // $(window).on("load", function () {
@@ -664,13 +677,20 @@ $(document).ready(function () {
       success: function (result) {
         // if it's empty can be deleted
         if (result["data"]["COUNT"] == 0) {
-          (() => {
-            if (confirm("Are you sure you want to delete this department?")) {
+          // (() => {
+          //   if (confirm("Are you sure you want to delete this department?")) {
+          //     deleteDepartment(depID);
+          //   } else {
+          //     return;
+          //   }
+          // })();
+
+          Confirm.open({
+            message: "Are you sure you want to delete this Department?",
+            onok: () => {
               deleteDepartment(depID);
-            } else {
-              return;
-            }
-          })();
+            },
+          });
 
           // $("#confirmDeleteMessageDep").html(
           //   "Are you sure you want to delete this department?"
@@ -678,7 +698,7 @@ $(document).ready(function () {
           // UIkit.modal("#confirmDeleteDep").show();
 
           // $("#deleteConfirmedDep").on("click", () => {
-          //   deleteDepartment(depId)
+          //   deleteDepartment(depId);
 
           //   UIkit.dropdown("#deleteDepWindow").hide(0);
           // });
@@ -742,13 +762,20 @@ $(document).ready(function () {
       success: function (result) {
         // if it's empty can be deleted
         if (result["data"]["COUNT"] == 0) {
-          (() => {
-            if (confirm("Are you sure you want to delete this location?")) {
+          // (() => {
+          //   if (confirm("Are you sure you want to delete this location?")) {
+          //     deleteLocation(locID);
+          //   } else {
+          //     return;
+          //   }
+          // })();
+
+          Confirm.open({
+            message: "Are you sure you want to delete this location?",
+            onok: () => {
               deleteLocation(locID);
-            } else {
-              return;
-            }
-          })();
+            },
+          });
 
           // $("#confirmDeleteMessageLoc").html(
           //   "Are you sure you want to delete this location?"
@@ -899,15 +926,9 @@ $(document).ready(function () {
   });
 
   $("#deleteButton").on("click", () => {
-    // $("#confirmDeleteMessage").html(
-    //   "Are you sure you want to delete this Employee?"
-    // );
-    // UIkit.modal("#confirmDelete").show();
-
-    // $("#deleteConfirmed").on("click", () => {
-    // });
-    (() => {
-      if (confirm("Are you sure you want to delete this person?")) {
+    Confirm.open({
+      message: "Are you sure you want to delete this Employee?",
+      onok: () => {
         deletePerson(currentPersonID);
 
         //clear fields
@@ -921,10 +942,27 @@ $(document).ready(function () {
         $("#jobTitle").html("");
         $("#department").html("");
         $("#location").html("");
-      } else {
-        return;
-      }
-    })();
+      },
+    });
+    // (() => {
+    //   if (confirm("Are you sure you want to delete this person?")) {
+    //     deletePerson(currentPersonID);
+
+    //     //clear fields
+    //     $("#cityImage").html(`<img
+    //     src="img/skyline-silhouette.jpg"
+    //     alt="City Image"
+    //     class="city-image "
+    //   />`);
+    //     $("#infoName").html("");
+    //     $("#email").html("");
+    //     $("#jobTitle").html("");
+    //     $("#department").html("");
+    //     $("#location").html("");
+    //   } else {
+    //     return;
+    //   }
+    // })();
   });
 
   $("#deleteDepButton").on("click", () => {
@@ -1007,3 +1045,76 @@ $(document).ready(function () {
     UIkit.dropdown("#deleteLocWindow").hide(0);
   });
 });
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// CONFIRM LOGIC ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const Confirm = {
+  open(options) {
+    options = Object.assign(
+      {},
+      {
+        title: "",
+        message: "",
+        cancelText: "Cancel",
+        okText: "OK",
+        onok: function () {},
+        oncancel: function () {},
+      },
+      options
+    );
+
+    const html = `
+      <div class="confirm">
+        <div class="confirm__window">
+          <div class="confirm__content">
+            <img
+              src="vendors/icons/warning.svg"
+              alt="Warning Icon"
+              class="warning-icon" />
+            <p>${options.message}</p>
+          </div>
+          <div class="confirm__buttons">
+            <button class="button confirm__button confirm__button--cancel">${options.cancelText}</button>
+            <button class="button confirm__button confirm__button--ok confirm__button--fill">${options.okText}</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const template = document.createElement("template");
+    template.innerHTML = html;
+
+    // Elements
+    const confirmEl = template.content.querySelector(".confirm");
+    const btnOk = template.content.querySelector(".confirm__button--ok");
+    const btnCancel = template.content.querySelector(
+      ".confirm__button--cancel"
+    );
+
+    confirmEl.addEventListener("click", (e) => {
+      if (e.target === confirmEl) {
+        options.oncancel();
+        this._close(confirmEl);
+      }
+    });
+
+    btnOk.addEventListener("click", () => {
+      options.onok();
+      this._close(confirmEl);
+    });
+
+    btnCancel.addEventListener("click", () => {
+      options.oncancel();
+      this._close(confirmEl);
+    });
+
+    document.body.appendChild(template.content);
+  },
+
+  _close(confirmEl) {
+    confirmEl.classList.add("confirm--close");
+
+    confirmEl.addEventListener("animationend", () => {
+      document.body.removeChild(confirmEl);
+    });
+  },
+};

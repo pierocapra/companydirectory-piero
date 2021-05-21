@@ -58,7 +58,7 @@
     <!-- <div id="preloader"></div> -->
     <!--  -->
     <header class="header">
-      <h1 class="header-title">Company Directory</h1>
+      <h1 class="header-title" id="confirmTest">Company Directory</h1>
       <img
         src="vendors/icons/manage_people.svg"
         alt="Manage People Icon"
@@ -277,6 +277,7 @@
     <!--  -->
 
     <main class="main-container">
+
       <section class="fillerLocDep"></section>
 
       <!-- SECTION AGENDA -->
@@ -586,15 +587,14 @@
     <!-- CONFIRM DELETE ALERT -->
     <div id="confirmDeleteDep" uk-modal>
       <div class="uk-modal-dialog uk-modal-body alert">
-        <p>
-          <span
-            ><img
-              src="vendors/icons/warning.svg"
-              alt="Warning Icon"
-              class="warning-icon" /></span
-          ><span class="confirm-message" id="confirmDeleteMessageDep"></span>
-        </p>
-        <p class="uk-text-right">
+        <img
+          src="vendors/icons/warning.svg"
+          alt="Warning Icon"
+          class="warning-icon"
+        />
+        <p class="confirm-message" id="confirmDeleteMessageDep"></p>
+
+        <p class="uk-text-right alert-buttons"></p>
           <button
             class="uk-button uk-button-default"
             type="button"
