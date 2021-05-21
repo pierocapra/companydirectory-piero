@@ -1,5 +1,13 @@
 /* BIG TABLETS 960px*/
 @media only screen and (max-width: 60em) {
+  html {
+    font-size: 52%;
+  }
+
+  .search input {
+    height: 30px !important;
+  }
+
   .secPersonInfo {
     padding: 3rem;
     /* background-color: brown; */
@@ -8,17 +16,17 @@
 
 /* SMALL TABLETS 820px*/
 @media only screen and (max-width: 51.25em) {
-  html {
+  /* html {
     font-size: 52%;
-  }
+  } */
 
   .secPersonInfo {
     /* background-color: rgb(216, 187, 19); */
-    width: 55%;
+    width: 60%;
   }
 
   .main-container {
-    grid-template-columns: 45% 55%;
+    grid-template-columns: 100%;
   }
   .fillerLocDep {
     display: none;
@@ -27,31 +35,39 @@
     height: calc(98% - 17rem);
     width: 37%;
   }
-
-  .search input {
-    height: 30px !important;
-  }
 }
 
 /* BIG PHONES 660px */
-@media only screen and (max-width: 41.25em) {
+/* @media only screen and (max-width: 41.25em) {
   .secPersonInfo {
-    /* background-color: rgb(26, 255, 5); */
+    
     width: 60%;
-  }
-  .main-container {
-    grid-template-columns: 40% 60%;
   }
 
   .deploc-off-canvas {
     width: 28%;
   }
-}
+} */
 
 /* CELLPHONES 580px */
 @media only screen and (max-width: 36.25em) {
   html {
     font-size: 62.5%;
+  }
+  .secAgenda {
+    grid-template-rows: 7rem 3.5rem 1fr;
+  }
+
+  .name-cell {
+    grid-template-columns: 100%;
+  }
+
+  .legend {
+    display: none;
+  }
+  .inline-department,
+  .inline-location {
+    display: none;
   }
 
   .secPersonInfo {
@@ -147,6 +163,23 @@
 /* PHONES 430px */
 @media only screen and (max-height: 26.875em) {
   .label-agenda {
+    top: 120px;
+  }
+
+  .label-dep {
+    top: 185px;
+  }
+  .label-loc {
+    top: 250px;
+  }
+}
+
+/* VERY SMALL PHONES 340px*/
+@media only screen and (max-height: 21.25em) {
+  html {
+    font-size: 48%;
+  }
+  .label-agenda {
     top: 100px;
   }
 
@@ -156,19 +189,8 @@
   .label-loc {
     top: 230px;
   }
-}
-
-/* VERY SMALL PHONES 340px*/
-@media only screen and (max-height: 21.25em) {
-  html {
-    font-size: 48%;
-  }
-}
-
-/* VERY SMALL PHONES 340px*/
-@media only screen and (max-height: 21.25em) {
-  html {
-    font-size: 48%;
+  .search input {
+    height: 30px !important;
   }
 }
 

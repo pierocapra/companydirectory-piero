@@ -50,8 +50,8 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/uikit1.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/style1.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/queries1.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/style2.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/queries4.css" type="text/css" />
   </head>
 
   <body>
@@ -94,7 +94,7 @@
             <form class="uk-form-stacked" id="formAddDepartment">
               <div class="uk-margin form-line">
                 <label class="uk-form-label form-label" for="addNewDep"
-                  >Department:</label
+                  >Department</label
                 >
                 <div class="uk-form-controls">
                   <input
@@ -107,7 +107,7 @@
                 </div>
               </div>
               <div class="uk-margin form-line">
-                <label class="uk-form-label form-label">Location:</label>
+                <label class="uk-form-label form-label">Location</label>
                 <div class="uk-margin">
                   <select class="uk-select select-bar" id="addLoc"></select>
                 </div>
@@ -147,7 +147,7 @@
           <div class="adddel-deploc-container">
             <div class="uk-margin form-line">
               <label class="uk-form-label form-label" for="addNewDep"
-                >Department:</label
+                >Department</label
               >
               <div class="uk-margin">
                 <select class="uk-select select-bar" id="deleteDep"></select>
@@ -198,7 +198,7 @@
             <form class="uk-form-stacked" id="formAddLocation">
               <div class="uk-margin form-line">
                 <label class="uk-form-label form-label" for="addNewLoc"
-                  >Location:</label
+                  >Location</label
                 >
                 <div class="uk-form-controls">
                   <input
@@ -244,16 +244,18 @@
 
           <div class="adddel-deploc-container">
             <div class="uk-margin form-line">
-              <label class="uk-form-label form-label">Location:</label>
+              <label class="uk-form-label form-label">Location</label>
               <div class="uk-margin">
                 <select class="uk-select select-bar" id="deleteLoc"></select>
               </div>
             </div>
-            <input
+            <div
               class="button adddel-deploc-button delete-deploc-button"
               value="DELETE"
               id="deleteLocButton"
-            />
+            >
+              DELETE
+            </div>
             <img
               src="vendors/icons/close-outline.svg"
               alt="Close X"
@@ -308,6 +310,11 @@
         </div>
         <div class="label label-loc" id="btnLoc">
           <img src="vendors/icons/location-outline.svg" alt="Location icon" />
+        </div>
+        <div class="legend">
+          <h3>EMPLOYEE</h3>
+          <h4>DEPARTMENT</h4>
+          <h4>LOCATION</h4>
         </div>
         <div class="names-container" id="name-container"></div>
       </section>

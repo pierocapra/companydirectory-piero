@@ -286,7 +286,9 @@ $(document).ready(function () {
       // </ul>
       $("#name-container")
         .append(`<li class="name-cell" id="person-${personId}">
-            <h3 class="name">${lName + ", " + fName}</h3>
+            <h3 class="name">${
+              lName + ", " + fName
+            }</h3><h4 class="inline-department">${department}</h4><h4 class="inline-location">${location}</h4>
         </li>`);
 
       //Show Informations in the card
