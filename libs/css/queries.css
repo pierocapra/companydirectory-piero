@@ -211,3 +211,29 @@
     font-size: 76%;
   }
 }
+
+/* TOUCHSCREEN SCREENS */
+
+@media (hover: hover) {
+  li:hover {
+    background-color: rgba(0, 194, 255, 0.18);
+  }
+  .manage-people-icon:hover {
+    background-color: rgba(255, 255, 255, 0.13);
+  }
+  .dep-label:hover {
+    background-color: #4abbfc;
+  }
+  .loc-label:hover {
+    background-color: #34e0b8;
+  }
+  .label-agenda:hover {
+    background-color: #485aff;
+  }
+  .label-dep:hover {
+    background-color: #4abbfc;
+  }
+  .label-loc:hover {
+    background-color: #34e0b8;
+  }
+}

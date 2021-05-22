@@ -31,35 +31,6 @@ body {
   /**/
 }
 
-/*Hide scrollbar*/
-/* .names-container::-webkit-scrollbar,
-.ul-deploc::-webkit-scrollbar {
-  display: none;
-}
-.names-container,
-.ul-deploc {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-} */
-/**/
-
-/* .names-container::-webkit-scrollbar-thumb {
-  background-color: #e1e1e1; 
-  border-radius: 20px;
-  border: none; 
-} */
-
-/* show scrollbar */
-/* .li:hover .names-container::-webkit-scrollbar {
-  display: unset;
-}
-.li:hover .names-container {
-  -ms-overflow-style: unset; 
-  scrollbar-width: unset; 
-  margin: 0rem 24px 24px 0;
-} */
-/**/
-
 /* REUSABLE */
 h1 {
   font-family: var(--font-main);
@@ -115,9 +86,6 @@ li {
 
 li:nth-child(even) {
   background-color: #ececec;
-}
-li:hover {
-  background-color: rgba(0, 194, 255, 0.18);
 }
 
 li:active {
@@ -208,9 +176,6 @@ li:active {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-}
-.manage-people-icon:hover {
-  background-color: rgba(255, 255, 255, 0.13);
 }
 
 .addedit-people-icon {
@@ -321,16 +286,10 @@ li:active {
   background-color: var(--secondary-color);
 }
 
-.dep-label:hover {
-  background-color: #4abbfc;
-}
-
 .loc-label {
   background-color: var(--tertiary-color);
 }
-.loc-label:hover {
-  background-color: #34e0b8;
-}
+
 .deploc-label_plus {
   top: 25px;
 }
@@ -544,28 +503,16 @@ li:active {
   width: 55px;
 }
 
-.label-agenda:hover {
-  background-color: #485aff;
-}
-/* --primary-color: ;
-  --secondary-color: #00a3ff;
-  --tertiary-color: #00cf9e; */
 .label-dep {
   background-color: var(--secondary-color);
   top: 205px;
   width: 55px;
-}
-.label-dep:hover {
-  background-color: #4abbfc;
 }
 
 .label-loc {
   background-color: var(--tertiary-color);
   top: 270px;
   width: 45px;
-}
-.label-loc:hover {
-  background-color: #34e0b8;
 }
 
 /**/
