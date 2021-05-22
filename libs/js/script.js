@@ -18,6 +18,20 @@ let x = window.matchMedia("(max-width: 51.25em)");
 myFunction(x); // Call listener function at run time
 x.addListener(myFunction); // Attach listener function on state changes
 
+//REMOVE TOOLTIPS ON TOUCH
+function myFunction(y) {
+  if (y.matches) {
+    for (let index = 1; index <= 10; index++) {
+      const tooltip = document.querySelector(`.tooltip${index}`);
+      tooltip.removeAttribute("uk-tooltip");
+    }
+  }
+}
+
+let y = window.matchMedia("(hover: none)");
+myFunction(y); // Call listener function at run time
+y.addListener(myFunction); // Attach listener function on state changes
+
 ///////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function () {
