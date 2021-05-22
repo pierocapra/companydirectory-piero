@@ -677,31 +677,13 @@ $(document).ready(function () {
       success: function (result) {
         // if it's empty can be deleted
         if (result["data"]["COUNT"] == 0) {
-          // (() => {
-          //   if (confirm("Are you sure you want to delete this department?")) {
-          //     deleteDepartment(depID);
-          //   } else {
-          //     return;
-          //   }
-          // })();
-
+          //Confirm alert
           Confirm.open({
             message: "Are you sure you want to delete this Department?",
             onok: () => {
               deleteDepartment(depID);
             },
           });
-
-          // $("#confirmDeleteMessageDep").html(
-          //   "Are you sure you want to delete this department?"
-          // );
-          // UIkit.modal("#confirmDeleteDep").show();
-
-          // $("#deleteConfirmedDep").on("click", () => {
-          //   deleteDepartment(depId);
-
-          //   UIkit.dropdown("#deleteDepWindow").hide(0);
-          // });
         } else {
           $("#alertMessage").html(
             "This department contains employees!! It cannot be deleted!"
@@ -762,33 +744,13 @@ $(document).ready(function () {
       success: function (result) {
         // if it's empty can be deleted
         if (result["data"]["COUNT"] == 0) {
-          // (() => {
-          //   if (confirm("Are you sure you want to delete this location?")) {
-          //     deleteLocation(locID);
-          //   } else {
-          //     return;
-          //   }
-          // })();
-
+          //Confirm alert
           Confirm.open({
             message: "Are you sure you want to delete this location?",
             onok: () => {
               deleteLocation(locID);
             },
           });
-
-          // $("#confirmDeleteMessageLoc").html(
-          //   "Are you sure you want to delete this location?"
-          // );
-          // UIkit.modal("#confirmDeleteLoc").show();
-
-          // $("#deleteCancelledLoc").on("click", () => {
-          //   UIkit.modal("#confirmDeleteLoc").hide();
-          // });
-
-          // $("#deleteConfirmedLoc").on("click", () => {
-          //   deleteLocation(locID);
-          // });
         } else {
           $("#alertMessage").html(
             "This location contains departments and employees!! It cannot be deleted!"
@@ -944,25 +906,6 @@ $(document).ready(function () {
         $("#location").html("");
       },
     });
-    // (() => {
-    //   if (confirm("Are you sure you want to delete this person?")) {
-    //     deletePerson(currentPersonID);
-
-    //     //clear fields
-    //     $("#cityImage").html(`<img
-    //     src="img/skyline-silhouette.jpg"
-    //     alt="City Image"
-    //     class="city-image "
-    //   />`);
-    //     $("#infoName").html("");
-    //     $("#email").html("");
-    //     $("#jobTitle").html("");
-    //     $("#department").html("");
-    //     $("#location").html("");
-    //   } else {
-    //     return;
-    //   }
-    // })();
   });
 
   $("#deleteDepButton").on("click", () => {
@@ -1065,6 +1008,12 @@ const Confirm = {
     const html = `
       <div class="confirm">
         <div class="confirm__window">
+        <img
+                src="vendors/icons/close-outline.svg"
+                alt="Close X"
+                class="uk-modal-close close-confirm"
+                id="closeConfirm"
+              />
           <div class="confirm__content">
             <img
               src="vendors/icons/warning.svg"
@@ -1086,6 +1035,7 @@ const Confirm = {
     // Elements
     const confirmEl = template.content.querySelector(".confirm");
     const btnOk = template.content.querySelector(".confirm__button--ok");
+    const closeConfirm = template.content.querySelector("#closeConfirm");
     const btnCancel = template.content.querySelector(
       ".confirm__button--cancel"
     );
@@ -1099,6 +1049,11 @@ const Confirm = {
 
     btnOk.addEventListener("click", () => {
       options.onok();
+      this._close(confirmEl);
+    });
+
+    closeConfirm.addEventListener("click", () => {
+      options.oncancel();
       this._close(confirmEl);
     });
 

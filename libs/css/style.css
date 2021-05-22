@@ -820,7 +820,7 @@ li:active {
 
 .alert {
   /* background-color: var(--main-graybackground); */
-  background-color: #ffffff;
+  background-color: var(--white-color);
   display: grid;
   grid-template-columns: 35px 1fr;
   align-content: center;
@@ -829,6 +829,7 @@ li:active {
 .alert p {
   font-size: 1.4rem;
   color: var(--primary-color);
+  /* color: var(--text-color); */
   vertical-align: 50%;
   margin-left: 10px;
   align-self: center;
@@ -843,14 +844,6 @@ li:active {
 .alert-icon,
 .warning-icon {
   height: 30px;
-}
-
-#confirmDelete button {
-  font-size: 1.2rem;
-}
-
-#deleteConfirmed {
-  background-color: red;
 }
 
 /*  */
@@ -882,11 +875,10 @@ li:active {
 .confirm__window {
   width: 100%;
   max-width: 600px;
-  background-color: #ffffff;
+  background-color: var(--white-color);
+  /* background-color: var(--main-graybackground); */
   font-size: 14px;
   overflow: hidden;
-
-  /* border: 1px solid #93d6ff; */
   opacity: 0;
   transform: scale(0.75);
   animation-name: confirm__window---open;
@@ -914,6 +906,13 @@ li:active {
   vertical-align: 60%;
 }
 
+.close-confirm {
+  position: absolute;
+  top: 0.5rem !important;
+  right: 0.5rem;
+  width: 25px;
+  cursor: pointer;
+}
 /* .confirm__close {
   background: none;
   outline: none;
@@ -921,10 +920,6 @@ li:active {
   transform: scale(2.5);
   color: #ffffff;
   transition: color 0.15s;
-} */
-
-/* .confirm__content {
-  line-height: 1.8em;
 } */
 
 .confirm__buttons {
@@ -937,7 +932,7 @@ li:active {
   /* padding: 0.4em 0.8em; */
   width: 10rem;
   border: none;
-  background: var(--secondary-color);
+  background: var(--primary-color);
   color: var(--white-color);
 
   font-size: 1.1em;
