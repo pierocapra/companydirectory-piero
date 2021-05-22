@@ -50,13 +50,15 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="libs/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/uikit1.css" type="text/css" />
-    <link rel="stylesheet" href="libs/css/style2.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/style.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/queries3.css" type="text/css" />
   </head>
 
   <body>
-    <!-- <div id="preloader"></div> -->
+    <div id="preloader"></div>
+
     <!--  -->
+
     <header class="header">
       <h1 class="header-title" id="confirmTest">Company Directory</h1>
       <img
@@ -277,7 +279,6 @@
     <!--  -->
 
     <main class="main-container">
-
       <section class="fillerLocDep"></section>
 
       <!-- SECTION AGENDA -->
@@ -322,6 +323,9 @@
         <div class="names-container" id="name-container"></div>
       </section>
     </main>
+
+    <!--  -->
+    <!--  -->
 
     <!-- SECTION PERSON INFO -->
     <section class="secPersonInfo" id="secPersoninfo">
@@ -581,64 +585,6 @@
           class="alert-icon"
         />
         <p id="alertMessage"></p>
-      </div>
-    </div>
-
-    <!-- CONFIRM DELETE ALERT -->
-    <div id="confirmDeleteDep" uk-modal>
-      <div class="uk-modal-dialog uk-modal-body alert">
-        <img
-          src="vendors/icons/warning.svg"
-          alt="Warning Icon"
-          class="warning-icon"
-        />
-        <p class="confirm-message" id="confirmDeleteMessageDep"></p>
-
-        <p class="uk-text-right alert-buttons"></p>
-          <button
-            class="uk-button uk-button-default"
-            type="button"
-            id="deleteCancelledDep"
-          >
-            Cancel
-          </button>
-          <button
-            class="uk-button uk-button-primary"
-            type="button"
-            id="deleteConfirmedDep"
-          >
-            DELETE
-          </button>
-        </p>
-      </div>
-    </div>
-
-    <div id="confirmDeleteLoc" uk-modal>
-      <div class="uk-modal-dialog uk-modal-body alert">
-        <p>
-          <span
-            ><img
-              src="vendors/icons/warning.svg"
-              alt="Warning Icon"
-              class="warning-icon" /></span
-          ><span class="confirm-message" id="confirmDeleteMessageLoc"></span>
-        </p>
-        <p class="uk-text-right">
-          <button
-            class="uk-button uk-button-default"
-            type="button"
-            id="deleteCancelledLoc"
-          >
-            Cancel
-          </button>
-          <button
-            class="uk-button uk-button-primary"
-            type="button"
-            id="deleteConfirmedLoc"
-          >
-            DELETE
-          </button>
-        </p>
       </div>
     </div>
 
