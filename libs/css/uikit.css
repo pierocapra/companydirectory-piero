@@ -4484,7 +4484,8 @@ select.uk-form-width-xsmall {
   max-width: 200px;
   padding: 3px 6px;
   /* 5 */
-  background: #666;
+  background: rgb(175, 175, 175);
+  /* background: #00a3ff; */
   border-radius: 2px;
   color: #fff;
   font-size: 12px;

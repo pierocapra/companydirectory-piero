@@ -67,6 +67,7 @@
         class="manage-people-icon"
         href="#modal-sections"
         uk-toggle
+        uk-tooltip="Website Information"
       />
     </header>
 
@@ -84,6 +85,7 @@
           src="vendors/icons/add-circle-outline.svg"
           alt="Plus sign white"
           class="deploc-label dep-label deploc-label_plus"
+          uk-tooltip="Add new department"
         />
         <div
           uk-dropdown="mode: click; pos: bottom-right"
@@ -136,8 +138,9 @@
       <div class="uk-inline">
         <img
           src="vendors/icons/remove-circle-outline.svg"
-          alt="Plus sign white"
+          alt="Minus sign white"
           class="deploc-label dep-label deploc-label_minus"
+          uk-tooltip="title: Remove department; pos: bottom"
         />
         <div
           uk-dropdown="mode: click; pos: bottom-right"
@@ -189,6 +192,7 @@
           src="vendors/icons/add-circle-outline.svg"
           alt="Plus sign white"
           class="deploc-label loc-label deploc-label_plus"
+          uk-tooltip="Add new location"
         />
         <div
           uk-dropdown="mode: click; pos: bottom-right"
@@ -235,8 +239,9 @@
       <div class="uk-inline">
         <img
           src="vendors/icons/remove-circle-outline.svg"
-          alt="Plus sign white"
+          alt="Minus sign white"
           class="deploc-label loc-label deploc-label_minus"
+          uk-tooltip="title: Remove location; pos: bottom"
         />
         <div
           uk-dropdown="mode: click; pos: bottom-right"
@@ -298,21 +303,34 @@
             alt="Plus sign Blue"
             class="plus-sign"
             uk-toggle="target: #addEmployee"
+            uk-tooltip="title: Add new employee; pos: left"
           />
         </div>
         <div class="selection-par">
           <p>Search for <span id="selectionResearch">personnel: All</span></p>
         </div>
-        <div class="label label-agenda" id="btnPersonnel">
+        <div
+          class="label label-agenda"
+          id="btnPersonnel"
+          uk-tooltip="title: Load all personnel; pos: left"
+        >
           <img
             src="vendors/icons/people-circle-outline.svg"
             alt="People icon"
           />
         </div>
-        <div class="label label-dep" id="btnDep">
+        <div
+          class="label label-dep"
+          id="btnDep"
+          uk-tooltip="title: Toggle department window; pos: left"
+        >
           <img src="vendors/icons/hammer-outline.svg" alt="Hammer icon" />
         </div>
-        <div class="label label-loc" id="btnLoc">
+        <div
+          class="label label-loc"
+          id="btnLoc"
+          uk-tooltip="title: Toggle location window; pos: left"
+        >
           <img src="vendors/icons/location-outline.svg" alt="Location icon" />
         </div>
         <div class="legend">
@@ -351,6 +369,7 @@
           class="info-edit"
           id="editButton"
           uk-toggle="target: #editEmployee"
+          uk-tooltip="Edit employee details"
         />
         <div class="info-container">
           <p class="info-label">e-mail:</p>
